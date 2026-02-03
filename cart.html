@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeonPuff — Корзина</title>
+  <meta name="description" content="Корзина и оформление (демо). 21+." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="scene" aria-hidden="true">
+  <div class="plant plant--tr">
+    <svg viewBox="0 0 220 220" width="220" height="220">
+      <defs>
+        <linearGradient id="leafB4" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#34d399" stop-opacity="0.95"/>
+          <stop offset="1" stop-color="#16a34a" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <path d="M40 180c10-80 60-130 140-140c-8 86-55 135-140 140z" fill="url(#leafB4)" opacity="0.50"/>
+    </svg>
+  </div>
+  <div class="plant plant--bl">
+    <svg viewBox="0 0 220 220" width="220" height="220">
+      <defs>
+        <linearGradient id="leafC4" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#16a34a" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#10b981" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <path d="M30 120c28-64 78-96 160-90c-18 78-64 128-160 90z" fill="url(#leafC4)" opacity="0.46"/>
+    </svg>
+  </div>
+</div>
+
+<div id="ageGate" class="age-gate" hidden>
+  <div class="age-gate__card" role="dialog" aria-modal="true" aria-label="Возрастное ограничение">
+    <div class="age-gate__kicker">21+</div>
+    <div class="age-gate__title">Только для взрослых</div>
+    <div class="age-gate__text">Подтверди, что тебе 21+. Никотин вызывает зависимость.</div>
+    <div class="age-gate__actions">
+      <button id="ageYes" class="btn" type="button">Мне 21+</button>
+      <button id="ageNo" class="btn btn--ghost" type="button">Мне нет 21</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="index.html">NeonPuff</a>
+      <nav class="nav" aria-label="Навигация">
+        <a class="nav__link" href="index.html">Главная</a>
+        <a class="nav__link" href="shop.html">Каталог</a>
+        <a class="nav__link nav__link--active" href="cart.html">Корзина</a>
+      </nav>
+      <a class="cart-pill" href="cart.html" aria-label="Перейти в корзину">
+        <span class="cart-pill__label">Корзина</span>
+        <span id="cartCount" class="cart-pill__count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Корзина</h1>
+    <div class="cart-page">
+      <section class="cart-page__items">
+        <div id="cartPageItems" aria-live="polite"></div>
+      </section>
+      <aside class="cart-page__summary">
+        <div class="summary">
+          <div class="summary__row">
+            <div class="summary__label">Товары</div>
+            <div id="cartPageQty" class="summary__value">0</div>
+          </div>
+          <div class="summary__row">
+            <div class="summary__label">Итого</div>
+            <div id="cartPageTotal" class="summary__value summary__value--strong">0 ₽</div>
+          </div>
+          <button id="checkoutBtn" class="btn btn--wide" type="button">Оформить (демо)</button>
+          <div class="summary__fine">Демо‑проект: кнопка покажет уведомление и очистит корзину.</div>
+        </div>
+        <div class="notice">
+          <div class="notice__title">21+</div>
+          <div class="notice__text">Никотин вызывает зависимость. Этот сайт — учебная демонстрация.</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© 2026 NeonPuff — демо‑проект.</div>
+      <div class="footer__fine">21+ • Никотин вызывает зависимость.</div>
+    </div>
+  </footer>
+</div>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
+

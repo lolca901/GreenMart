@@ -3,13 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GreenMart — Мини‑магазин</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>NeonPuff — Демо‑магазин</title>
+  <meta name="description" content="Демо‑многостраничный магазин: каталог, карточка товара, корзина. 21+." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<!-- Декор: растения -->
+<!-- Декор: растения (фон) -->
 <div class="scene" aria-hidden="true">
   <div class="plant plant--tl">
     <svg viewBox="0 0 220 220" width="220" height="220">
@@ -19,10 +22,10 @@
           <stop offset="1" stop-color="#10b981" stop-opacity="0.9"/>
         </linearGradient>
       </defs>
-      <path d="M110 18c42 10 72 48 74 92c2 46-28 86-74 96c-46-10-76-50-74-96c2-44 32-82 74-92z" fill="url(#leafA)" opacity="0.75"/>
-      <path d="M110 30c0 70 0 120 0 170" stroke="rgba(6,95,70,0.55)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.55"/>
-      <path d="M110 65c-22 10-40 28-52 55" stroke="rgba(6,95,70,0.42)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.55"/>
-      <path d="M110 65c22 10 40 28 52 55" stroke="rgba(6,95,70,0.42)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <path d="M110 18c42 10 72 48 74 92c2 46-28 86-74 96c-46-10-76-50-74-96c2-44 32-82 74-92z" fill="url(#leafA)" opacity="0.60"/>
+      <path d="M110 30c0 70 0 120 0 170" stroke="rgba(6,95,70,0.50)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.50"/>
+      <path d="M110 65c-22 10-40 28-52 55" stroke="rgba(6,95,70,0.35)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.45"/>
+      <path d="M110 65c22 10 40 28 52 55" stroke="rgba(6,95,70,0.35)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.45"/>
     </svg>
   </div>
   <div class="plant plant--tr">
@@ -33,8 +36,8 @@
           <stop offset="1" stop-color="#16a34a" stop-opacity="0.9"/>
         </linearGradient>
       </defs>
-      <path d="M40 180c10-80 60-130 140-140c-8 86-55 135-140 140z" fill="url(#leafB)" opacity="0.70"/>
-      <path d="M58 168c38-38 76-76 112-112" stroke="rgba(6,95,70,0.45)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <path d="M40 180c10-80 60-130 140-140c-8 86-55 135-140 140z" fill="url(#leafB)" opacity="0.56"/>
+      <path d="M58 168c38-38 76-76 112-112" stroke="rgba(6,95,70,0.36)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.48"/>
     </svg>
   </div>
   <div class="plant plant--bl">
@@ -45,8 +48,8 @@
           <stop offset="1" stop-color="#10b981" stop-opacity="0.9"/>
         </linearGradient>
       </defs>
-      <path d="M30 120c28-64 78-96 160-90c-18 78-64 128-160 90z" fill="url(#leafC)" opacity="0.68"/>
-      <path d="M54 112c40-18 78-34 120-54" stroke="rgba(6,95,70,0.42)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <path d="M30 120c28-64 78-96 160-90c-18 78-64 128-160 90z" fill="url(#leafC)" opacity="0.52"/>
+      <path d="M54 112c40-18 78-34 120-54" stroke="rgba(6,95,70,0.34)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.46"/>
     </svg>
   </div>
   <div class="plant plant--br">
@@ -57,138 +60,123 @@
           <stop offset="1" stop-color="#22c55e" stop-opacity="0.85"/>
         </linearGradient>
       </defs>
-      <path d="M190 70c-16 70-60 112-160 120c22-78 68-120 160-120z" fill="url(#leafD)" opacity="0.60"/>
-      <path d="M176 80c-44 26-86 54-126 86" stroke="rgba(6,95,70,0.38)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <path d="M190 70c-16 70-60 112-160 120c22-78 68-120 160-120z" fill="url(#leafD)" opacity="0.48"/>
+      <path d="M176 80c-44 26-86 54-126 86" stroke="rgba(6,95,70,0.30)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.42"/>
     </svg>
+  </div>
+</div>
+
+<!-- Age gate -->
+<div id="ageGate" class="age-gate" hidden>
+  <div class="age-gate__card" role="dialog" aria-modal="true" aria-label="Возрастное ограничение">
+    <div class="age-gate__kicker">21+</div>
+    <div class="age-gate__title">Только для взрослых</div>
+    <div class="age-gate__text">
+      Этот сайт демонстрирует магазин никотин‑содержащей продукции. Подтверди, что тебе 21+.
+    </div>
+    <div class="age-gate__actions">
+      <button id="ageYes" class="btn" type="button">Мне 21+</button>
+      <button id="ageNo" class="btn btn--ghost" type="button">Мне нет 21</button>
+    </div>
+    <div class="age-gate__fineprint">
+      Никотин вызывает зависимость. Демо‑проект без реальных платежей.
+    </div>
   </div>
 </div>
 
 <div class="page">
   <header class="header">
     <div class="container header__inner">
-      <div class="logo">GreenMart</div>
-      <nav class="nav">
-        <a href="#hero">Главная</a>
-        <a href="#catalog">Каталог</a>
-        <a href="#shipping">Доставка</a>
-        <a href="#contact">Контакты</a>
+      <a class="logo" href="index.html">NeonPuff</a>
+      <nav class="nav" aria-label="Навигация">
+        <a class="nav__link nav__link--active" href="index.html">Главная</a>
+        <a class="nav__link" href="shop.html">Каталог</a>
+        <a class="nav__link" href="cart.html">Корзина</a>
       </nav>
-      <button id="cartBtn" class="cart-btn" type="button">
-        Корзина
-        <span id="cartCount" class="cart-btn__count" aria-label="Товаров в корзине">0</span>
-      </button>
+      <a class="cart-pill" href="cart.html" aria-label="Перейти в корзину">
+        <span class="cart-pill__label">Корзина</span>
+        <span id="cartCount" class="cart-pill__count">0</span>
+      </a>
     </div>
   </header>
 
   <main>
-    <section class="hero" id="hero">
+    <section class="hero hero--home">
       <div class="container hero__inner">
         <div class="hero__copy">
-          <h1>Мини‑магазин для быстрых продаж</h1>
-          <p>Каталог, корзина и оформление заказа — без бэкенда, зато с характером.</p>
+          <div class="hero__tag">Многостраничный демо‑магазин</div>
+          <h1>Товары “как в интернет‑магазине”. Дизайн “как в клипе”.</h1>
+          <p>
+            Главная → Каталог → Карточка товара → Корзина. Всё работает на чистом HTML/CSS/JS.
+          </p>
           <div class="hero__actions">
-            <a class="btn" href="#catalog">Смотреть товары</a>
-            <button id="contactBtn" class="btn btn--ghost" type="button">Написать</button>
+            <a class="btn" href="shop.html">Открыть каталог</a>
+            <a class="btn btn--ghost" href="#rules">Ограничения</a>
           </div>
           <div class="hero__badges" aria-hidden="true">
-            <div class="badge">Оплата при получении</div>
-            <div class="badge">Доставка 1–2 дня</div>
-            <div class="badge">Возврат 14 дней</div>
+            <div class="badge">21+</div>
+            <div class="badge">localStorage корзина</div>
+            <div class="badge">Поиск/фильтры</div>
           </div>
         </div>
-        <div class="hero__panel" aria-hidden="true">
-          <div class="hero__panelTitle">Хиты недели</div>
-          <div class="hero__panelRow">
-            <div class="mini-card">
-              <div class="mini-card__name">Монстера</div>
-              <div class="mini-card__price">1 990 ₽</div>
-            </div>
-            <div class="mini-card">
-              <div class="mini-card__name">Горшок “Terra”</div>
-              <div class="mini-card__price">790 ₽</div>
-            </div>
-            <div class="mini-card">
-              <div class="mini-card__name">Удобрение</div>
-              <div class="mini-card__price">390 ₽</div>
-            </div>
+        <div class="hero__panel">
+          <div class="hero__panelTitle">Быстрые категории</div>
+          <div class="quick-grid">
+            <a class="quick" href="shop.html#vapes">
+              <div class="quick__icon">⚡</div>
+              <div class="quick__name">Одноразовые</div>
+              <div class="quick__meta">хиты и новинки</div>
+            </a>
+            <a class="quick" href="shop.html#accessories">
+              <div class="quick__icon">🔌</div>
+              <div class="quick__name">Аксессуары</div>
+              <div class="quick__meta">заряд/чехлы</div>
+            </a>
           </div>
+          <div class="hero__panelHint">Нажми — перейдёшь на страницу каталога.</div>
         </div>
       </div>
     </section>
 
-    <section class="catalog container" id="catalog">
-      <div class="section-head">
-        <h2>Каталог</h2>
-        <div class="tools">
-          <label class="field">
-            <span class="field__label">Поиск</span>
-            <input id="searchInput" class="input" type="search" placeholder="Например: монстера, горшок, удобрение" />
-          </label>
-          <label class="field">
-            <span class="field__label">Сортировка</span>
-            <select id="sortSelect" class="select">
-              <option value="popular">Популярные</option>
-              <option value="price_asc">Цена: по возрастанию</option>
-              <option value="price_desc">Цена: по убыванию</option>
-            </select>
-          </label>
-        </div>
+    <section class="container feature">
+      <div class="feature__head">
+        <h2>Визуал, который продаёт</h2>
+        <p class="muted">
+          Карточки с “витринным” видом, быстрые метки, аккуратные спецификации, и корзина, которая не бесит.
+        </p>
       </div>
-      <div id="productsGrid" class="products" aria-live="polite"></div>
+      <div id="featuredGrid" class="products products--featured" aria-live="polite"></div>
     </section>
 
-    <section class="container shipping" id="shipping">
-      <h2>Доставка и гарантия</h2>
-      <div class="shipping__grid">
+    <section class="container legal" id="rules">
+      <h2>Важно</h2>
+      <div class="legal__grid">
         <div class="info-card">
-          <div class="info-card__title">Доставка</div>
-          <div class="info-card__text">Курьером или в пункт выдачи. Бесплатно от 3 000 ₽.</div>
+          <div class="info-card__title">Возраст</div>
+          <div class="info-card__text">Доступ только для лиц 21+. Age‑gate включён.</div>
         </div>
         <div class="info-card">
-          <div class="info-card__title">Оплата</div>
-          <div class="info-card__text">Карта/наличные при получении. Чек на email/телефон.</div>
+          <div class="info-card__title">Демо</div>
+          <div class="info-card__text">Это учебный проект: без платежей и без доставки.</div>
         </div>
         <div class="info-card">
-          <div class="info-card__title">Возврат</div>
-          <div class="info-card__text">14 дней на возврат товара. Быстро и без драмы.</div>
+          <div class="info-card__title">Никотин</div>
+          <div class="info-card__text">Никотин вызывает зависимость.</div>
         </div>
-      </div>
-    </section>
-
-    <section class="container" id="contact">
-      <h2>Контакты</h2>
-      <p class="muted">Напиши — уточним наличие, подберём размер, ответим за 5–10 минут.</p>
-      <div class="contact-row">
-        <a class="btn" href="mailto:hello@greenmart.local">hello@greenmart.local</a>
-        <a class="btn btn--ghost" href="tel:+10000000000">+1 (000) 000‑0000</a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    © 2026 GreenMart — демо‑магазин
+    <div class="container footer__inner">
+      <div>© 2026 NeonPuff — демо‑проект.</div>
+      <div class="footer__fine">21+ • Никотин вызывает зависимость.</div>
+    </div>
   </footer>
 </div>
 
-<!-- Корзина -->
-<div id="cartOverlay" class="overlay" hidden></div>
-<aside id="cartDrawer" class="drawer" hidden aria-label="Корзина">
-  <div class="drawer__head">
-    <div class="drawer__title">Корзина</div>
-    <button id="cartCloseBtn" class="icon-btn" type="button" aria-label="Закрыть корзину">×</button>
-  </div>
-  <div id="cartItems" class="drawer__body"></div>
-  <div class="drawer__foot">
-    <div class="total">
-      <div class="total__label">Итого</div>
-      <div id="cartTotal" class="total__value">0 ₽</div>
-    </div>
-    <button id="checkoutBtn" class="btn btn--wide" type="button">Оформить заказ</button>
-    <div class="drawer__hint">Это демо: оформление покажет уведомление и очистит корзину.</div>
-  </div>
-</aside>
-
-<!-- Скрипт подключён внизу, чтобы DOM был загружен -->
+<script src="products.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
+

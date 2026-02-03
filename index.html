@@ -71,12 +71,26 @@
     <div class="container header__inner">
       <a class="logo" href="index.html">NeonPuff</a>
       <nav class="nav" aria-label="Навигация">
-        <a class="nav__link nav__link--active" href="index.html">Главная</a>
-        <a class="nav__link" href="shop.html">Каталог</a>
-        <a class="nav__link" href="cart.html">Корзина</a>
+        <a class="nav__link nav__link--active" href="index.html" data-i18n="nav_home">Главная</a>
+        <a class="nav__link" href="shop.html" data-i18n="nav_shop">Каталог</a>
+        <a class="nav__link" href="cart.html" data-i18n="nav_cart">Корзина</a>
       </nav>
+      <div class="switches" aria-label="Язык и валюта">
+        <label class="sr-only" for="langSelect" data-i18n="a11y_lang">Язык</label>
+        <select id="langSelect" class="mini-select" aria-label="Language">
+          <option value="uk">Українська</option>
+          <option value="ru">Русский</option>
+          <option value="en">English</option>
+        </select>
+        <label class="sr-only" for="curSelect" data-i18n="a11y_currency">Валюта</label>
+        <select id="curSelect" class="mini-select" aria-label="Currency">
+          <option value="UAH">UAH</option>
+          <option value="USD">USD</option>
+          <option value="NOK">NOK</option>
+        </select>
+      </div>
       <a class="cart-pill" href="cart.html" aria-label="Перейти в корзину">
-        <span class="cart-pill__label">Корзина</span>
+        <span class="cart-pill__label" data-i18n="nav_cart">Корзина</span>
         <span id="cartCount" class="cart-pill__count">0</span>
       </a>
     </div>
@@ -86,64 +100,60 @@
     <section class="hero hero--home">
       <div class="container hero__inner">
         <div class="hero__copy">
-          <div class="hero__tag">Многостраничный демо‑магазин</div>
-          <h1>Товары “как в интернет‑магазине”. Дизайн “как в клипе”.</h1>
-          <p>
-            Главная → Каталог → Карточка товара → Корзина. Всё работает на чистом HTML/CSS/JS.
-          </p>
+          <div class="hero__tag" data-i18n="hero_tag">Многостраничный демо‑магазин</div>
+          <h1 data-i18n="hero_title">Товары “как в интернет‑магазине”. Дизайн “как в клипе”.</h1>
+          <p data-i18n="hero_desc">Главная → Каталог → Карточка товара → Корзина. Всё работает на чистом HTML/CSS/JS.</p>
           <div class="hero__actions">
-            <a class="btn" href="shop.html">Открыть каталог</a>
-            <a class="btn btn--ghost" href="#rules">Ограничения</a>
+            <a class="btn" href="shop.html" data-i18n="hero_open_catalog">Открыть каталог</a>
+            <a class="btn btn--ghost" href="#rules" data-i18n="hero_rules">Ограничения</a>
           </div>
           <div class="hero__badges" aria-hidden="true">
-            <div class="badge">21+</div>
-            <div class="badge">localStorage корзина</div>
-            <div class="badge">Поиск/фильтры</div>
+            <div class="badge" data-i18n="badge_1">Пыхни с удовольствием</div>
+            <div class="badge" data-i18n="badge_2">Найди то, что по душе</div>
+            <div class="badge" data-i18n="badge_3">Быстрая доставка и честные вкусы</div>
           </div>
         </div>
         <div class="hero__panel">
-          <div class="hero__panelTitle">Быстрые категории</div>
+          <div class="hero__panelTitle" data-i18n="panel_title">Быстрые категории</div>
           <div class="quick-grid">
             <a class="quick" href="shop.html#vapes">
               <div class="quick__icon">⚡</div>
-              <div class="quick__name">Одноразовые</div>
-              <div class="quick__meta">хиты и новинки</div>
+              <div class="quick__name" data-i18n="quick_vapes">Одноразовые</div>
+              <div class="quick__meta" data-i18n="quick_vapes_meta">хиты и новинки</div>
             </a>
             <a class="quick" href="shop.html#accessories">
               <div class="quick__icon">🔌</div>
-              <div class="quick__name">Аксессуары</div>
-              <div class="quick__meta">заряд/чехлы</div>
+              <div class="quick__name" data-i18n="quick_acc">Аксессуары</div>
+              <div class="quick__meta" data-i18n="quick_acc_meta">заряд/чехлы</div>
             </a>
           </div>
-          <div class="hero__panelHint">Нажми — перейдёшь на страницу каталога.</div>
+          <div class="hero__panelHint" data-i18n="panel_hint">Нажми — перейдёшь на страницу каталога.</div>
         </div>
       </div>
     </section>
 
     <section class="container feature">
       <div class="feature__head">
-        <h2>Визуал, который продаёт</h2>
-        <p class="muted">
-          Карточки с “витринным” видом, быстрые метки, аккуратные спецификации, и корзина, которая не бесит.
-        </p>
+        <h2 data-i18n="feature_title">Визуал, который продаёт</h2>
+        <p class="muted" data-i18n="feature_desc">Карточки с “витринным” видом, быстрые метки, аккуратные спецификации, и корзина, которая не бесит.</p>
       </div>
       <div id="featuredGrid" class="products products--featured" aria-live="polite"></div>
     </section>
 
     <section class="container legal" id="rules">
-      <h2>Важно</h2>
+      <h2 data-i18n="legal_title">Важно</h2>
       <div class="legal__grid">
         <div class="info-card">
-          <div class="info-card__title">Возраст</div>
-          <div class="info-card__text">Доступ только для лиц 21+. Age‑gate включён.</div>
+          <div class="info-card__title" data-i18n="legal_age_title">Возраст</div>
+          <div class="info-card__text" data-i18n="legal_age_text">Контент предназначен только для лиц 21+.</div>
         </div>
         <div class="info-card">
-          <div class="info-card__title">Демо</div>
-          <div class="info-card__text">Это учебный проект: без платежей и без доставки.</div>
+          <div class="info-card__title" data-i18n="legal_demo_title">Демо</div>
+          <div class="info-card__text" data-i18n="legal_demo_text">Это учебный проект: без платежей и без доставки.</div>
         </div>
         <div class="info-card">
-          <div class="info-card__title">Никотин</div>
-          <div class="info-card__text">Никотин вызывает зависимость.</div>
+          <div class="info-card__title" data-i18n="legal_nic_title">Никотин</div>
+          <div class="info-card__text" data-i18n="legal_nic_text">Никотин вызывает зависимость.</div>
         </div>
       </div>
     </section>
@@ -152,7 +162,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div>© 2026 NeonPuff — демо‑проект.</div>
-      <div class="footer__fine">21+ • Никотин вызывает зависимость.</div>
+      <div class="footer__fine" data-i18n="footer_fine">21+ • Никотин вызывает зависимость.</div>
     </div>
   </footer>
 </div>

@@ -64,12 +64,26 @@
     <div class="container header__inner">
       <a class="logo" href="index.html">NeonPuff</a>
       <nav class="nav" aria-label="Навигация">
-        <a class="nav__link" href="index.html">Главная</a>
-        <a class="nav__link nav__link--active" href="shop.html">Каталог</a>
-        <a class="nav__link" href="cart.html">Корзина</a>
+        <a class="nav__link" href="index.html" data-i18n="nav_home">Главная</a>
+        <a class="nav__link nav__link--active" href="shop.html" data-i18n="nav_shop">Каталог</a>
+        <a class="nav__link" href="cart.html" data-i18n="nav_cart">Корзина</a>
       </nav>
+      <div class="switches" aria-label="Язык и валюта">
+        <label class="sr-only" for="langSelect" data-i18n="a11y_lang">Язык</label>
+        <select id="langSelect" class="mini-select" aria-label="Language">
+          <option value="uk">Українська</option>
+          <option value="ru">Русский</option>
+          <option value="en">English</option>
+        </select>
+        <label class="sr-only" for="curSelect" data-i18n="a11y_currency">Валюта</label>
+        <select id="curSelect" class="mini-select" aria-label="Currency">
+          <option value="UAH">UAH</option>
+          <option value="USD">USD</option>
+          <option value="NOK">NOK</option>
+        </select>
+      </div>
       <a class="cart-pill" href="cart.html" aria-label="Перейти в корзину">
-        <span class="cart-pill__label">Корзина</span>
+        <span class="cart-pill__label" data-i18n="nav_cart">Корзина</span>
         <span id="cartCount" class="cart-pill__count">0</span>
       </a>
     </div>
@@ -79,25 +93,25 @@
     <section class="container catalog">
       <div class="section-head">
         <div>
-          <h1 class="page-title">Каталог</h1>
-          <div class="muted page-sub">Поиск, фильтры, сортировка. Нажми на товар — откроется страница.</div>
+          <h1 class="page-title" data-i18n="shop_title">Каталог</h1>
+          <div class="muted page-sub" data-i18n="shop_sub">Поиск, фильтры, сортировка. Нажми на товар — откроется страница.</div>
         </div>
         <div class="tools">
           <div class="chips" aria-label="Фильтр категорий">
-            <button class="chip-btn chip-btn--active" type="button" data-cat="all">Все</button>
-            <button class="chip-btn" type="button" data-cat="vapes">Одноразовые</button>
-            <button class="chip-btn" type="button" data-cat="accessories">Аксессуары</button>
+            <button class="chip-btn chip-btn--active" type="button" data-cat="all" data-i18n="cat_all">Все</button>
+            <button class="chip-btn" type="button" data-cat="vapes" data-i18n="cat_vapes">Одноразовые</button>
+            <button class="chip-btn" type="button" data-cat="accessories" data-i18n="cat_accessories">Аксессуары</button>
           </div>
           <label class="field">
-            <span class="field__label">Поиск</span>
-            <input id="searchInput" class="input" type="search" placeholder="Например: mint, 6000, кабель" />
+            <span class="field__label" data-i18n="field_search">Поиск</span>
+            <input id="searchInput" class="input" type="search" data-i18n-placeholder="ph_search" placeholder="Например: mint, 6000, кабель" />
           </label>
           <label class="field">
-            <span class="field__label">Сортировка</span>
+            <span class="field__label" data-i18n="field_sort">Сортировка</span>
             <select id="sortSelect" class="select">
-              <option value="popular">По умолчанию</option>
-              <option value="price_asc">Цена: ↑</option>
-              <option value="price_desc">Цена: ↓</option>
+              <option value="popular" data-i18n="sort_default">По умолчанию</option>
+              <option value="price_asc" data-i18n="sort_price_asc">Цена: ↑</option>
+              <option value="price_desc" data-i18n="sort_price_desc">Цена: ↓</option>
             </select>
           </label>
         </div>
@@ -109,7 +123,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div>© 2026 NeonPuff — демо‑проект.</div>
-      <div class="footer__fine">21+ • Никотин вызывает зависимость.</div>
+      <div class="footer__fine" data-i18n="footer_fine">21+ • Никотин вызывает зависимость.</div>
     </div>
   </footer>
 </div>

@@ -42,26 +42,40 @@
     <div class="container header__inner">
       <a class="logo" href="index.html">NeonPuff</a>
       <nav class="nav" aria-label="Навигация">
-        <a class="nav__link" href="index.html">Главная</a>
-        <a class="nav__link nav__link--active" href="shop.html">Каталог</a>
-        <a class="nav__link" href="cart.html">Корзина</a>
+        <a class="nav__link" href="index.html" data-i18n="nav_home">Главная</a>
+        <a class="nav__link nav__link--active" href="shop.html" data-i18n="nav_shop">Каталог</a>
+        <a class="nav__link" href="cart.html" data-i18n="nav_cart">Корзина</a>
       </nav>
+      <div class="switches" aria-label="Язык и валюта">
+        <label class="sr-only" for="langSelect" data-i18n="a11y_lang">Язык</label>
+        <select id="langSelect" class="mini-select" aria-label="Language">
+          <option value="uk">Українська</option>
+          <option value="ru">Русский</option>
+          <option value="en">English</option>
+        </select>
+        <label class="sr-only" for="curSelect" data-i18n="a11y_currency">Валюта</label>
+        <select id="curSelect" class="mini-select" aria-label="Currency">
+          <option value="UAH">UAH</option>
+          <option value="USD">USD</option>
+          <option value="NOK">NOK</option>
+        </select>
+      </div>
       <a class="cart-pill" href="cart.html" aria-label="Перейти в корзину">
-        <span class="cart-pill__label">Корзина</span>
+        <span class="cart-pill__label" data-i18n="nav_cart">Корзина</span>
         <span id="cartCount" class="cart-pill__count">0</span>
       </a>
     </div>
   </header>
 
   <main class="container">
-    <a class="back" href="shop.html">← Назад в каталог</a>
+    <a class="back" href="shop.html" data-i18n="back_to_shop">← Назад в каталог</a>
     <div id="productRoot" class="product" aria-live="polite"></div>
   </main>
 
   <footer class="footer">
     <div class="container footer__inner">
       <div>© 2026 NeonPuff — демо‑проект.</div>
-      <div class="footer__fine">21+ • Никотин вызывает зависимость.</div>
+      <div class="footer__fine" data-i18n="footer_fine">21+ • Никотин вызывает зависимость.</div>
     </div>
   </footer>
 </div>

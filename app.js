@@ -7,21 +7,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Preferences (lang + currency) ---
   const PREF_LANG = "neonpuff_lang_v1";
   const PREF_CUR = "neonpuff_cur_v1";
+  const PREF_THEME = "neonpuff_theme_v1";
 
   const supportedLangs = new Set(["ru", "uk", "en"]);
   const supportedCurrencies = new Set(["UAH", "USD", "NOK"]);
+  const supportedThemes = new Set(["light", "dark"]);
 
   const prefs = {
     lang: "ru",
     currency: "UAH", // main currency is UAH
+    theme: "light",
   };
 
   const loadPrefs = () => {
     try {
       const l = localStorage.getItem(PREF_LANG);
       const c = localStorage.getItem(PREF_CUR);
+      const t = localStorage.getItem(PREF_THEME);
       if (l && supportedLangs.has(l)) prefs.lang = l;
       if (c && supportedCurrencies.has(c)) prefs.currency = c;
+      if (t && supportedThemes.has(t)) prefs.theme = t;
     } catch {
       // ignore
     }
@@ -31,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       localStorage.setItem(PREF_LANG, prefs.lang);
       localStorage.setItem(PREF_CUR, prefs.currency);
+      localStorage.setItem(PREF_THEME, prefs.theme);
     } catch {
       // ignore
     }
@@ -69,10 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
     ru: {
       a11y_lang: "Язык",
       a11y_currency: "Валюта",
+      a11y_theme: "Тема",
+      theme_light: "Светлая",
+      theme_dark: "Темная",
       nav_home: "Главная",
       nav_shop: "Каталог",
       nav_cart: "Корзина",
-      nav_more: "Ещё",
+      nav_more: "?",
 
       hero_tag: "Многостраничный демо‑магазин",
       hero_title: "Товары “как в интернет‑магазине”. Дизайн “как в клипе”.",
@@ -145,10 +154,13 @@ document.addEventListener("DOMContentLoaded", () => {
     uk: {
       a11y_lang: "Мова",
       a11y_currency: "Валюта",
+      a11y_theme: "Тема",
+      theme_light: "Світла",
+      theme_dark: "Темна",
       nav_home: "Головна",
       nav_shop: "Каталог",
       nav_cart: "Кошик",
-      nav_more: "Ще",
+      nav_more: "?",
 
       hero_tag: "Багатосторінковий демо‑магазин",
       hero_title: "Товари “як в інтернет‑магазині”. Дизайн “як у кліпі”.",
@@ -221,10 +233,13 @@ document.addEventListener("DOMContentLoaded", () => {
     en: {
       a11y_lang: "Language",
       a11y_currency: "Currency",
+      a11y_theme: "Theme",
+      theme_light: "Light",
+      theme_dark: "Dark",
       nav_home: "Home",
       nav_shop: "Shop",
       nav_cart: "Cart",
-      nav_more: "More",
+      nav_more: "?",
 
       hero_tag: "Multi‑page demo store",
       hero_title: "E‑commerce flow. Music‑video energy.",
@@ -315,6 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Switchers ---
   const langSelect = $("#langSelect");
   const curSelect = $("#curSelect");
+  const themeSelect = $("#themeSelect");
 
   if (langSelect) {
     langSelect.value = prefs.lang;
@@ -341,6 +357,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const applyTheme = () => {
+    document.documentElement.dataset.theme = prefs.theme;
+  };
+
+  if (themeSelect) {
+    themeSelect.value = prefs.theme;
+    themeSelect.addEventListener("change", () => {
+      const v = themeSelect.value;
+      if (supportedThemes.has(v)) {
+        prefs.theme = v;
+        savePrefs();
+        applyTheme();
+      }
+    });
+  }
+
+  applyTheme();
   applyStaticI18n();
 
   // --- Cart (localStorage) ---

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NeonPuff — Корзина</title>
-  <meta name="description" content="Корзина и оформление (демо). 21+." />
+  <title>NeonPuff — Ещё</title>
+  <meta name="description" content="Дополнительные ссылки и материалы." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -13,26 +13,26 @@
 <body>
 
 <div class="scene" aria-hidden="true">
-  <div class="plant plant--tr">
+  <div class="plant plant--tl">
     <svg viewBox="0 0 220 220" width="220" height="220">
       <defs>
-        <linearGradient id="leafB4" x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#34d399" stop-opacity="0.95"/>
-          <stop offset="1" stop-color="#16a34a" stop-opacity="0.9"/>
-        </linearGradient>
-      </defs>
-      <path d="M40 180c10-80 60-130 140-140c-8 86-55 135-140 140z" fill="url(#leafB4)" opacity="0.50"/>
-    </svg>
-  </div>
-  <div class="plant plant--bl">
-    <svg viewBox="0 0 220 220" width="220" height="220">
-      <defs>
-        <linearGradient id="leafC4" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stop-color="#16a34a" stop-opacity="0.9"/>
+        <linearGradient id="leafA5" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#22c55e" stop-opacity="0.9"/>
           <stop offset="1" stop-color="#10b981" stop-opacity="0.9"/>
         </linearGradient>
       </defs>
-      <path d="M30 120c28-64 78-96 160-90c-18 78-64 128-160 90z" fill="url(#leafC4)" opacity="0.46"/>
+      <path d="M110 18c42 10 72 48 74 92c2 46-28 86-74 96c-46-10-76-50-74-96c2-44 32-82 74-92z" fill="url(#leafA5)" opacity="0.52"/>
+    </svg>
+  </div>
+  <div class="plant plant--br">
+    <svg viewBox="0 0 220 220" width="220" height="220">
+      <defs>
+        <linearGradient id="leafD5" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4ade80" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#22c55e" stop-opacity="0.85"/>
+        </linearGradient>
+      </defs>
+      <path d="M190 70c-16 70-60 112-160 120c22-78 68-120 160-120z" fill="url(#leafD5)" opacity="0.40"/>
     </svg>
   </div>
 </div>
@@ -44,8 +44,8 @@
       <nav class="nav" aria-label="Навигация">
         <a class="nav__link" href="index.html" data-i18n="nav_home">Главная</a>
         <a class="nav__link" href="shop.html" data-i18n="nav_shop">Каталог</a>
-        <a class="nav__link nav__link--active" href="cart.html" data-i18n="nav_cart">Корзина</a>
-        <a class="nav__link" href="more.html" data-i18n="nav_more">Ещё</a>
+        <a class="nav__link" href="cart.html" data-i18n="nav_cart">Корзина</a>
+        <a class="nav__link nav__link--active" href="more.html" data-i18n="nav_more">Ещё</a>
       </nav>
       <div class="switches" aria-label="Язык и валюта">
         <label class="sr-only" for="langSelect" data-i18n="a11y_lang">Язык</label>
@@ -69,29 +69,22 @@
   </header>
 
   <main class="container">
-    <h1 class="page-title" data-i18n="cart_title">Корзина</h1>
-    <div class="cart-page">
-      <section class="cart-page__items">
-        <div id="cartPageItems" aria-live="polite"></div>
-      </section>
-      <aside class="cart-page__summary">
-        <div class="summary">
-          <div class="summary__row">
-            <div class="summary__label" data-i18n="summary_items">Товары</div>
-            <div id="cartPageQty" class="summary__value">0</div>
-          </div>
-          <div class="summary__row">
-            <div class="summary__label" data-i18n="summary_total">Итого</div>
-            <div id="cartPageTotal" class="summary__value summary__value--strong">0</div>
-          </div>
-          <button id="checkoutBtn" class="btn btn--wide" type="button" data-i18n="checkout_btn">Оформить (демо)</button>
-          <div class="summary__fine" data-i18n="checkout_fine">Демо‑проект: кнопка покажет уведомление и очистит корзину.</div>
-        </div>
-        <div class="notice">
-          <div class="notice__title" data-i18n="notice_title">21+</div>
-          <div class="notice__text" data-i18n="notice_text">Никотин вызывает зависимость. Этот сайт — учебная демонстрация.</div>
-        </div>
-      </aside>
+    <h1 class="page-title" data-i18n="more_title">Ещё</h1>
+    <div class="muted page-sub" data-i18n="more_sub">Ссылки, релизы и всё, что не помещается в каталог.</div>
+
+    <div class="more-grid">
+      <article class="link-card">
+        <div class="link-card__kicker" data-i18n="more_card_title">Hyperfollow</div>
+        <div class="link-card__text" data-i18n="more_card_desc">Открыть релиз в одном клике (внешняя ссылка).</div>
+        <a
+          class="btn link-card__btn"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://distrokid.com/hyperfollow/psychosantana/btch?utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+          data-i18n="more_card_btn"
+        >Открыть</a>
+        <div class="link-card__url" aria-hidden="true">distrokid.com/hyperfollow/…</div>
+      </article>
     </div>
   </main>
 
@@ -107,3 +100,4 @@
 <script src="app.js"></script>
 </body>
 </html>
+

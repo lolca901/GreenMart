@@ -548,9 +548,32 @@ section { scroll-margin-top: 92px; }
 }
 
 .price {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
   font-weight: 900;
   letter-spacing: -0.02em;
   color: rgba(6, 95, 70, 0.95);
+}
+
+.price__now {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.price__old {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: rgba(7, 18, 13, 0.54);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(7, 18, 13, 0.38);
+}
+
+.price--big .price__now {
+  font-size: 1.4rem;
 }
 
 .card-actions {
@@ -816,6 +839,66 @@ section { scroll-margin-top: 92px; }
 }
 
 .footer__fine { font-family: var(--mono); }
+
+/* More page */
+.more-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.link-card {
+  border-radius: 24px;
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  background:
+    radial-gradient(420px 220px at 15% 0%, rgba(163, 255, 74, 0.18), transparent 60%),
+    radial-gradient(420px 260px at 92% 20%, rgba(34, 197, 94, 0.20), transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.56));
+  box-shadow: var(--shadow);
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.link-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(560px 280px at 50% 120%, rgba(7, 18, 13, 0.07), transparent 62%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.link-card__kicker {
+  font-family: var(--mono);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(7, 18, 13, 0.68);
+  z-index: 1;
+}
+
+.link-card__text {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-size: 1.15rem;
+  z-index: 1;
+}
+
+.link-card__btn {
+  justify-self: start;
+  z-index: 1;
+}
+
+.link-card__url {
+  font-family: var(--mono);
+  color: rgba(7, 18, 13, 0.55);
+  font-size: 0.9rem;
+  z-index: 1;
+}
 
 /* Toast */
 .toast {

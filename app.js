@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_home: "Главная",
       nav_shop: "Каталог",
       nav_cart: "Корзина",
+      nav_more: "Ещё",
 
       hero_tag: "Многостраничный демо‑магазин",
       hero_title: "Товары “как в интернет‑магазине”. Дизайн “как в клипе”.",
@@ -101,6 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
       legal_nic_text: "Никотин вызывает зависимость.",
 
       footer_fine: "21+ • Никотин вызывает зависимость.",
+
+      more_title: "Ещё",
+      more_sub: "Ссылки, релизы и всё, что не помещается в каталог.",
+      more_card_title: "Hyperfollow",
+      more_card_desc: "Открыть релиз в одном клике (внешняя ссылка).",
+      more_card_btn: "Открыть",
 
       shop_title: "Каталог",
       shop_sub: "Поиск, фильтры, сортировка. Нажми на товар — откроется страница.",
@@ -141,6 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_home: "Головна",
       nav_shop: "Каталог",
       nav_cart: "Кошик",
+      nav_more: "Ще",
 
       hero_tag: "Багатосторінковий демо‑магазин",
       hero_title: "Товари “як в інтернет‑магазині”. Дизайн “як у кліпі”.",
@@ -170,6 +178,12 @@ document.addEventListener("DOMContentLoaded", () => {
       legal_nic_text: "Нікотин викликає залежність.",
 
       footer_fine: "21+ • Нікотин викликає залежність.",
+
+      more_title: "Ще",
+      more_sub: "Посилання, релізи та все, що не вміщається в каталог.",
+      more_card_title: "Hyperfollow",
+      more_card_desc: "Відкрити реліз в один клік (зовнішнє посилання).",
+      more_card_btn: "Відкрити",
 
       shop_title: "Каталог",
       shop_sub: "Пошук, фільтри, сортування. Натисни на товар — відкриється сторінка.",
@@ -210,6 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_home: "Home",
       nav_shop: "Shop",
       nav_cart: "Cart",
+      nav_more: "More",
 
       hero_tag: "Multi‑page demo store",
       hero_title: "E‑commerce flow. Music‑video energy.",
@@ -239,6 +254,12 @@ document.addEventListener("DOMContentLoaded", () => {
       legal_nic_text: "Nicotine is addictive.",
 
       footer_fine: "21+ • Nicotine is addictive.",
+
+      more_title: "More",
+      more_sub: "Links, releases, and everything that doesn’t fit the catalog.",
+      more_card_title: "Hyperfollow",
+      more_card_desc: "Open the release in one click (external link).",
+      more_card_btn: "Open",
 
       shop_title: "Catalog",
       shop_sub: "Search, filters, sorting. Click a product to open its page.",
@@ -406,6 +427,10 @@ document.addEventListener("DOMContentLoaded", () => {
           .join("")}</div>`
       : "";
 
+    const unitNow = Number(p.price_uah) || 0;
+    const unitOld = Number(p.old_price_uah) || 0;
+    const hasSale = unitOld > unitNow;
+
     return `
       <article class="product-card" data-id="${escapeHtml(p.id)}">
         <a class="product-media" href="product.html?id=${encodeURIComponent(p.id)}" data-accent="${escapeHtml(p.accent || "mono")}">
@@ -418,7 +443,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="product-desc">${escapeHtml(pText(p, "desc") || "")}</div>
         ${specHtml}
         <div class="product-bottom">
-          <div class="price">${formatMoney(p.price_uah)}</div>
+          <div class="price">
+            <div class="price__now">${formatMoney(unitNow)}</div>
+            ${hasSale ? `<div class="price__old">${formatMoney(unitOld)}</div>` : ""}
+          </div>
           <div class="card-actions">
             <a class="small-btn" href="product.html?id=${encodeURIComponent(p.id)}">${escapeHtml(t("details_btn"))}</a>
             <button class="small-btn" type="button" data-action="add">${escapeHtml(t("buy_btn"))}</button>
@@ -578,6 +606,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const specs = specPills(p).map((s) => `<div class="spec">${escapeHtml(s)}</div>`).join("");
+    const unitNow = Number(p.price_uah) || 0;
+    const unitOld = Number(p.old_price_uah) || 0;
+    const hasSale = unitOld > unitNow;
 
     productRoot.innerHTML = `
       <div class="product__grid">
@@ -594,7 +625,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="spec-row" style="margin-top: 12px">${specs}</div>
           <div class="product__buy">
             <div class="product__priceRow">
-              <div class="price" style="font-size: 1.4rem">${formatMoney(p.price_uah)}</div>
+              <div class="price price--big">
+                <div class="price__now">${formatMoney(unitNow)}</div>
+                ${hasSale ? `<div class="price__old">${formatMoney(unitOld)}</div>` : ""}
+              </div>
               <button id="buyBtn" class="btn" type="button">${escapeHtml(t("buy_btn"))}</button>
             </div>
             <div class="product__fine">${escapeHtml(t("footer_fine"))}</div>

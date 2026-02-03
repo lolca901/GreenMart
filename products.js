@@ -6,7 +6,7 @@ window.STORE_PRODUCTS = [
     category: "vapes",
     accent: "mint",
     emoji: "🧊",
-    price_uah: 1890,
+    price_uah: 500,
     puffs: 6000,
     nicotine: "2% (20mg/ml)",
     i18n: {
@@ -35,7 +35,7 @@ window.STORE_PRODUCTS = [
     category: "vapes",
     accent: "tropical",
     emoji: "🥭",
-    price_uah: 1790,
+    price_uah: 500,
     puffs: 5000,
     nicotine: "2% (20mg/ml)",
     i18n: {
@@ -64,7 +64,7 @@ window.STORE_PRODUCTS = [
     category: "vapes",
     accent: "berry",
     emoji: "🫐",
-    price_uah: 1690,
+    price_uah: 500,
     puffs: 4500,
     nicotine: "2% (20mg/ml)",
     i18n: {
@@ -93,7 +93,7 @@ window.STORE_PRODUCTS = [
     category: "vapes",
     accent: "cola",
     emoji: "🥤",
-    price_uah: 1590,
+    price_uah: 500,
     puffs: 4000,
     nicotine: "2% (20mg/ml)",
     i18n: {
@@ -176,4 +176,3 @@ window.STORE_PRODUCTS = [
     },
   },
 ];
-

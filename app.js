@@ -16,65 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.setTimeout(() => el.remove(), 3100);
   };
 
-  // --- Age gate (21+) ---
-  const ageGate = $("#ageGate");
-  const ageYes = $("#ageYes");
-  const ageNo = $("#ageNo");
-
-  const AGE_KEY = "neonpuff_age_ok_v1";
-  const isAgeOk = () => {
-    try {
-      return localStorage.getItem(AGE_KEY) === "1";
-    } catch {
-      return false;
-    }
-  };
-
-  const setAgeOk = () => {
-    try {
-      localStorage.setItem(AGE_KEY, "1");
-    } catch {
-      // ignore
-    }
-  };
-
-  const showAgeGate = () => {
-    if (!ageGate) return;
-    ageGate.hidden = false;
-    const firstBtn = ageYes || ageNo;
-    if (firstBtn) firstBtn.focus();
-    document.body.style.overflow = "hidden";
-  };
-
-  const hideAgeGate = () => {
-    if (!ageGate) return;
-    ageGate.hidden = true;
-    document.body.style.overflow = "";
-  };
-
-  if (ageGate) {
-    if (!isAgeOk()) showAgeGate();
-    if (ageYes) {
-      ageYes.addEventListener("click", () => {
-        setAgeOk();
-        hideAgeGate();
-        toast("Добро пожаловать. 21+ подтверждено.");
-      });
-    }
-    if (ageNo) {
-      ageNo.addEventListener("click", () => {
-        // We don't redirect anywhere; we simply block access.
-        toast("Доступ запрещён.");
-        ageGate.innerHTML =
-          '<div class="age-gate__card" role="dialog" aria-modal="true" aria-label="Доступ запрещён">' +
-          '<div class="age-gate__kicker">21+</div>' +
-          '<div class="age-gate__title">Доступ запрещён</div>' +
-          '<div class="age-gate__text">Этот контент предназначен только для лиц 21+. Закрой страницу.</div>' +
-          "</div>";
-      });
-    }
-  }
-
   // --- Cart (localStorage) ---
   const CART_KEY = "neonpuff_cart_v1";
   const loadCart = () => {

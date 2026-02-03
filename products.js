@@ -1,5 +1,4 @@
 // Product data for the demo store (no backend).
-// NOTE: This is a nicotine-related product category. Keep 21+ age-gate enabled.
 window.STORE_PRODUCTS = [
   {
     id: "np-ice-mint-6000",
@@ -85,4 +84,3 @@ window.STORE_PRODUCTS = [
       "Компактный чехол для переноски. Меньше царапин — больше спокойствия.",
   },
 ];
-

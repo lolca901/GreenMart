@@ -218,64 +218,6 @@ section { scroll-margin-top: 92px; }
 .btn--ghost:hover { filter: none; }
 .btn--wide { width: 100%; }
 
-/* Age Gate */
-.age-gate {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: grid;
-  place-items: center;
-  background: rgba(7, 18, 13, 0.20);
-  backdrop-filter: blur(12px);
-  padding: 20px;
-}
-
-.age-gate__card {
-  width: min(540px, calc(100vw - 40px));
-  border-radius: 22px;
-  border: 1px solid rgba(34, 197, 94, 0.22);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.68));
-  box-shadow: 0 32px 90px rgba(6, 78, 59, 0.22);
-  padding: 18px 18px 16px;
-}
-
-.age-gate__kicker {
-  display: inline-flex;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: rgba(16, 185, 129, 0.10);
-  border: 1px solid rgba(16, 185, 129, 0.18);
-  font-weight: 900;
-  color: rgba(6, 95, 70, 0.92);
-}
-
-.age-gate__title {
-  margin-top: 10px;
-  font-size: 1.6rem;
-  letter-spacing: -0.03em;
-  font-weight: 900;
-}
-
-.age-gate__text {
-  margin-top: 8px;
-  color: rgba(7, 18, 13, 0.76);
-  line-height: 1.45;
-}
-
-.age-gate__actions {
-  margin-top: 14px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.age-gate__fineprint {
-  margin-top: 12px;
-  color: rgba(7, 18, 13, 0.58);
-  font-size: 0.9rem;
-  line-height: 1.35;
-}
-
 /* Hero */
 .hero {
   padding: 60px 0 28px;

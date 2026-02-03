@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_home: "Главная",
       nav_shop: "Каталог",
       nav_cart: "Корзина",
-      nav_more: "?",
 
       hero_tag: "Многостраничный демо‑магазин",
       hero_title: "Товары “как в интернет‑магазине”. Дизайн “как в клипе”.",
@@ -112,11 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       footer_fine: "21+ • Никотин вызывает зависимость.",
 
-      more_title: "Ещё",
-      more_sub: "Ссылки, релизы и всё, что не помещается в каталог.",
-      more_card_title: "Hyperfollow",
-      more_card_desc: "Открыть релиз в одном клике (внешняя ссылка).",
-      more_card_btn: "Открыть",
 
       shop_title: "Каталог",
       shop_sub: "Поиск, фильтры, сортировка. Нажми на товар — откроется страница.",
@@ -160,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_home: "Головна",
       nav_shop: "Каталог",
       nav_cart: "Кошик",
-      nav_more: "?",
 
       hero_tag: "Багатосторінковий демо‑магазин",
       hero_title: "Товари “як в інтернет‑магазині”. Дизайн “як у кліпі”.",
@@ -191,11 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       footer_fine: "21+ • Нікотин викликає залежність.",
 
-      more_title: "Ще",
-      more_sub: "Посилання, релізи та все, що не вміщається в каталог.",
-      more_card_title: "Hyperfollow",
-      more_card_desc: "Відкрити реліз в один клік (зовнішнє посилання).",
-      more_card_btn: "Відкрити",
 
       shop_title: "Каталог",
       shop_sub: "Пошук, фільтри, сортування. Натисни на товар — відкриється сторінка.",
@@ -239,7 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_home: "Home",
       nav_shop: "Shop",
       nav_cart: "Cart",
-      nav_more: "?",
 
       hero_tag: "Multi‑page demo store",
       hero_title: "E‑commerce flow. Music‑video energy.",
@@ -270,11 +257,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       footer_fine: "21+ • Nicotine is addictive.",
 
-      more_title: "More",
-      more_sub: "Links, releases, and everything that doesn’t fit the catalog.",
-      more_card_title: "Hyperfollow",
-      more_card_desc: "Open the release in one click (external link).",
-      more_card_btn: "Open",
 
       shop_title: "Catalog",
       shop_sub: "Search, filters, sorting. Click a product to open its page.",

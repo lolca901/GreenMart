@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GreenMart — Мини‑магазин</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Декор: растения -->
+<div class="scene" aria-hidden="true">
+  <div class="plant plant--tl">
+    <svg viewBox="0 0 220 220" width="220" height="220">
+      <defs>
+        <linearGradient id="leafA" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#22c55e" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#10b981" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <path d="M110 18c42 10 72 48 74 92c2 46-28 86-74 96c-46-10-76-50-74-96c2-44 32-82 74-92z" fill="url(#leafA)" opacity="0.75"/>
+      <path d="M110 30c0 70 0 120 0 170" stroke="rgba(6,95,70,0.55)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <path d="M110 65c-22 10-40 28-52 55" stroke="rgba(6,95,70,0.42)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <path d="M110 65c22 10 40 28 52 55" stroke="rgba(6,95,70,0.42)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.55"/>
+    </svg>
+  </div>
+  <div class="plant plant--tr">
+    <svg viewBox="0 0 220 220" width="220" height="220">
+      <defs>
+        <linearGradient id="leafB" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#34d399" stop-opacity="0.95"/>
+          <stop offset="1" stop-color="#16a34a" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <path d="M40 180c10-80 60-130 140-140c-8 86-55 135-140 140z" fill="url(#leafB)" opacity="0.70"/>
+      <path d="M58 168c38-38 76-76 112-112" stroke="rgba(6,95,70,0.45)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.55"/>
+    </svg>
+  </div>
+  <div class="plant plant--bl">
+    <svg viewBox="0 0 220 220" width="220" height="220">
+      <defs>
+        <linearGradient id="leafC" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#16a34a" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#10b981" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <path d="M30 120c28-64 78-96 160-90c-18 78-64 128-160 90z" fill="url(#leafC)" opacity="0.68"/>
+      <path d="M54 112c40-18 78-34 120-54" stroke="rgba(6,95,70,0.42)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.55"/>
+    </svg>
+  </div>
+  <div class="plant plant--br">
+    <svg viewBox="0 0 220 220" width="220" height="220">
+      <defs>
+        <linearGradient id="leafD" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4ade80" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#22c55e" stop-opacity="0.85"/>
+        </linearGradient>
+      </defs>
+      <path d="M190 70c-16 70-60 112-160 120c22-78 68-120 160-120z" fill="url(#leafD)" opacity="0.60"/>
+      <path d="M176 80c-44 26-86 54-126 86" stroke="rgba(6,95,70,0.38)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.55"/>
+    </svg>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header">
+    <div class="container header__inner">
+      <div class="logo">GreenMart</div>
+      <nav class="nav">
+        <a href="#hero">Главная</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#shipping">Доставка</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <button id="cartBtn" class="cart-btn" type="button">
+        Корзина
+        <span id="cartCount" class="cart-btn__count" aria-label="Товаров в корзине">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1>Мини‑магазин для быстрых продаж</h1>
+          <p>Каталог, корзина и оформление заказа — без бэкенда, зато с характером.</p>
+          <div class="hero__actions">
+            <a class="btn" href="#catalog">Смотреть товары</a>
+            <button id="contactBtn" class="btn btn--ghost" type="button">Написать</button>
+          </div>
+          <div class="hero__badges" aria-hidden="true">
+            <div class="badge">Оплата при получении</div>
+            <div class="badge">Доставка 1–2 дня</div>
+            <div class="badge">Возврат 14 дней</div>
+          </div>
+        </div>
+        <div class="hero__panel" aria-hidden="true">
+          <div class="hero__panelTitle">Хиты недели</div>
+          <div class="hero__panelRow">
+            <div class="mini-card">
+              <div class="mini-card__name">Монстера</div>
+              <div class="mini-card__price">1 990 ₽</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card__name">Горшок “Terra”</div>
+              <div class="mini-card__price">790 ₽</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card__name">Удобрение</div>
+              <div class="mini-card__price">390 ₽</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog container" id="catalog">
+      <div class="section-head">
+        <h2>Каталог</h2>
+        <div class="tools">
+          <label class="field">
+            <span class="field__label">Поиск</span>
+            <input id="searchInput" class="input" type="search" placeholder="Например: монстера, горшок, удобрение" />
+          </label>
+          <label class="field">
+            <span class="field__label">Сортировка</span>
+            <select id="sortSelect" class="select">
+              <option value="popular">Популярные</option>
+              <option value="price_asc">Цена: по возрастанию</option>
+              <option value="price_desc">Цена: по убыванию</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div id="productsGrid" class="products" aria-live="polite"></div>
+    </section>
+
+    <section class="container shipping" id="shipping">
+      <h2>Доставка и гарантия</h2>
+      <div class="shipping__grid">
+        <div class="info-card">
+          <div class="info-card__title">Доставка</div>
+          <div class="info-card__text">Курьером или в пункт выдачи. Бесплатно от 3 000 ₽.</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card__title">Оплата</div>
+          <div class="info-card__text">Карта/наличные при получении. Чек на email/телефон.</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card__title">Возврат</div>
+          <div class="info-card__text">14 дней на возврат товара. Быстро и без драмы.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <h2>Контакты</h2>
+      <p class="muted">Напиши — уточним наличие, подберём размер, ответим за 5–10 минут.</p>
+      <div class="contact-row">
+        <a class="btn" href="mailto:hello@greenmart.local">hello@greenmart.local</a>
+        <a class="btn btn--ghost" href="tel:+10000000000">+1 (000) 000‑0000</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2026 GreenMart — демо‑магазин
+  </footer>
+</div>
+
+<!-- Корзина -->
+<div id="cartOverlay" class="overlay" hidden></div>
+<aside id="cartDrawer" class="drawer" hidden aria-label="Корзина">
+  <div class="drawer__head">
+    <div class="drawer__title">Корзина</div>
+    <button id="cartCloseBtn" class="icon-btn" type="button" aria-label="Закрыть корзину">×</button>
+  </div>
+  <div id="cartItems" class="drawer__body"></div>
+  <div class="drawer__foot">
+    <div class="total">
+      <div class="total__label">Итого</div>
+      <div id="cartTotal" class="total__value">0 ₽</div>
+    </div>
+    <button id="checkoutBtn" class="btn btn--wide" type="button">Оформить заказ</button>
+    <div class="drawer__hint">Это демо: оформление покажет уведомление и очистит корзину.</div>
+  </div>
+</aside>
+
+<!-- Скрипт подключён внизу, чтобы DOM был загружен -->
+<script src="app.js"></script>
+</body>
+</html>

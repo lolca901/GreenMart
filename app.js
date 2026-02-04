@@ -104,12 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "Карточки с “витринным” видом, быстрые метки, аккуратные спецификации, и корзина, которая не бесит.",
 
       legal_title: "Важно",
-      legal_age_title: "Возраст",
-      legal_age_text: "Контент предназначен только для лиц 21+.",
-      legal_demo_title: "Демо",
-      legal_demo_text: "Это учебный проект: без платежей и без доставки.",
-      legal_nic_title: "Никотин",
-      legal_nic_text: "Никотин вызывает зависимость.",
+      legal_age_title: "21+ Возраст",
+      legal_age_text: "Только для взрослых. Если тебе нет 21 — закрой страницу.",
+      legal_demo_title: "Демо‑проект",
+      legal_demo_text: "Витрина для портфолио: без оплаты, без доставки и без реальных заказов.",
+      legal_nic_title: "Предупреждение",
+      legal_nic_text: "Никотин вызывает зависимость. Употребление может вредить здоровью.",
 
       footer_fine: "21+ • Никотин вызывает зависимость.",
 
@@ -177,12 +177,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "Вітринні картки, швидкі мітки, акуратні характеристики та кошик без нервів.",
 
       legal_title: "Важливо",
-      legal_age_title: "Вік",
-      legal_age_text: "Контент призначений лише для осіб 21+.",
-      legal_demo_title: "Демо",
-      legal_demo_text: "Це навчальний проєкт: без платежів і без доставки.",
-      legal_nic_title: "Нікотин",
-      legal_nic_text: "Нікотин викликає залежність.",
+      legal_age_title: "21+ Вік",
+      legal_age_text: "Лише для дорослих. Якщо тобі немає 21 — закрий сторінку.",
+      legal_demo_title: "Демо‑проєкт",
+      legal_demo_text: "Вітрина для портфоліо: без оплати, без доставки й без реальних замовлень.",
+      legal_nic_title: "Попередження",
+      legal_nic_text: "Нікотин викликає залежність. Вживання може шкодити здоров’ю.",
 
       footer_fine: "21+ • Нікотин викликає залежність.",
 
@@ -250,12 +250,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "Showcase‑style cards, quick badges, clean specs, and a cart that feels smooth.",
 
       legal_title: "Important",
-      legal_age_title: "Age",
-      legal_age_text: "Content is intended for 21+ only.",
-      legal_demo_title: "Demo",
-      legal_demo_text: "Educational project: no payments and no delivery.",
-      legal_nic_title: "Nicotine",
-      legal_nic_text: "Nicotine is addictive.",
+      legal_age_title: "21+ Age",
+      legal_age_text: "Adults only. If you’re under 21, please leave this page.",
+      legal_demo_title: "Demo project",
+      legal_demo_text: "Portfolio storefront: no payments, no delivery, no real orders.",
+      legal_nic_title: "Warning",
+      legal_nic_text: "Nicotine is addictive. Use may harm your health.",
 
       footer_fine: "21+ • Nicotine is addictive.",
 
@@ -461,12 +461,12 @@ document.addEventListener("DOMContentLoaded", () => {
         ${specHtml}
         <div class="product-bottom">
           <div class="price">
-            <div class="price__now">${formatMoney(unitNow)}</div>
             ${hasSale ? `<div class="price__old">${formatMoney(unitOld)}</div>` : ""}
+            <div class="price__now">${formatMoney(unitNow)}</div>
           </div>
           <div class="card-actions">
-            <a class="small-btn" href="product.html?id=${encodeURIComponent(p.id)}">${escapeHtml(t("details_btn"))}</a>
-            <button class="small-btn" type="button" data-action="add">${escapeHtml(t("buy_btn"))}</button>
+            <a class="small-btn small-btn--subtle" href="product.html?id=${encodeURIComponent(p.id)}">${escapeHtml(t("details_btn"))}</a>
+            <button class="small-btn small-btn--primary" type="button" data-action="add">${escapeHtml(t("buy_btn"))}</button>
           </div>
         </div>
       </article>
@@ -643,8 +643,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="product__buy">
             <div class="product__priceRow">
               <div class="price price--big">
-                <div class="price__now">${formatMoney(unitNow)}</div>
                 ${hasSale ? `<div class="price__old">${formatMoney(unitOld)}</div>` : ""}
+                <div class="price__now">${formatMoney(unitNow)}</div>
               </div>
               <button id="buyBtn" class="btn" type="button">${escapeHtml(t("buy_btn"))}</button>
             </div>

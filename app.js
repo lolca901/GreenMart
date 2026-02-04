@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const prefs = {
     lang: "ru",
     currency: "UAH", // main currency is UAH
-    theme: "dark",
+    theme: "light",
   };
 
   const loadPrefs = () => {
@@ -102,8 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_cart: "Корзина",
 
       hero_tag: "NeonPuff",
-      hero_title: "Молодёжный неон. Вкусы, которые цепляют.",
-      hero_desc: "Выбирай вкус, добавляй в корзину и смотри детали — быстро, чисто и без лишних экранов.",
+      hero_title: "NeonPuff.Вкусы, которые цепляют.",
+      hero_desc: "Выбирай вкус и добавляй в корзину.",
       hero_open_catalog: "Открыть каталог",
       hero_rules: "Смотреть вкусы",
       badge_1: "Неон + дым = вайб",
@@ -182,8 +182,8 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_cart: "Кошик",
 
       hero_tag: "NeonPuff",
-      hero_title: "Молодіжний неон. Смаки, що чіпляють.",
-      hero_desc: "Обирай смак, додавай у кошик і дивись деталі — швидко, чисто й без зайвих екранів.",
+      hero_title: "NeonPuff.Смаки, що чіпляють.",
+      hero_desc: "Обирай смак і додавай у кошик.",
       hero_open_catalog: "Відкрити каталог",
       hero_rules: "Дивитись смаки",
       badge_1: "Неон + дим = вайб",
@@ -262,8 +262,8 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_cart: "Cart",
 
       hero_tag: "NeonPuff",
-      hero_title: "Youth neon. Flavors that hit the vibe.",
-      hero_desc: "Pick a flavor, add to cart, open details — fast, clean, no extra steps.",
+      hero_title: "NeonPuff.Flavor that hits.",
+      hero_desc: "Pick a flavor and add it to your cart.",
       hero_open_catalog: "Open catalog",
       hero_rules: "Browse flavors",
       badge_1: "Neon + smoke = vibe",

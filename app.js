@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hero_open_catalog: "Открыть каталог",
       hero_rules: "Смотреть вкусы",
       badge_1: "Неон + дым = вайб",
-      badge_2: "Скидка уже в цене",
+      badge_2: "Цена = тяги",
       badge_3: "Фильтры, поиск, корзина",
       panel_title: "Быстрые категории",
       panel_hint: "Нажми — перейдёшь на страницу каталога.",
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hero_open_catalog: "Відкрити каталог",
       hero_rules: "Дивитись смаки",
       badge_1: "Неон + дим = вайб",
-      badge_2: "Знижка вже в ціні",
+      badge_2: "Ціна = затяжки",
       badge_3: "Фільтри, пошук, кошик",
       panel_title: "Швидкі категорії",
       panel_hint: "Натисни — перейдеш на сторінку каталогу.",
@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hero_open_catalog: "Open catalog",
       hero_rules: "Browse flavors",
       badge_1: "Neon + smoke = vibe",
-      badge_2: "Discount in price",
+      badge_2: "Price = puffs",
       badge_3: "Filters, search, cart",
       panel_title: "Quick categories",
       panel_hint: "Tap to jump to the catalog page.",
@@ -525,13 +525,12 @@ document.addEventListener("DOMContentLoaded", () => {
       : "";
 
     const unitNow = Number(p.price_uah) || 0;
-    const unitOld = Number(p.old_price_uah) || 0;
-    const hasSale = unitOld > unitNow;
+    const imgSrc = p?.image || svgDataUri(p?.accent);
 
     return `
       <article class="product-card" data-id="${escapeHtml(p.id)}">
         <a class="product-media" href="product.html?id=${encodeURIComponent(p.id)}" data-accent="${escapeHtml(p.accent || "mono")}">
-          <img class="product-img" alt="" src="${svgDataUri(p.accent)}" loading="lazy" />
+          <img class="product-img" alt="" src="${escapeHtml(imgSrc)}" loading="lazy" />
           <div class="product-emoji" aria-hidden="true">${escapeHtml(p.emoji || "⚡")}</div>
         </a>
         <div class="product-top">
@@ -542,7 +541,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ${specHtml}
         <div class="product-bottom">
           <div class="price">
-            ${hasSale ? `<div class="price__old">${formatMoney(unitOld)}</div>` : ""}
             <div class="price__now">${formatMoney(unitNow)}</div>
           </div>
           <div class="card-actions">
@@ -788,13 +786,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const specs = specPills(p).map((s) => `<div class="spec">${escapeHtml(s)}</div>`).join("");
     const unitNow = Number(p.price_uah) || 0;
-    const unitOld = Number(p.old_price_uah) || 0;
-    const hasSale = unitOld > unitNow;
+    const imgSrc = p?.image || svgDataUri(p?.accent);
 
     productRoot.innerHTML = `
       <div class="product__grid">
         <div class="product__media" data-accent="${escapeHtml(p.accent || "mono")}">
-          <img class="product-img" alt="" src="${svgDataUri(p.accent)}" loading="lazy" />
+          <img class="product-img" alt="" src="${escapeHtml(imgSrc)}" loading="lazy" />
           <div class="product-emoji" aria-hidden="true">${escapeHtml(p.emoji || "⚡")}</div>
         </div>
         <div>
@@ -808,7 +805,6 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="product__buy">
             <div class="product__priceRow">
               <div class="price price--big">
-                ${hasSale ? `<div class="price__old">${formatMoney(unitOld)}</div>` : ""}
                 <div class="price__now">${formatMoney(unitNow)}</div>
               </div>
               <button id="buyBtn" class="btn" type="button">${escapeHtml(t("buy_btn"))}</button>

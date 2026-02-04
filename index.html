@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light dark" />
   <title>NeonPuff — Демо‑магазин</title>
   <meta name="description" content="Демо‑многостраничный магазин: каталог, карточка товара, корзина. 21+." />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=neon2" />
 </head>
 <body>
 
@@ -76,24 +76,23 @@
         <a class="nav__link" href="shop.html" data-i18n="nav_shop">Каталог</a>
         <a class="nav__link" href="cart.html" data-i18n="nav_cart">Корзина</a>
       </nav>
-      <div class="switches" aria-label="Язык и валюта">
-        <label class="sr-only" for="langSelect" data-i18n="a11y_lang">Язык</label>
-        <select id="langSelect" class="mini-select" aria-label="Language">
-          <option value="uk">Українська</option>
-          <option value="ru">Русский</option>
-          <option value="en">English</option>
-        </select>
+      <div class="switches" aria-label="Язык, валюта и тема">
+        <div class="seg" role="group" aria-label="Language">
+          <button class="seg__btn" type="button" data-set-lang="uk">UA</button>
+          <button class="seg__btn" type="button" data-set-lang="ru">RU</button>
+          <button class="seg__btn" type="button" data-set-lang="en">EN</button>
+        </div>
         <label class="sr-only" for="curSelect" data-i18n="a11y_currency">Валюта</label>
         <select id="curSelect" class="mini-select" aria-label="Currency">
           <option value="UAH">UAH</option>
           <option value="USD">USD</option>
           <option value="NOK">NOK</option>
         </select>
-        <label class="sr-only" for="themeSelect" data-i18n="a11y_theme">Тема</label>
-        <select id="themeSelect" class="mini-select" aria-label="Theme">
-          <option value="light" data-i18n="theme_light">Светлая</option>
-          <option value="dark" data-i18n="theme_dark">Темная</option>
-        </select>
+        <div class="seg" role="group" aria-label="Theme">
+          <button class="seg__btn" type="button" data-set-theme="light" data-i18n="theme_light">Светлая</button>
+          <button class="seg__btn" type="button" data-set-theme="dark" data-i18n="theme_dark">Темная</button>
+        </div>
+        <button id="egg21" class="egg21" type="button" aria-label="21+">21+</button>
       </div>
       <a class="cart-pill" href="cart.html" aria-label="Перейти в корзину">
         <span class="cart-pill__label" data-i18n="nav_cart">Корзина</span>
@@ -106,17 +105,17 @@
     <section class="hero hero--home">
       <div class="container hero__inner">
         <div class="hero__copy">
-          <div class="hero__tag" data-i18n="hero_tag">Демо‑магазин</div>
-          <h1 data-i18n="hero_title">Чистый дизайн. Быстрый выбор. Понятная корзина.</h1>
-          <p data-i18n="hero_desc">Главная → Каталог → Товар → Корзина. Всё на чистом HTML/CSS/JS — без фреймворков.</p>
+          <div class="hero__tag" data-i18n="hero_tag">NeonPuff</div>
+          <h1 data-i18n="hero_title">Молодёжный неон. Вкусы, которые цепляют.</h1>
+          <p data-i18n="hero_desc">Выбирай вкус, добавляй в корзину и смотри детали — быстро, чисто и без лишних экранов.</p>
           <div class="hero__actions">
             <a class="btn" href="shop.html" data-i18n="hero_open_catalog">Открыть каталог</a>
-            <a class="btn btn--ghost" href="#rules" data-i18n="hero_rules">Важно</a>
+            <a class="btn btn--ghost" href="shop.html#vapes" data-i18n="hero_rules">Смотреть вкусы</a>
           </div>
           <div class="hero__badges" aria-hidden="true">
-            <div class="badge" data-i18n="badge_1">Выбор без лишнего шума</div>
-            <div class="badge" data-i18n="badge_2">Найди свой вкус</div>
-            <div class="badge" data-i18n="badge_3">Быстро. Аккуратно. Дискретно.</div>
+            <div class="badge" data-i18n="badge_1">Неон + дым = вайб</div>
+            <div class="badge" data-i18n="badge_2">Скидка уже в цене</div>
+            <div class="badge" data-i18n="badge_3">Фильтры, поиск, корзина</div>
           </div>
         </div>
         <div class="hero__panel">
@@ -140,28 +139,10 @@
 
     <section class="container feature">
       <div class="feature__head">
-        <h2 data-i18n="feature_title">Визуал, который продаёт</h2>
-        <p class="muted" data-i18n="feature_desc">Карточки с “витринным” видом, быстрые метки, аккуратные спецификации, и корзина, которая не бесит.</p>
+        <h2 data-i18n="feature_title">Вкусы на витрине</h2>
+        <p class="muted" data-i18n="feature_desc">Выбирай по настроению: холодок, ягоды, кола, тропики — и секретный вкус для тех, кто знает.</p>
       </div>
       <div id="featuredGrid" class="products products--featured" aria-live="polite"></div>
-    </section>
-
-    <section class="container legal" id="rules">
-      <h2 data-i18n="legal_title">Важно</h2>
-      <div class="legal__grid">
-        <div class="info-card">
-          <div class="info-card__title" data-i18n="legal_age_title">21+ Возраст</div>
-          <div class="info-card__text" data-i18n="legal_age_text">Только для взрослых. Если тебе нет 21 — закрой страницу.</div>
-        </div>
-        <div class="info-card">
-          <div class="info-card__title" data-i18n="legal_demo_title">Демо‑проект</div>
-          <div class="info-card__text" data-i18n="legal_demo_text">Витрина для портфолио: без оплаты, без доставки и без реальных заказов.</div>
-        </div>
-        <div class="info-card">
-          <div class="info-card__title" data-i18n="legal_nic_title">Предупреждение</div>
-          <div class="info-card__text" data-i18n="legal_nic_text">Никотин вызывает зависимость. Употребление может вредить здоровью.</div>
-        </div>
-      </div>
     </section>
   </main>
 

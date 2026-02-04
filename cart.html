@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light dark" />
   <title>NeonPuff — Корзина</title>
   <meta name="description" content="Корзина и оформление (демо). 21+." />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=neon2" />
 </head>
 <body>
 
@@ -47,24 +47,23 @@
         <a class="nav__link" href="shop.html" data-i18n="nav_shop">Каталог</a>
         <a class="nav__link nav__link--active" href="cart.html" data-i18n="nav_cart">Корзина</a>
       </nav>
-      <div class="switches" aria-label="Язык и валюта">
-        <label class="sr-only" for="langSelect" data-i18n="a11y_lang">Язык</label>
-        <select id="langSelect" class="mini-select" aria-label="Language">
-          <option value="uk">Українська</option>
-          <option value="ru">Русский</option>
-          <option value="en">English</option>
-        </select>
+      <div class="switches" aria-label="Язык, валюта и тема">
+        <div class="seg" role="group" aria-label="Language">
+          <button class="seg__btn" type="button" data-set-lang="uk">UA</button>
+          <button class="seg__btn" type="button" data-set-lang="ru">RU</button>
+          <button class="seg__btn" type="button" data-set-lang="en">EN</button>
+        </div>
         <label class="sr-only" for="curSelect" data-i18n="a11y_currency">Валюта</label>
         <select id="curSelect" class="mini-select" aria-label="Currency">
           <option value="UAH">UAH</option>
           <option value="USD">USD</option>
           <option value="NOK">NOK</option>
         </select>
-        <label class="sr-only" for="themeSelect" data-i18n="a11y_theme">Тема</label>
-        <select id="themeSelect" class="mini-select" aria-label="Theme">
-          <option value="light" data-i18n="theme_light">Светлая</option>
-          <option value="dark" data-i18n="theme_dark">Темная</option>
-        </select>
+        <div class="seg" role="group" aria-label="Theme">
+          <button class="seg__btn" type="button" data-set-theme="light" data-i18n="theme_light">Светлая</button>
+          <button class="seg__btn" type="button" data-set-theme="dark" data-i18n="theme_dark">Темная</button>
+        </div>
+        <button id="egg21" class="egg21" type="button" aria-label="21+">21+</button>
       </div>
       <a class="cart-pill" href="cart.html" aria-label="Перейти в корзину">
         <span class="cart-pill__label" data-i18n="nav_cart">Корзина</span>

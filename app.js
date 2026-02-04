@@ -504,6 +504,20 @@ document.addEventListener("DOMContentLoaded", () => {
     return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
   };
 
+  const bindProductImgs = (root = document) => {
+    // If a hosted build is missing assets/, show a built-in SVG fallback.
+    $$(".product-img", root).forEach((img) => {
+      if (img.dataset.bound) return;
+      img.dataset.bound = "1";
+      img.addEventListener("error", () => {
+        const holder = img.closest("[data-accent]");
+        const accent = holder?.getAttribute("data-accent") || "secret";
+        const fallback = svgDataUri(accent);
+        if (img.src !== fallback) img.src = fallback;
+      });
+    });
+  };
+
   const puffsText = (n) => `≈${n} ${t("spec_puffs")}`;
 
   const specPills = (p) => {
@@ -654,6 +668,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!featuredGrid) return;
     const featured = visibleProducts().filter((p) => p.category === "vapes").slice(0, 6);
     featuredGrid.innerHTML = featured.map(productCardHTML).join("");
+    bindProductImgs(featuredGrid);
   };
 
   if (featuredGrid && !featuredGrid.dataset.bound) {
@@ -718,6 +733,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     productsGrid.innerHTML = list.map(productCardHTML).join("");
+    bindProductImgs(productsGrid);
   };
 
   const setCategory = (cat) => {
@@ -822,6 +838,8 @@ document.addEventListener("DOMContentLoaded", () => {
         toast(t("toast_added"));
       });
     }
+
+    bindProductImgs(productRoot);
   };
 
   // --- Cart page ---

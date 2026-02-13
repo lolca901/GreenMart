@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const paint = () => {
         raf = 0;
-        if (document.documentElement.dataset.style === "enterprise") {
+        if (document.documentElement.dataset.style !== "premium") {
           el.style.transform = "";
           return;
         }
@@ -313,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const paint = () => {
         raf = 0;
-        if (document.documentElement.dataset.style === "enterprise") {
+        if (document.documentElement.dataset.style !== "premium") {
           card.style.transform = "";
           return;
         }

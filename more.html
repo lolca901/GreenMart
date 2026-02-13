@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BITCH — ?</title>
+  <meta name="description" content="Дополнительные ссылки и материалы." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="scene" aria-hidden="true">
+  <div class="plant plant--tl">
+    <svg viewBox="0 0 220 220" width="220" height="220">
+      <defs>
+        <linearGradient id="leafA5" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#22c55e" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#10b981" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <path d="M110 18c42 10 72 48 74 92c2 46-28 86-74 96c-46-10-76-50-74-96c2-44 32-82 74-92z" fill="url(#leafA5)" opacity="0.52"/>
+    </svg>
+  </div>
+  <div class="plant plant--br">
+    <svg viewBox="0 0 220 220" width="220" height="220">
+      <defs>
+        <linearGradient id="leafD5" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4ade80" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#22c55e" stop-opacity="0.85"/>
+        </linearGradient>
+      </defs>
+      <path d="M190 70c-16 70-60 112-160 120c22-78 68-120 160-120z" fill="url(#leafD5)" opacity="0.40"/>
+    </svg>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="index.html">BITCH</a>
+      <nav class="nav" aria-label="Навигация">
+        <a class="nav__link" href="index.html" data-i18n="nav_home">Главная</a>
+        <a class="nav__link" href="shop.html" data-i18n="nav_shop">Каталог</a>
+        <a class="nav__link" href="cart.html" data-i18n="nav_cart">Корзина</a>
+        <a class="nav__link nav__link--icon nav__link--active" href="more.html" data-i18n="nav_more">?</a>
+      </nav>
+      <div class="switches" aria-label="Язык и валюта">
+        <label class="sr-only" for="langSelect" data-i18n="a11y_lang">Язык</label>
+        <select id="langSelect" class="mini-select" aria-label="Language">
+          <option value="uk">Українська</option>
+          <option value="ru">Русский</option>
+          <option value="en">English</option>
+        </select>
+        <label class="sr-only" for="curSelect" data-i18n="a11y_currency">Валюта</label>
+        <select id="curSelect" class="mini-select" aria-label="Currency">
+          <option value="UAH">UAH</option>
+          <option value="USD">USD</option>
+          <option value="NOK">NOK</option>
+        </select>
+        <label class="sr-only" for="themeSelect" data-i18n="a11y_theme">Тема</label>
+        <select id="themeSelect" class="mini-select" aria-label="Theme">
+          <option value="light" data-i18n="theme_light">Светлая</option>
+          <option value="dark" data-i18n="theme_dark">Темная</option>
+        </select>
+      </div>
+      <a class="cart-pill" href="cart.html" aria-label="Перейти в корзину">
+        <span class="cart-pill__label" data-i18n="nav_cart">Корзина</span>
+        <span id="cartCount" class="cart-pill__count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title" data-i18n="more_title">Ещё</h1>
+    <div class="muted page-sub" data-i18n="more_sub">Ссылки, релизы и всё, что не помещается в каталог.</div>
+
+    <div class="more-grid">
+      <article class="link-card">
+        <div class="link-card__kicker" data-i18n="more_card_title">Hyperfollow</div>
+        <div class="link-card__text" data-i18n="more_card_desc">Открыть релиз в одном клике (внешняя ссылка).</div>
+        <a
+          class="btn link-card__btn"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://distrokid.com/hyperfollow/psychosantana/btch?utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+          data-i18n="more_card_btn"
+        >Открыть</a>
+        <div class="link-card__url" aria-hidden="true">distrokid.com/hyperfollow/…</div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© 2026 BITCH — демо‑проект.</div>
+      <div class="footer__fine" data-i18n="footer_fine">21+ • Никотин вызывает зависимость.</div>
+    </div>
+  </footer>
+</div>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const bindInternalRoutes = () => {
     const base = resolveBasePath();
     const routes = {
-      home: "index.html",
+      home: "?home=1",
       projects: "shop.html",
       case: "product.html?id=neonpuff-redesign",
       contacts: "cart.html",

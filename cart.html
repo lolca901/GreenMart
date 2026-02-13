@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ru" data-theme="light">
+<html lang="ru" data-theme="light" data-style="serious">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>GFolio — Контакты</title>
   <meta name="description" content="Контакты для обсуждения проекта: сайт, редизайн, интернет-магазин или лендинг." />
-  <link rel="stylesheet" href="styles.css?v=portfolio5" />
+  <link rel="stylesheet" href="styles.css?v=portfolio7" />
 </head>
 <body>
   <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
@@ -27,7 +27,10 @@
           <a class="nav-link is-active" href="cart.html" data-route="contacts">Контакты</a>
         </nav>
 
-        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
+        <div class="header-controls">
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
+          <button id="styleToggle" class="style-toggle" type="button" aria-label="Переключить стиль">Стиль: Serious</button>
+        </div>
       </div>
     </header>
 
@@ -35,8 +38,8 @@
       <div class="container contact-grid">
         <section class="contact-info reveal">
           <p class="eyebrow">LET'S WORK</p>
-          <h1>Есть задача — есть решение.</h1>
-          <p>Пиши, если нужен новый сайт, редизайн текущего проекта или усиление UX. Отвечаю по делу: сроки, бюджет, этапы.</p>
+          <h1>Обсудим проект без лишней бюрократии.</h1>
+          <p>Если нужен новый сайт, точечный редизайн или усиление UX — отправь короткий бриф. В ответе сразу даю рамку по срокам и этапам.</p>
           <div class="contact-cards">
             <a class="contact-card" href="mailto:hello@gfolio.dev">
               <span>Почта</span>
@@ -54,7 +57,7 @@
         </section>
 
         <section class="contact-form reveal">
-          <h2>Короткий бриф</h2>
+          <h2>Стартовый бриф</h2>
           <form id="contactForm" novalidate>
             <label>
               <span>Имя</span>
@@ -68,8 +71,8 @@
               <span>Задача</span>
               <textarea name="task" rows="5" required placeholder="Что нужно сделать, какие сроки и ожидания"></textarea>
             </label>
-            <button class="btn btn--primary" type="submit">Отправить заявку</button>
-            <p class="muted">Форма демо: после отправки покажется уведомление.</p>
+            <button class="btn btn--primary" type="submit">Отправить запрос</button>
+            <p class="muted">Демо-форма: после отправки отобразится подтверждение.</p>
           </form>
         </section>
       </div>
@@ -78,12 +81,12 @@
     <footer class="footer">
       <div class="container footer__inner">
         <p>© <span id="yearNow">2026</span> GFolio</p>
-        <p>Frontend / UI / Product mindset</p>
+        <p>Frontend • Product Design • Delivery</p>
       </div>
     </footer>
   </div>
 
-  <script src="products.js?v=portfolio5"></script>
-  <script src="app.js?v=portfolio5"></script>
+  <script src="products.js?v=portfolio7"></script>
+  <script src="app.js?v=portfolio7"></script>
 </body>
 </html>

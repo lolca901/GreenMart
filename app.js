@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const PROJECTS = Array.isArray(window.PORTFOLIO_PROJECTS) ? window.PORTFOLIO_PROJECTS : [];
   const PREF_THEME = "gfolio_theme_v1";
+  const PREF_STYLE = "gfolio_style_v1";
   const LOADER_MIN_MS = 650;
   const LOADER_FAILSAFE_MS = 4200;
   const LOADER_HIDE_MS = 320;
@@ -41,8 +42,33 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btn) btn.textContent = theme === "dark" ? "Светлая тема" : "Тёмная тема";
   };
 
+  const loadStyle = () => {
+    try {
+      const value = localStorage.getItem(PREF_STYLE);
+      return value === "glass" ? "glass" : "serious";
+    } catch {
+      return "serious";
+    }
+  };
+
+  const saveStyle = (style) => {
+    try {
+      localStorage.setItem(PREF_STYLE, style);
+    } catch {
+      // ignore
+    }
+  };
+
+  const applyStyle = (style) => {
+    document.documentElement.dataset.style = style;
+    const btn = $("#styleToggle");
+    if (btn) btn.textContent = style === "glass" ? "Стиль: Glass" : "Стиль: Serious";
+  };
+
   const themeNow = loadTheme();
   applyTheme(themeNow);
+  const styleNow = loadStyle();
+  applyStyle(styleNow);
 
   const themeToggle = $("#themeToggle");
   if (themeToggle) {
@@ -50,6 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
       applyTheme(next);
       saveTheme(next);
+    });
+  }
+
+  const styleToggle = $("#styleToggle");
+  if (styleToggle) {
+    styleToggle.addEventListener("click", () => {
+      const next = document.documentElement.dataset.style === "glass" ? "serious" : "glass";
+      applyStyle(next);
+      saveStyle(next);
     });
   }
 
@@ -175,19 +210,21 @@ document.addEventListener("DOMContentLoaded", () => {
     let ty = window.innerHeight * 0.5;
     let x = tx;
     let y = ty;
+    let mx = 50;
+    let my = 40;
+    let varsTick = false;
 
     const frame = () => {
-      x += (tx - x) * 0.16;
-      y += (ty - y) * 0.16;
+      x += (tx - x) * 0.14;
+      y += (ty - y) * 0.14;
       glow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       window.requestAnimationFrame(frame);
     };
 
-    const setVars = (clientX, clientY) => {
-      const px = (clientX / Math.max(1, window.innerWidth)) * 100;
-      const py = (clientY / Math.max(1, window.innerHeight)) * 100;
-      rootStyle.setProperty("--mx", `${px.toFixed(2)}%`);
-      rootStyle.setProperty("--my", `${py.toFixed(2)}%`);
+    const pushVars = () => {
+      varsTick = false;
+      rootStyle.setProperty("--mx", `${mx.toFixed(2)}%`);
+      rootStyle.setProperty("--my", `${my.toFixed(2)}%`);
     };
 
     window.addEventListener(
@@ -195,7 +232,12 @@ document.addEventListener("DOMContentLoaded", () => {
       (event) => {
         tx = event.clientX;
         ty = event.clientY;
-        setVars(tx, ty);
+        mx = (tx / Math.max(1, window.innerWidth)) * 100;
+        my = (ty / Math.max(1, window.innerHeight)) * 100;
+        if (!varsTick) {
+          varsTick = true;
+          window.requestAnimationFrame(pushVars);
+        }
         glow.classList.add("is-visible");
       },
       { passive: true },
@@ -210,43 +252,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const bindMagnetic = (root = document) => {
     if (prefersReducedMotion || !supportsFinePointer) return;
-    const targets = $$(".btn, .theme-toggle, .filter-btn, .nav-link", root);
+    const targets = $$(".btn, .theme-toggle, .style-toggle, .filter-btn, .nav-link", root);
     targets.forEach((el) => {
       if (el.dataset.magnetic === "1") return;
       el.dataset.magnetic = "1";
+      let tx = 0;
+      let ty = 0;
+      let raf = 0;
+      el.classList.add("is-magnetic");
+
+      const paint = () => {
+        raf = 0;
+        el.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0)`;
+      };
 
       el.addEventListener("pointermove", (event) => {
         const rect = el.getBoundingClientRect();
         const x = event.clientX - rect.left - rect.width * 0.5;
         const y = event.clientY - rect.top - rect.height * 0.5;
-        const tx = x * 0.1;
-        const ty = y * 0.12;
-        el.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0)`;
+        tx = x * 0.06;
+        ty = y * 0.08;
+        if (!raf) raf = window.requestAnimationFrame(paint);
       });
 
       el.addEventListener("pointerleave", () => {
-        el.style.transform = "";
+        tx = 0;
+        ty = 0;
+        if (!raf) raf = window.requestAnimationFrame(paint);
       });
     });
   };
 
   const bindTiltCards = (root = document) => {
     if (prefersReducedMotion || !supportsFinePointer) return;
-    const cards = $$(".project-card, .hero-card, .stat, .timeline-item, .case-card, .contact-card", root);
+    const cards = $$(".hero-card, .stat, .timeline-item, .case-card, .contact-card", root);
 
     cards.forEach((card) => {
       if (card.dataset.tiltBound === "1") return;
       card.dataset.tiltBound = "1";
+      card.classList.add("is-tilt");
+      let rx = 0;
+      let ry = 0;
+      let tz = 0;
+      let raf = 0;
+
+      const paint = () => {
+        raf = 0;
+        card.style.transform =
+          `perspective(980px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(${tz.toFixed(2)}px)`;
+      };
 
       card.addEventListener("pointermove", (event) => {
         const rect = card.getBoundingClientRect();
-        const rx = ((event.clientY - rect.top) / rect.height - 0.5) * -9;
-        const ry = ((event.clientX - rect.left) / rect.width - 0.5) * 11;
-        card.style.transform = `perspective(950px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-3px)`;
+        rx = ((event.clientY - rect.top) / rect.height - 0.5) * -5;
+        ry = ((event.clientX - rect.left) / rect.width - 0.5) * 6;
+        tz = -2;
+        if (!raf) raf = window.requestAnimationFrame(paint);
       });
 
       card.addEventListener("pointerleave", () => {
-        card.style.transform = "";
+        rx = 0;
+        ry = 0;
+        tz = 0;
+        if (!raf) raf = window.requestAnimationFrame(paint);
       });
     });
   };

@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ru" data-theme="light">
+<html lang="ru" data-theme="light" data-style="serious">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>GFolio — Проекты</title>
   <meta name="description" content="Подборка проектов: сайты, редизайны, интерфейсы и motion." />
-  <link rel="stylesheet" href="styles.css?v=portfolio5" />
+  <link rel="stylesheet" href="styles.css?v=portfolio7" />
 </head>
 <body>
   <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
@@ -27,7 +27,10 @@
           <a class="nav-link" href="cart.html" data-route="contacts">Контакты</a>
         </nav>
 
-        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
+        <div class="header-controls">
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
+          <button id="styleToggle" class="style-toggle" type="button" aria-label="Переключить стиль">Стиль: Serious</button>
+        </div>
       </div>
     </header>
 
@@ -35,7 +38,7 @@
       <div class="container">
         <div class="section-head reveal">
           <h1>Проекты</h1>
-          <p class="muted">Выбери категорию и открой подробный кейс.</p>
+          <p class="muted">Собрал проекты по направлениям: можно быстро отфильтровать и открыть детальный разбор.</p>
         </div>
 
         <div class="toolbar reveal">
@@ -58,12 +61,12 @@
     <footer class="footer">
       <div class="container footer__inner">
         <p>© <span id="yearNow">2026</span> GFolio</p>
-        <p>Frontend / UI / Product mindset</p>
+        <p>Frontend • Product Design • Delivery</p>
       </div>
     </footer>
   </div>
 
-  <script src="products.js?v=portfolio5"></script>
-  <script src="app.js?v=portfolio5"></script>
+  <script src="products.js?v=portfolio7"></script>
+  <script src="app.js?v=portfolio7"></script>
 </body>
 </html>

@@ -61,6 +61,7 @@ body::before {
   background:
     radial-gradient(520px 300px at var(--mx) var(--my), rgba(73, 167, 255, 0.16), transparent 72%),
     radial-gradient(400px 260px at calc(var(--mx) + 7%) calc(var(--my) + 4%), rgba(80, 227, 194, 0.11), transparent 74%);
+  transition: background-position 120ms linear;
 }
 
 a {
@@ -149,10 +150,8 @@ body.is-ready .site {
   top: 0;
   z-index: 15;
   border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--surface-strong) 78%, transparent);
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
-  box-shadow: 0 10px 30px rgba(7, 12, 22, 0.1);
+  background: color-mix(in srgb, var(--surface-strong) 82%, transparent);
+  backdrop-filter: blur(16px);
 }
 
 .header__inner {
@@ -221,95 +220,6 @@ body.is-ready .site {
   padding: 0 16px;
   cursor: pointer;
   box-shadow: var(--shadow-soft);
-}
-
-.hero-card,
-.stat,
-.project-card,
-.timeline-item,
-.case-card,
-.stack,
-.contact-info,
-.contact-form,
-.contact-card,
-.empty-state,
-.site-loader__box {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(
-    165deg,
-    color-mix(in srgb, var(--surface-strong) 86%, transparent),
-    color-mix(in srgb, var(--surface) 90%, transparent)
-  );
-  border-color: color-mix(in srgb, var(--border) 68%, rgba(255, 255, 255, 0.26));
-  backdrop-filter: blur(14px) saturate(150%);
-  -webkit-backdrop-filter: blur(14px) saturate(150%);
-  box-shadow:
-    var(--shadow-soft),
-    inset 0 1px 0 rgba(255, 255, 255, 0.46),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.12);
-}
-
-html[data-theme="dark"] .hero-card,
-html[data-theme="dark"] .stat,
-html[data-theme="dark"] .project-card,
-html[data-theme="dark"] .timeline-item,
-html[data-theme="dark"] .case-card,
-html[data-theme="dark"] .stack,
-html[data-theme="dark"] .contact-info,
-html[data-theme="dark"] .contact-form,
-html[data-theme="dark"] .contact-card,
-html[data-theme="dark"] .empty-state,
-html[data-theme="dark"] .site-loader__box {
-  box-shadow:
-    var(--shadow-soft),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.hero-card::before,
-.stat::before,
-.project-card::before,
-.timeline-item::before,
-.case-card::before,
-.stack::before,
-.contact-info::before,
-.contact-form::before,
-.contact-card::before,
-.empty-state::before,
-.site-loader__box::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(140% 70% at -12% -35%, rgba(255, 255, 255, 0.34), transparent 52%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 48%);
-  opacity: 0.72;
-}
-
-.hero-card > *,
-.stat > *,
-.project-card > *,
-.timeline-item > *,
-.case-card > *,
-.stack > *,
-.contact-info > *,
-.contact-form > *,
-.contact-card > *,
-.empty-state > *,
-.site-loader__box > * {
-  position: relative;
-  z-index: 1;
-}
-
-.is-magnetic {
-  transition: transform 220ms cubic-bezier(0.22, 0.68, 0.24, 1), filter 180ms ease;
-}
-
-.is-tilt {
-  transform-style: preserve-3d;
-  transition: transform 260ms cubic-bezier(0.2, 0.72, 0.2, 1);
 }
 
 .btn,
@@ -554,7 +464,6 @@ html[data-theme="dark"] .site-loader__box {
   box-shadow: var(--shadow-soft);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   position: relative;
-  isolation: isolate;
 }
 
 .project-card:hover {
@@ -570,15 +479,14 @@ html[data-theme="dark"] .site-loader__box {
   width: 55%;
   height: 200%;
   background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.24), transparent);
-  transform: translate3d(-140%, 0, 0) rotate(14deg);
+  transform: rotate(14deg);
   pointer-events: none;
   opacity: 0;
-  transition: transform 780ms cubic-bezier(0.2, 0.72, 0.2, 1), opacity 220ms ease;
 }
 
 .project-card:hover::after {
-  opacity: 0.94;
-  transform: translate3d(260%, 0, 0) rotate(14deg);
+  opacity: 1;
+  animation: cardSheen 850ms ease;
 }
 
 .project-link {
@@ -1019,6 +927,15 @@ html[data-theme="dark"] .site-loader__box {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cardSheen {
+  from {
+    transform: translate3d(0, 0, 0) rotate(14deg);
+  }
+  to {
+    transform: translate3d(280%, 0, 0) rotate(14deg);
   }
 }
 

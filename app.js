@@ -175,21 +175,19 @@ document.addEventListener("DOMContentLoaded", () => {
     let ty = window.innerHeight * 0.5;
     let x = tx;
     let y = ty;
-    let varsTick = false;
-    let mx = 50;
-    let my = 40;
 
     const frame = () => {
-      x += (tx - x) * 0.14;
-      y += (ty - y) * 0.14;
+      x += (tx - x) * 0.16;
+      y += (ty - y) * 0.16;
       glow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       window.requestAnimationFrame(frame);
     };
 
-    const pushVars = () => {
-      varsTick = false;
-      rootStyle.setProperty("--mx", `${mx.toFixed(2)}%`);
-      rootStyle.setProperty("--my", `${my.toFixed(2)}%`);
+    const setVars = (clientX, clientY) => {
+      const px = (clientX / Math.max(1, window.innerWidth)) * 100;
+      const py = (clientY / Math.max(1, window.innerHeight)) * 100;
+      rootStyle.setProperty("--mx", `${px.toFixed(2)}%`);
+      rootStyle.setProperty("--my", `${py.toFixed(2)}%`);
     };
 
     window.addEventListener(
@@ -197,12 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
       (event) => {
         tx = event.clientX;
         ty = event.clientY;
-        mx = (tx / Math.max(1, window.innerWidth)) * 100;
-        my = (ty / Math.max(1, window.innerHeight)) * 100;
-        if (!varsTick) {
-          varsTick = true;
-          window.requestAnimationFrame(pushVars);
-        }
+        setVars(tx, ty);
         glow.classList.add("is-visible");
       },
       { passive: true },
@@ -221,65 +214,39 @@ document.addEventListener("DOMContentLoaded", () => {
     targets.forEach((el) => {
       if (el.dataset.magnetic === "1") return;
       el.dataset.magnetic = "1";
-      el.classList.add("is-magnetic");
-      let tx = 0;
-      let ty = 0;
-      let raf = 0;
-
-      const paint = () => {
-        raf = 0;
-        el.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0)`;
-      };
 
       el.addEventListener("pointermove", (event) => {
         const rect = el.getBoundingClientRect();
         const x = event.clientX - rect.left - rect.width * 0.5;
         const y = event.clientY - rect.top - rect.height * 0.5;
-        tx = x * 0.07;
-        ty = y * 0.09;
-        if (!raf) raf = window.requestAnimationFrame(paint);
+        const tx = x * 0.1;
+        const ty = y * 0.12;
+        el.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0)`;
       });
 
       el.addEventListener("pointerleave", () => {
-        tx = 0;
-        ty = 0;
-        if (!raf) raf = window.requestAnimationFrame(paint);
+        el.style.transform = "";
       });
     });
   };
 
   const bindTiltCards = (root = document) => {
     if (prefersReducedMotion || !supportsFinePointer) return;
-    const cards = $$(".hero-card, .stat, .timeline-item, .case-card, .contact-card", root);
+    const cards = $$(".project-card, .hero-card, .stat, .timeline-item, .case-card, .contact-card", root);
 
     cards.forEach((card) => {
       if (card.dataset.tiltBound === "1") return;
       card.dataset.tiltBound = "1";
-      card.classList.add("is-tilt");
-      let rx = 0;
-      let ry = 0;
-      let tz = 0;
-      let raf = 0;
-
-      const paint = () => {
-        raf = 0;
-        card.style.transform =
-          `perspective(980px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(${tz.toFixed(2)}px)`;
-      };
 
       card.addEventListener("pointermove", (event) => {
         const rect = card.getBoundingClientRect();
-        rx = ((event.clientY - rect.top) / rect.height - 0.5) * -6;
-        ry = ((event.clientX - rect.left) / rect.width - 0.5) * 7;
-        tz = -2;
-        if (!raf) raf = window.requestAnimationFrame(paint);
+        const rx = ((event.clientY - rect.top) / rect.height - 0.5) * -9;
+        const ry = ((event.clientX - rect.left) / rect.width - 0.5) * 11;
+        card.style.transform = `perspective(950px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-3px)`;
       });
 
       card.addEventListener("pointerleave", () => {
-        rx = 0;
-        ry = 0;
-        tz = 0;
-        if (!raf) raf = window.requestAnimationFrame(paint);
+        card.style.transform = "";
       });
     });
   };

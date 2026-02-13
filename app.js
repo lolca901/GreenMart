@@ -75,7 +75,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const key = link.getAttribute("data-route");
       const path = key ? routes[key] : null;
       if (!path) return;
-      link.setAttribute("href", `${base}${path}`);
+      const target = `${base}${path}`;
+      link.setAttribute("href", target);
+      if (link.dataset.routeBound === "1") return;
+      link.dataset.routeBound = "1";
+      link.addEventListener("click", (event) => {
+        const isPrimary = event.button === 0;
+        const noMods = !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+        if (!isPrimary || !noMods) return;
+        event.preventDefault();
+        window.location.assign(target);
+      });
     });
   };
 

@@ -53,6 +53,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const resolveBasePath = () => {
+    const { protocol, hostname, pathname } = window.location;
+    if (protocol === "file:") return "";
+    if (hostname.endsWith(".github.io")) {
+      const first = pathname.split("/").filter(Boolean)[0];
+      return first ? `/${first}/` : "/";
+    }
+    return "/";
+  };
+
+  const bindInternalRoutes = () => {
+    const base = resolveBasePath();
+    const routes = {
+      home: "index.html",
+      projects: "shop.html",
+      case: "product.html?id=neonpuff-redesign",
+      contacts: "cart.html",
+    };
+    $$("[data-route]").forEach((link) => {
+      const key = link.getAttribute("data-route");
+      const path = key ? routes[key] : null;
+      if (!path) return;
+      link.setAttribute("href", `${base}${path}`);
+    });
+  };
+
   const ensureLoader = () => {
     let loader = $("#siteLoader");
     if (loader) return loader;
@@ -478,6 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   setYear();
+  bindInternalRoutes();
   bindScrollProgress();
   bindPointerGlow();
   bindHeroLetters();

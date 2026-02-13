@@ -45,9 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadStyle = () => {
     try {
       const value = localStorage.getItem(PREF_STYLE);
-      return value === "glass" ? "glass" : "serious";
+      if (value === "company") return "company";
+      if (value === "classic") return "classic";
+      if (value === "serious") return "company";
+      return "classic";
     } catch {
-      return "serious";
+      return "classic";
     }
   };
 
@@ -62,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const applyStyle = (style) => {
     document.documentElement.dataset.style = style;
     const btn = $("#styleToggle");
-    if (btn) btn.textContent = style === "glass" ? "Стиль: Glass" : "Стиль: Serious";
+    if (btn) btn.textContent = style === "company" ? "Стиль: Company" : "Стиль: Classic";
   };
 
   const themeNow = loadTheme();
@@ -82,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const styleToggle = $("#styleToggle");
   if (styleToggle) {
     styleToggle.addEventListener("click", () => {
-      const next = document.documentElement.dataset.style === "glass" ? "serious" : "glass";
+      const next = document.documentElement.dataset.style === "company" ? "classic" : "company";
       applyStyle(next);
       saveStyle(next);
     });
@@ -263,6 +266,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const paint = () => {
         raf = 0;
+        if (document.documentElement.dataset.style === "company") {
+          el.style.transform = "";
+          return;
+        }
         el.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0)`;
       };
 
@@ -298,6 +305,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const paint = () => {
         raf = 0;
+        if (document.documentElement.dataset.style === "company") {
+          card.style.transform = "";
+          return;
+        }
         card.style.transform =
           `perspective(980px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(${tz.toFixed(2)}px)`;
       };
@@ -372,6 +383,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     document.addEventListener("click", (event) => {
+      if (document.documentElement.dataset.style === "company") return;
       const target = event.target instanceof Element ? event.target.closest(".btn, .theme-toggle, .project-link") : null;
       if (!target) return;
       burst(event.clientX, event.clientY);

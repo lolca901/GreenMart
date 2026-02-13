@@ -38,14 +38,34 @@ html[data-theme="dark"] {
   --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.34);
 }
 
-html[data-style="glass"] {
-  --surface: rgba(239, 245, 255, 0.52);
-  --surface-strong: rgba(245, 250, 255, 0.66);
+html[data-style="company"] {
+  --bg: #e9edf3;
+  --bg-soft: #dfe5ef;
+  --text: #111827;
+  --muted: rgba(17, 24, 39, 0.74);
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-strong: rgba(255, 255, 255, 0.98);
+  --border: rgba(17, 24, 39, 0.12);
+  --shadow: 0 20px 42px rgba(17, 24, 39, 0.13);
+  --shadow-soft: 0 8px 20px rgba(17, 24, 39, 0.1);
+  --brand-a: #0ea5e9;
+  --brand-b: #2563eb;
+  --brand-c: #475569;
 }
 
-html[data-theme="dark"][data-style="glass"] {
-  --surface: rgba(14, 22, 38, 0.54);
-  --surface-strong: rgba(17, 28, 46, 0.66);
+html[data-theme="dark"][data-style="company"] {
+  --bg: #0b1320;
+  --bg-soft: #0f1728;
+  --text: #e5e7eb;
+  --muted: rgba(229, 231, 235, 0.72);
+  --surface: rgba(18, 28, 44, 0.86);
+  --surface-strong: rgba(22, 33, 52, 0.94);
+  --border: rgba(229, 231, 235, 0.14);
+  --shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.34);
+  --brand-a: #38bdf8;
+  --brand-b: #60a5fa;
+  --brand-c: #94a3b8;
 }
 
 html {
@@ -914,83 +934,68 @@ body.is-ready .site {
   background: linear-gradient(140deg, #9f1239, #111827 50%, #7e22ce);
 }
 
-html[data-style="glass"] .header,
-html[data-style="glass"] .hero-card,
-html[data-style="glass"] .stat,
-html[data-style="glass"] .project-card,
-html[data-style="glass"] .timeline-item,
-html[data-style="glass"] .case-card,
-html[data-style="glass"] .stack,
-html[data-style="glass"] .contact-info,
-html[data-style="glass"] .contact-form,
-html[data-style="glass"] .contact-card,
-html[data-style="glass"] .empty-state,
-html[data-style="glass"] .site-loader__box {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(
-    165deg,
-    color-mix(in srgb, var(--surface-strong) 86%, transparent),
-    color-mix(in srgb, var(--surface) 90%, transparent)
-  );
-  backdrop-filter: blur(18px) saturate(145%);
-  -webkit-backdrop-filter: blur(18px) saturate(145%);
-  box-shadow:
-    var(--shadow-soft),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+html[data-style="company"] .header {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
 }
 
-html[data-theme="dark"][data-style="glass"] .header,
-html[data-theme="dark"][data-style="glass"] .hero-card,
-html[data-theme="dark"][data-style="glass"] .stat,
-html[data-theme="dark"][data-style="glass"] .project-card,
-html[data-theme="dark"][data-style="glass"] .timeline-item,
-html[data-theme="dark"][data-style="glass"] .case-card,
-html[data-theme="dark"][data-style="glass"] .stack,
-html[data-theme="dark"][data-style="glass"] .contact-info,
-html[data-theme="dark"][data-style="glass"] .contact-form,
-html[data-theme="dark"][data-style="glass"] .contact-card,
-html[data-theme="dark"][data-style="glass"] .empty-state,
-html[data-theme="dark"][data-style="glass"] .site-loader__box {
-  box-shadow:
-    var(--shadow-soft),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+html[data-style="company"] .hero-card,
+html[data-style="company"] .stat,
+html[data-style="company"] .project-card,
+html[data-style="company"] .timeline-item,
+html[data-style="company"] .case-card,
+html[data-style="company"] .stack,
+html[data-style="company"] .contact-info,
+html[data-style="company"] .contact-form,
+html[data-style="company"] .contact-card,
+html[data-style="company"] .empty-state,
+html[data-style="company"] .site-loader__box {
+  border-radius: 14px;
+  background: var(--surface-strong);
+  border-color: color-mix(in srgb, var(--border) 85%, transparent);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 }
 
-html[data-style="glass"] .hero-card::before,
-html[data-style="glass"] .stat::before,
-html[data-style="glass"] .project-card::before,
-html[data-style="glass"] .timeline-item::before,
-html[data-style="glass"] .case-card::before,
-html[data-style="glass"] .stack::before,
-html[data-style="glass"] .contact-info::before,
-html[data-style="glass"] .contact-form::before,
-html[data-style="glass"] .contact-card::before,
-html[data-style="glass"] .site-loader__box::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(120% 72% at -8% -24%, rgba(255, 255, 255, 0.28), transparent 50%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 48%);
-  z-index: 0;
+html[data-style="company"] .project-card {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-html[data-style="glass"] .hero-card > *,
-html[data-style="glass"] .stat > *,
-html[data-style="glass"] .project-card > *,
-html[data-style="glass"] .timeline-item > *,
-html[data-style="glass"] .case-card > *,
-html[data-style="glass"] .stack > *,
-html[data-style="glass"] .contact-info > *,
-html[data-style="glass"] .contact-form > *,
-html[data-style="glass"] .contact-card > *,
-html[data-style="glass"] .site-loader__box > * {
-  position: relative;
-  z-index: 1;
+html[data-style="company"] .project-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--brand-b) 36%, var(--border));
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12);
+}
+
+html[data-style="company"] .project-card::after {
+  display: none;
+}
+
+html[data-style="company"] .hero__title {
+  background: none;
+  color: var(--text);
+  animation: none;
+}
+
+html[data-style="company"] .hero-char {
+  opacity: 1;
+  transform: none;
+}
+
+html[data-style="company"] .hero__title.is-visible .hero-char {
+  animation: none;
+}
+
+html[data-style="company"] .btn--primary {
+  color: #ffffff;
+  border-color: rgba(37, 99, 235, 0.38);
+  background: linear-gradient(100deg, #1d4ed8, #0f5ec7 56%, #1550a8);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.24);
+}
+
+html[data-style="company"] .cursor-glow,
+html[data-style="company"] .spark {
+  display: none;
 }
 
 .is-magnetic {

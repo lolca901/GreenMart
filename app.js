@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const LOADER_MIN_MS = 650;
   const LOADER_FAILSAFE_MS = 4200;
   const LOADER_HIDE_MS = 320;
+  const prefersReducedMotion = Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
+  const supportsFinePointer = Boolean(window.matchMedia?.("(pointer: fine)")?.matches);
 
   const escapeHtml = (str) =>
     String(str ?? "")
@@ -69,8 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const bootLoader = () => {
-    const reduceMotion = Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
-    const minDelay = reduceMotion ? 0 : LOADER_MIN_MS;
+    const minDelay = prefersReducedMotion ? 0 : LOADER_MIN_MS;
     const start = Date.now();
 
     document.body.classList.add("is-loading");
@@ -97,6 +98,181 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   bootLoader();
+
+  const bindScrollProgress = () => {
+    if ($("#scrollProgress")) return;
+    const bar = document.createElement("div");
+    bar.id = "scrollProgress";
+    bar.className = "scroll-progress";
+    document.body.appendChild(bar);
+
+    let ticking = false;
+    const update = () => {
+      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const progress = Math.min(1, Math.max(0, window.scrollY / max));
+      bar.style.transform = `scaleX(${progress})`;
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    update();
+  };
+
+  const bindPointerGlow = () => {
+    if (prefersReducedMotion || !supportsFinePointer) return;
+    if ($("#cursorGlow")) return;
+
+    const glow = document.createElement("div");
+    glow.id = "cursorGlow";
+    glow.className = "cursor-glow";
+    document.body.appendChild(glow);
+
+    const rootStyle = document.documentElement.style;
+    let tx = window.innerWidth * 0.5;
+    let ty = window.innerHeight * 0.5;
+    let x = tx;
+    let y = ty;
+
+    const frame = () => {
+      x += (tx - x) * 0.16;
+      y += (ty - y) * 0.16;
+      glow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      window.requestAnimationFrame(frame);
+    };
+
+    const setVars = (clientX, clientY) => {
+      const px = (clientX / Math.max(1, window.innerWidth)) * 100;
+      const py = (clientY / Math.max(1, window.innerHeight)) * 100;
+      rootStyle.setProperty("--mx", `${px.toFixed(2)}%`);
+      rootStyle.setProperty("--my", `${py.toFixed(2)}%`);
+    };
+
+    window.addEventListener(
+      "pointermove",
+      (event) => {
+        tx = event.clientX;
+        ty = event.clientY;
+        setVars(tx, ty);
+        glow.classList.add("is-visible");
+      },
+      { passive: true },
+    );
+
+    window.addEventListener("pointerdown", () => glow.classList.add("is-press"));
+    window.addEventListener("pointerup", () => glow.classList.remove("is-press"));
+    window.addEventListener("blur", () => glow.classList.remove("is-visible"));
+
+    frame();
+  };
+
+  const bindMagnetic = (root = document) => {
+    if (prefersReducedMotion || !supportsFinePointer) return;
+    const targets = $$(".btn, .theme-toggle, .filter-btn, .nav-link", root);
+    targets.forEach((el) => {
+      if (el.dataset.magnetic === "1") return;
+      el.dataset.magnetic = "1";
+
+      el.addEventListener("pointermove", (event) => {
+        const rect = el.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width * 0.5;
+        const y = event.clientY - rect.top - rect.height * 0.5;
+        const tx = x * 0.1;
+        const ty = y * 0.12;
+        el.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0)`;
+      });
+
+      el.addEventListener("pointerleave", () => {
+        el.style.transform = "";
+      });
+    });
+  };
+
+  const bindTiltCards = (root = document) => {
+    if (prefersReducedMotion || !supportsFinePointer) return;
+    const cards = $$(".project-card, .hero-card, .stat, .timeline-item, .case-card, .contact-card", root);
+
+    cards.forEach((card) => {
+      if (card.dataset.tiltBound === "1") return;
+      card.dataset.tiltBound = "1";
+
+      card.addEventListener("pointermove", (event) => {
+        const rect = card.getBoundingClientRect();
+        const rx = ((event.clientY - rect.top) / rect.height - 0.5) * -9;
+        const ry = ((event.clientX - rect.left) / rect.width - 0.5) * 11;
+        card.style.transform = `perspective(950px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-3px)`;
+      });
+
+      card.addEventListener("pointerleave", () => {
+        card.style.transform = "";
+      });
+    });
+  };
+
+  const bindHeroLetters = () => {
+    const title = $(".hero__title");
+    if (!title || title.dataset.charsBound === "1") return;
+
+    const source = title.innerHTML.replace(/<br\s*\/?>/gi, "\n").replace(/<[^>]*>/g, "");
+    const text = source.trim();
+    if (!text) return;
+
+    title.dataset.charsBound = "1";
+    title.setAttribute("aria-label", text.replace(/\n/g, " "));
+    title.textContent = "";
+
+    const fragment = document.createDocumentFragment();
+    let index = 0;
+    text.split("").forEach((char) => {
+      if (char === "\n") {
+        fragment.appendChild(document.createElement("br"));
+        return;
+      }
+      const span = document.createElement("span");
+      span.className = "hero-char";
+      span.textContent = char === " " ? "\u00A0" : char;
+      span.style.setProperty("--char-delay", `${index * 22}ms`);
+      fragment.appendChild(span);
+      index += 1;
+    });
+
+    title.appendChild(fragment);
+  };
+
+  const bindSparkClicks = () => {
+    if (prefersReducedMotion) return;
+    if (document.body.dataset.sparkBound === "1") return;
+    document.body.dataset.sparkBound = "1";
+
+    const burst = (x, y) => {
+      const count = 10;
+      for (let i = 0; i < count; i += 1) {
+        const angle = (Math.PI * 2 * i) / count + Math.random() * 0.3;
+        const distance = 14 + Math.random() * 24;
+        const spark = document.createElement("span");
+        spark.className = "spark";
+        spark.style.left = `${x}px`;
+        spark.style.top = `${y}px`;
+        spark.style.setProperty("--dx", `${Math.cos(angle) * distance}px`);
+        spark.style.setProperty("--dy", `${Math.sin(angle) * distance}px`);
+        spark.style.setProperty("--hue", `${Math.floor(Math.random() * 360)}deg`);
+        document.body.appendChild(spark);
+        window.setTimeout(() => spark.remove(), 760);
+      }
+    };
+
+    document.addEventListener("click", (event) => {
+      const target = event.target instanceof Element ? event.target.closest(".btn, .theme-toggle, .project-link") : null;
+      if (!target) return;
+      burst(event.clientX, event.clientY);
+    });
+  };
 
   const observer =
     "IntersectionObserver" in window
@@ -148,6 +324,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const items = PROJECTS.slice(0, 3);
     root.innerHTML = items.map(projectCardHtml).join("");
     bindReveal(root);
+    bindTiltCards(root);
+    bindMagnetic(root);
   };
 
   const renderProjectsPage = () => {
@@ -187,6 +365,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       root.innerHTML = list.map(projectCardHtml).join("");
       bindReveal(root);
+      bindTiltCards(root);
+      bindMagnetic(root);
     };
 
     filterButtons.forEach((btn) => {
@@ -261,6 +441,8 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     bindReveal(root);
+    bindTiltCards(root);
+    bindMagnetic(root);
   };
 
   const toast = (text) => {
@@ -296,9 +478,15 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   setYear();
+  bindScrollProgress();
+  bindPointerGlow();
+  bindHeroLetters();
+  bindSparkClicks();
   renderFeatured();
   renderProjectsPage();
   renderCasePage();
   bindContactForm();
   bindReveal();
+  bindTiltCards();
+  bindMagnetic();
 });

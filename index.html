@@ -1,160 +1,125 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>NeonPuff — Демо‑магазин</title>
-  <meta name="description" content="Демо‑многостраничный магазин: каталог, карточка товара, корзина. 21+." />
-  <link rel="stylesheet" href="styles.css?v=neon5" />
+  <title>GFolio — Портфолио</title>
+  <meta name="description" content="Портфолио веб-разработки: кейсы, проекты, процесс и контакты." />
+  <link rel="stylesheet" href="styles.css?v=portfolio1" />
 </head>
 <body>
+  <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--b" aria-hidden="true"></div>
 
-<!-- Декор: растения (фон) -->
-<div class="scene" aria-hidden="true">
-  <div class="plant plant--tl">
-    <svg viewBox="0 0 220 220" width="220" height="220">
-      <defs>
-        <linearGradient id="leafA" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#22c55e" stop-opacity="0.9"/>
-          <stop offset="1" stop-color="#10b981" stop-opacity="0.9"/>
-        </linearGradient>
-      </defs>
-      <path d="M110 18c42 10 72 48 74 92c2 46-28 86-74 96c-46-10-76-50-74-96c2-44 32-82 74-92z" fill="url(#leafA)" opacity="0.60"/>
-      <path d="M110 30c0 70 0 120 0 170" stroke="rgba(6,95,70,0.50)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.50"/>
-      <path d="M110 65c-22 10-40 28-52 55" stroke="rgba(6,95,70,0.35)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.45"/>
-      <path d="M110 65c22 10 40 28 52 55" stroke="rgba(6,95,70,0.35)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.45"/>
-    </svg>
-  </div>
-  <div class="plant plant--tr">
-    <svg viewBox="0 0 220 220" width="220" height="220">
-      <defs>
-        <linearGradient id="leafB" x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#34d399" stop-opacity="0.95"/>
-          <stop offset="1" stop-color="#16a34a" stop-opacity="0.9"/>
-        </linearGradient>
-      </defs>
-      <path d="M40 180c10-80 60-130 140-140c-8 86-55 135-140 140z" fill="url(#leafB)" opacity="0.56"/>
-      <path d="M58 168c38-38 76-76 112-112" stroke="rgba(6,95,70,0.36)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.48"/>
-    </svg>
-  </div>
-  <div class="plant plant--bl">
-    <svg viewBox="0 0 220 220" width="220" height="220">
-      <defs>
-        <linearGradient id="leafC" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stop-color="#16a34a" stop-opacity="0.9"/>
-          <stop offset="1" stop-color="#10b981" stop-opacity="0.9"/>
-        </linearGradient>
-      </defs>
-      <path d="M30 120c28-64 78-96 160-90c-18 78-64 128-160 90z" fill="url(#leafC)" opacity="0.52"/>
-      <path d="M54 112c40-18 78-34 120-54" stroke="rgba(6,95,70,0.34)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.46"/>
-    </svg>
-  </div>
-  <div class="plant plant--br">
-    <svg viewBox="0 0 220 220" width="220" height="220">
-      <defs>
-        <linearGradient id="leafD" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#4ade80" stop-opacity="0.9"/>
-          <stop offset="1" stop-color="#22c55e" stop-opacity="0.85"/>
-        </linearGradient>
-      </defs>
-      <path d="M190 70c-16 70-60 112-160 120c22-78 68-120 160-120z" fill="url(#leafD)" opacity="0.48"/>
-      <path d="M176 80c-44 26-86 54-126 86" stroke="rgba(6,95,70,0.30)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.42"/>
-    </svg>
-  </div>
-</div>
+  <div class="site">
+    <header class="header">
+      <div class="container header__inner">
+        <a class="logo" href="index.html" aria-label="GFolio home">
+          <span class="logo__dot"></span>
+          <span>GFolio</span>
+        </a>
 
-<div class="page">
-  <header class="header">
-    <div class="container header__inner">
-      <a class="logo" href="index.html" aria-label="NeonPuff">
-        <span class="logo__mark" aria-hidden="true">NP</span>
-        <span class="logo__text">NeonPuff</span>
-      </a>
-      <nav class="nav" aria-label="Навигация">
-        <a class="nav__link nav__link--active" href="index.html" data-i18n="nav_home">Главная</a>
-        <a class="nav__link" href="shop.html" data-i18n="nav_shop">Каталог</a>
-        <a class="nav__link" href="cart.html" data-i18n="nav_cart">Корзина</a>
-      </nav>
-      <div class="switches" aria-label="Язык, валюта и тема">
-        <div class="seg" role="group" aria-label="Language">
-          <button class="seg__btn" type="button" data-set-lang="uk">UA</button>
-          <button class="seg__btn" type="button" data-set-lang="ru">RU</button>
-          <button class="seg__btn" type="button" data-set-lang="en">EN</button>
-        </div>
-        <label class="sr-only" for="curSelect" data-i18n="a11y_currency">Валюта</label>
-        <select id="curSelect" class="mini-select" aria-label="Currency">
-          <option value="UAH">UAH</option>
-          <option value="USD">USD</option>
-          <option value="NOK">NOK</option>
-        </select>
-        <div class="seg" role="group" aria-label="Theme">
-          <button class="seg__btn" type="button" data-set-theme="light" data-i18n="theme_light">Светлая</button>
-          <button class="seg__btn" type="button" data-set-theme="dark" data-i18n="theme_dark">Темная</button>
-        </div>
-        <button id="egg21" class="egg21" type="button" aria-label="21+">21+</button>
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="nav-link is-active" href="index.html">Главная</a>
+          <a class="nav-link" href="shop.html">Проекты</a>
+          <a class="nav-link" href="product.html?id=neonpuff-redesign">Кейс</a>
+          <a class="nav-link" href="cart.html">Контакты</a>
+        </nav>
+
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
       </div>
-      <a class="cart-pill" href="cart.html" aria-label="Перейти в корзину">
-        <span class="cart-pill__label" data-i18n="nav_cart">Корзина</span>
-        <span id="cartCount" class="cart-pill__count">0</span>
-      </a>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="hero hero--home">
-      <div class="container hero__inner">
-        <div class="hero__copy">
-          <div class="hero__tag" data-i18n="hero_tag">NeonPuff</div>
-          <h1 data-i18n="hero_title">NeonPuff. Вкусы, которые цепляют.</h1>
-          <p data-i18n="hero_desc">Выбирай вкус и добавляй в корзину.</p>
-          <div class="hero__actions">
-            <a class="btn" href="shop.html" data-i18n="hero_open_catalog">Открыть каталог</a>
-            <a class="btn btn--ghost" href="shop.html#vapes" data-i18n="hero_rules">Смотреть вкусы</a>
+    <main>
+      <section class="hero">
+        <div class="container hero__grid">
+          <div>
+            <p class="eyebrow reveal">PORTFOLIO / 2026</p>
+            <h1 class="hero__title reveal">Дизайн и фронтенд,<br />которые продают продукт, а не только выглядят красиво.</h1>
+            <p class="hero__text reveal">Я проектирую интерфейсы, пишу чистый HTML/CSS/JS и довожу сайт до состояния, когда им удобно пользоваться и на телефоне, и на десктопе.</p>
+            <div class="hero__actions reveal">
+              <a class="btn btn--primary" href="shop.html">Смотреть проекты</a>
+              <a class="btn btn--ghost" href="cart.html">Связаться</a>
+            </div>
           </div>
-          <div class="hero__badges" aria-hidden="true">
-            <div class="badge" data-i18n="badge_1">Неон + дым = вайб</div>
-            <div class="badge" data-i18n="badge_2">Скидка уже в цене</div>
-            <div class="badge" data-i18n="badge_3">Фильтры, поиск, корзина</div>
+
+          <aside class="hero-card reveal">
+            <h2>Что делаю</h2>
+            <ul class="list">
+              <li>Лендинги и многостраничные сайты под ключ</li>
+              <li>Редизайн устаревших интерфейсов</li>
+              <li>Адаптив, анимации и оптимизация UI</li>
+              <li>Подготовка к деплою на GitHub Pages / Netlify</li>
+            </ul>
+            <a class="btn btn--small" href="product.html?id=neonpuff-redesign">Открыть последний кейс</a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="container stats__grid reveal-group">
+          <article class="stat reveal">
+            <div class="stat__num">12+</div>
+            <div class="stat__label">закрытых проектов</div>
+          </article>
+          <article class="stat reveal">
+            <div class="stat__num">3+</div>
+            <div class="stat__label">года в интерфейсах</div>
+          </article>
+          <article class="stat reveal">
+            <div class="stat__num">95%</div>
+            <div class="stat__label">оценка удобства от клиентов</div>
+          </article>
+          <article class="stat reveal">
+            <div class="stat__num">24/7</div>
+            <div class="stat__label">поддержка на этапе запуска</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Избранные проекты</h2>
+            <a class="text-link" href="shop.html">Все проекты →</a>
+          </div>
+          <div id="featuredProjects" class="projects-grid"></div>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Как я работаю</h2>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item reveal">
+              <h3>01. Бриф и структура</h3>
+              <p>Фиксирую задачу бизнеса, целевую аудиторию и контентный скелет будущего сайта.</p>
+            </article>
+            <article class="timeline-item reveal">
+              <h3>02. UI-дизайн и прототип</h3>
+              <p>Собираю дизайн-систему: типографику, цвет, компоненты, интерактивные состояния.</p>
+            </article>
+            <article class="timeline-item reveal">
+              <h3>03. Верстка и запуск</h3>
+              <p>Делаю адаптивную реализацию, тестирую поведение и помогаю с публикацией.</p>
+            </article>
           </div>
         </div>
-        <div class="hero__panel">
-          <div class="hero__panelTitle" data-i18n="panel_title">Быстрые категории</div>
-          <div class="quick-grid">
-            <a class="quick" href="shop.html#vapes">
-              <div class="quick__icon">⚡</div>
-              <div class="quick__name" data-i18n="quick_vapes">Одноразовые</div>
-              <div class="quick__meta" data-i18n="quick_vapes_meta">хиты и новинки</div>
-            </a>
-            <a class="quick" href="shop.html#accessories">
-              <div class="quick__icon">🔌</div>
-              <div class="quick__name" data-i18n="quick_acc">Аксессуары</div>
-              <div class="quick__meta" data-i18n="quick_acc_meta">заряд/чехлы</div>
-            </a>
-          </div>
-          <div class="hero__panelHint" data-i18n="panel_hint">Нажми — перейдёшь на страницу каталога.</div>
-        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© <span id="yearNow">2026</span> GFolio</p>
+        <p>Frontend / UI / Product mindset</p>
       </div>
-    </section>
+    </footer>
+  </div>
 
-    <section class="container feature">
-      <div class="feature__head">
-        <h2 data-i18n="feature_title">Вкусы на витрине</h2>
-        <p class="muted" data-i18n="feature_desc">Найди вкус по настроению: холодок, ягоды, кола, тропики и многое другое.</p>
-      </div>
-      <div id="featuredGrid" class="products products--featured" aria-live="polite"></div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div>© 2026 NeonPuff — демо‑проект.</div>
-      <div class="footer__fine" data-i18n="footer_fine">21+ • Никотин вызывает зависимость.</div>
-    </div>
-  </footer>
-</div>
-
-<script src="products.js?v=neon5"></script>
-<script src="app.js?v=neon5"></script>
+  <script src="products.js?v=portfolio1"></script>
+  <script src="app.js?v=portfolio1"></script>
 </body>
 </html>

@@ -1,113 +1,89 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>NeonPuff — Корзина</title>
-  <meta name="description" content="Корзина и оформление (демо). 21+." />
-  <link rel="stylesheet" href="styles.css?v=neon5" />
+  <title>GFolio — Контакты</title>
+  <meta name="description" content="Контакты для обсуждения проекта: сайт, редизайн, интернет-магазин или лендинг." />
+  <link rel="stylesheet" href="styles.css?v=portfolio1" />
 </head>
 <body>
+  <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--b" aria-hidden="true"></div>
 
-<div class="scene" aria-hidden="true">
-  <div class="plant plant--tr">
-    <svg viewBox="0 0 220 220" width="220" height="220">
-      <defs>
-        <linearGradient id="leafB4" x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#34d399" stop-opacity="0.95"/>
-          <stop offset="1" stop-color="#16a34a" stop-opacity="0.9"/>
-        </linearGradient>
-      </defs>
-      <path d="M40 180c10-80 60-130 140-140c-8 86-55 135-140 140z" fill="url(#leafB4)" opacity="0.50"/>
-    </svg>
-  </div>
-  <div class="plant plant--bl">
-    <svg viewBox="0 0 220 220" width="220" height="220">
-      <defs>
-        <linearGradient id="leafC4" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stop-color="#16a34a" stop-opacity="0.9"/>
-          <stop offset="1" stop-color="#10b981" stop-opacity="0.9"/>
-        </linearGradient>
-      </defs>
-      <path d="M30 120c28-64 78-96 160-90c-18 78-64 128-160 90z" fill="url(#leafC4)" opacity="0.46"/>
-    </svg>
-  </div>
-</div>
+  <div class="site">
+    <header class="header">
+      <div class="container header__inner">
+        <a class="logo" href="index.html" aria-label="GFolio home">
+          <span class="logo__dot"></span>
+          <span>GFolio</span>
+        </a>
 
-<div class="page">
-  <header class="header">
-    <div class="container header__inner">
-      <a class="logo" href="index.html" aria-label="NeonPuff">
-        <span class="logo__mark" aria-hidden="true">NP</span>
-        <span class="logo__text">NeonPuff</span>
-      </a>
-      <nav class="nav" aria-label="Навигация">
-        <a class="nav__link" href="index.html" data-i18n="nav_home">Главная</a>
-        <a class="nav__link" href="shop.html" data-i18n="nav_shop">Каталог</a>
-        <a class="nav__link nav__link--active" href="cart.html" data-i18n="nav_cart">Корзина</a>
-      </nav>
-      <div class="switches" aria-label="Язык, валюта и тема">
-        <div class="seg" role="group" aria-label="Language">
-          <button class="seg__btn" type="button" data-set-lang="uk">UA</button>
-          <button class="seg__btn" type="button" data-set-lang="ru">RU</button>
-          <button class="seg__btn" type="button" data-set-lang="en">EN</button>
-        </div>
-        <label class="sr-only" for="curSelect" data-i18n="a11y_currency">Валюта</label>
-        <select id="curSelect" class="mini-select" aria-label="Currency">
-          <option value="UAH">UAH</option>
-          <option value="USD">USD</option>
-          <option value="NOK">NOK</option>
-        </select>
-        <div class="seg" role="group" aria-label="Theme">
-          <button class="seg__btn" type="button" data-set-theme="light" data-i18n="theme_light">Светлая</button>
-          <button class="seg__btn" type="button" data-set-theme="dark" data-i18n="theme_dark">Темная</button>
-        </div>
-        <button id="egg21" class="egg21" type="button" aria-label="21+">21+</button>
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="nav-link" href="index.html">Главная</a>
+          <a class="nav-link" href="shop.html">Проекты</a>
+          <a class="nav-link" href="product.html?id=neonpuff-redesign">Кейс</a>
+          <a class="nav-link is-active" href="cart.html">Контакты</a>
+        </nav>
+
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
       </div>
-      <a class="cart-pill" href="cart.html" aria-label="Перейти в корзину">
-        <span class="cart-pill__label" data-i18n="nav_cart">Корзина</span>
-        <span id="cartCount" class="cart-pill__count">0</span>
-      </a>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
-    <h1 class="page-title" data-i18n="cart_title">Корзина</h1>
-    <div class="cart-page">
-      <section class="cart-page__items">
-        <div id="cartPageItems" aria-live="polite"></div>
-      </section>
-      <aside class="cart-page__summary">
-        <div class="summary">
-          <div class="summary__row">
-            <div class="summary__label" data-i18n="summary_items">Товары</div>
-            <div id="cartPageQty" class="summary__value">0</div>
+    <main class="section">
+      <div class="container contact-grid">
+        <section class="contact-info reveal">
+          <p class="eyebrow">LET'S WORK</p>
+          <h1>Есть задача — есть решение.</h1>
+          <p>Пиши, если нужен новый сайт, редизайн текущего проекта или усиление UX. Отвечаю по делу: сроки, бюджет, этапы.</p>
+          <div class="contact-cards">
+            <a class="contact-card" href="mailto:hello@gfolio.dev">
+              <span>Почта</span>
+              <strong>hello@gfolio.dev</strong>
+            </a>
+            <a class="contact-card" href="https://t.me" target="_blank" rel="noreferrer noopener">
+              <span>Telegram</span>
+              <strong>@gfolio</strong>
+            </a>
+            <a class="contact-card" href="https://github.com/lolca901" target="_blank" rel="noreferrer noopener">
+              <span>GitHub</span>
+              <strong>github.com/lolca901</strong>
+            </a>
           </div>
-          <div class="summary__row">
-            <div class="summary__label" data-i18n="summary_total">Итого</div>
-            <div id="cartPageTotal" class="summary__value summary__value--strong">0</div>
-          </div>
-          <button id="checkoutBtn" class="btn btn--wide" type="button" data-i18n="checkout_btn">Оформить (демо)</button>
-          <div class="summary__fine" data-i18n="checkout_fine">Демо‑проект: кнопка покажет уведомление и очистит корзину.</div>
-        </div>
-        <div class="notice">
-          <div class="notice__title" data-i18n="notice_title">21+</div>
-          <div class="notice__text" data-i18n="notice_text">Никотин вызывает зависимость. Этот сайт — учебная демонстрация.</div>
-        </div>
-      </aside>
-    </div>
-  </main>
+        </section>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div>© 2026 NeonPuff — демо‑проект.</div>
-      <div class="footer__fine" data-i18n="footer_fine">21+ • Никотин вызывает зависимость.</div>
-    </div>
-  </footer>
-</div>
+        <section class="contact-form reveal">
+          <h2>Короткий бриф</h2>
+          <form id="contactForm" novalidate>
+            <label>
+              <span>Имя</span>
+              <input type="text" name="name" required placeholder="Как к вам обращаться" />
+            </label>
+            <label>
+              <span>Контакт</span>
+              <input type="text" name="contact" required placeholder="Telegram или email" />
+            </label>
+            <label>
+              <span>Задача</span>
+              <textarea name="task" rows="5" required placeholder="Что нужно сделать, какие сроки и ожидания"></textarea>
+            </label>
+            <button class="btn btn--primary" type="submit">Отправить заявку</button>
+            <p class="muted">Форма демо: после отправки покажется уведомление.</p>
+          </form>
+        </section>
+      </div>
+    </main>
 
-<script src="products.js?v=neon5"></script>
-<script src="app.js?v=neon5"></script>
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© <span id="yearNow">2026</span> GFolio</p>
+        <p>Frontend / UI / Product mindset</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="products.js?v=portfolio1"></script>
+  <script src="app.js?v=portfolio1"></script>
 </body>
 </html>

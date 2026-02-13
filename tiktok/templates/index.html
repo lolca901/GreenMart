@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TikTuk (пародия)</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">TikTuk</div>
+      <div class="tag">пародия на TikTok • Python</div>
+      <label class="upload">
+        <input id="uploadInput" type="file" accept="video/mp4,video/webm,video/ogg" />
+        Загрузить
+      </label>
+    </header>
+
+    <main id="feed" class="feed" aria-label="Лента"></main>
+
+    <section id="empty" class="empty" hidden>
+      <h1>Пока пусто</h1>
+      <p>Положи пару видео в <code>tiktok/static/videos</code> или нажми “Загрузить”.</p>
+      <p class="hint">Совет: лучше вертикальные ролики (9:16), mp4/webm/ogg.</p>
+    </section>
+
+    <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+    <dialog id="commentsDialog" class="comments">
+      <form method="dialog" class="comments__chrome">
+        <button class="comments__close" value="close" aria-label="Закрыть">✕</button>
+        <div class="comments__title">Комментарии</div>
+      </form>
+      <div id="commentsList" class="comments__list"></div>
+      <form id="commentForm" class="comments__form">
+        <input id="commentInput" class="comments__input" placeholder="Напиши что-нибудь токсично-доброе…" maxlength="280" />
+        <button class="comments__send" type="submit">Отправить</button>
+      </form>
+    </dialog>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
+

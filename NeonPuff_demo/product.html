@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>NeonPuff — Товар</title>
+  <meta name="description" content="Карточка товара. 21+." />
+  <link rel="stylesheet" href="styles.css?v=neon3" />
+</head>
+<body>
+
+<div class="scene" aria-hidden="true">
+  <div class="plant plant--tl">
+    <svg viewBox="0 0 220 220" width="220" height="220">
+      <defs>
+        <linearGradient id="leafA3" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#22c55e" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#10b981" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <path d="M110 18c42 10 72 48 74 92c2 46-28 86-74 96c-46-10-76-50-74-96c2-44 32-82 74-92z" fill="url(#leafA3)" opacity="0.52"/>
+    </svg>
+  </div>
+  <div class="plant plant--br">
+    <svg viewBox="0 0 220 220" width="220" height="220">
+      <defs>
+        <linearGradient id="leafD3" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4ade80" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#22c55e" stop-opacity="0.85"/>
+        </linearGradient>
+      </defs>
+      <path d="M190 70c-16 70-60 112-160 120c22-78 68-120 160-120z" fill="url(#leafD3)" opacity="0.40"/>
+    </svg>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="index.html" aria-label="NeonPuff">
+        <span class="logo__mark" aria-hidden="true">NP</span>
+        <span class="logo__text">NeonPuff</span>
+      </a>
+      <nav class="nav" aria-label="Навигация">
+        <a class="nav__link" href="index.html" data-i18n="nav_home">Главная</a>
+        <a class="nav__link" href="shop.html" data-i18n="nav_shop">Каталог</a>
+        <a class="nav__link" href="cart.html" data-i18n="nav_cart">Корзина</a>
+      </nav>
+      <div class="switches" aria-label="Язык, валюта и тема">
+        <div class="seg" role="group" aria-label="Language">
+          <button class="seg__btn" type="button" data-set-lang="uk">UA</button>
+          <button class="seg__btn" type="button" data-set-lang="ru">RU</button>
+          <button class="seg__btn" type="button" data-set-lang="en">EN</button>
+        </div>
+        <label class="sr-only" for="curSelect" data-i18n="a11y_currency">Валюта</label>
+        <select id="curSelect" class="mini-select" aria-label="Currency">
+          <option value="UAH">UAH</option>
+          <option value="USD">USD</option>
+          <option value="NOK">NOK</option>
+        </select>
+        <div class="seg" role="group" aria-label="Theme">
+          <button class="seg__btn" type="button" data-set-theme="light" data-i18n="theme_light">Светлая</button>
+          <button class="seg__btn" type="button" data-set-theme="dark" data-i18n="theme_dark">Темная</button>
+        </div>
+        <button id="egg21" class="egg21" type="button" aria-label="21+">21+</button>
+      </div>
+      <a class="cart-pill" href="cart.html" aria-label="Перейти в корзину">
+        <span class="cart-pill__label" data-i18n="nav_cart">Корзина</span>
+        <span id="cartCount" class="cart-pill__count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back" href="shop.html" data-i18n="back_to_shop">← Назад в каталог</a>
+    <div id="productRoot" class="product" aria-live="polite"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© 2026 NeonPuff — демо‑проект.</div>
+      <div class="footer__fine" data-i18n="footer_fine">21+ • Никотин вызывает зависимость.</div>
+    </div>
+  </footer>
+</div>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

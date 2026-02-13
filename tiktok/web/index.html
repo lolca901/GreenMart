@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>TikTok‑пародия (Python)</title>
+    <link rel="stylesheet" href="/styles.css?v=1" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <div class="brand__dot" aria-hidden="true"></div>
+        <div class="brand__name">TikTok‑пародия</div>
+      </div>
+      <div class="top__meta">
+        <span class="pill">Python</span>
+        <span class="pill pill--muted">Offline</span>
+      </div>
+    </header>
+
+    <main class="feed" id="feed" aria-live="polite"></main>
+
+    <template id="clipTpl">
+      <section class="clip" tabindex="0">
+        <div class="clip__bg" aria-hidden="true"></div>
+        <div class="clip__shine" aria-hidden="true"></div>
+        <div class="clip__hud">
+          <div class="hud__left">
+            <div class="user">
+              <div class="user__name"></div>
+              <div class="user__tag"></div>
+            </div>
+            <div class="caption"></div>
+            <div class="music"></div>
+          </div>
+          <div class="hud__right">
+            <button class="act act--like" type="button" aria-label="Like">
+              <span class="act__icon" aria-hidden="true">♥</span>
+              <span class="act__num"></span>
+            </button>
+            <button class="act" type="button" aria-label="Comment (demo)" data-demo="comment">
+              <span class="act__icon" aria-hidden="true">💬</span>
+              <span class="act__num"></span>
+            </button>
+            <button class="act" type="button" aria-label="Share (demo)" data-demo="share">
+              <span class="act__icon" aria-hidden="true">↗</span>
+              <span class="act__num"></span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </template>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="/app.js?v=1"></script>
+  </body>
+</html>
+

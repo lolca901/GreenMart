@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const LOADER_HIDE_MS = 320;
   const prefersReducedMotion = Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
   const supportsFinePointer = Boolean(window.matchMedia?.("(pointer: fine)")?.matches);
+  const STYLE_VALUES = new Set(["corporate", "premium", "enterprise"]);
 
   const escapeHtml = (str) =>
     String(str ?? "")
@@ -45,12 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadStyle = () => {
     try {
       const value = localStorage.getItem(PREF_STYLE);
-      if (value === "company") return "company";
-      if (value === "classic") return "classic";
-      if (value === "serious") return "company";
-      return "classic";
+      if (value === "company" || value === "classic" || value === "serious") return "corporate";
+      if (value === "glass") return "premium";
+      if (value && STYLE_VALUES.has(value)) return value;
+      return "corporate";
     } catch {
-      return "classic";
+      return "corporate";
     }
   };
 
@@ -63,9 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const applyStyle = (style) => {
-    document.documentElement.dataset.style = style;
-    const btn = $("#styleToggle");
-    if (btn) btn.textContent = style === "company" ? "Стиль: Company" : "Стиль: Classic";
+    const safeStyle = STYLE_VALUES.has(style) ? style : "corporate";
+    document.documentElement.dataset.style = safeStyle;
+    const select = $("#styleSelect");
+    if (select && select.value !== safeStyle) select.value = safeStyle;
   };
 
   const themeNow = loadTheme();
@@ -82,10 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const styleToggle = $("#styleToggle");
-  if (styleToggle) {
-    styleToggle.addEventListener("click", () => {
-      const next = document.documentElement.dataset.style === "company" ? "classic" : "company";
+  const styleSelect = $("#styleSelect");
+  if (styleSelect) {
+    styleSelect.value = styleNow;
+    styleSelect.addEventListener("change", () => {
+      const next = String(styleSelect.value || "corporate");
+      if (!STYLE_VALUES.has(next)) return;
       applyStyle(next);
       saveStyle(next);
     });
@@ -218,6 +222,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let varsTick = false;
 
     const frame = () => {
+      if (document.documentElement.dataset.style !== "premium") {
+        glow.classList.remove("is-visible");
+      }
       x += (tx - x) * 0.14;
       y += (ty - y) * 0.14;
       glow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
@@ -233,6 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener(
       "pointermove",
       (event) => {
+        if (document.documentElement.dataset.style !== "premium") return;
         tx = event.clientX;
         ty = event.clientY;
         mx = (tx / Math.max(1, window.innerWidth)) * 100;
@@ -255,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const bindMagnetic = (root = document) => {
     if (prefersReducedMotion || !supportsFinePointer) return;
-    const targets = $$(".btn, .theme-toggle, .style-toggle, .filter-btn, .nav-link", root);
+    const targets = $$(".btn, .theme-toggle, .filter-btn, .nav-link", root);
     targets.forEach((el) => {
       if (el.dataset.magnetic === "1") return;
       el.dataset.magnetic = "1";
@@ -266,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const paint = () => {
         raf = 0;
-        if (document.documentElement.dataset.style === "company") {
+        if (document.documentElement.dataset.style === "enterprise") {
           el.style.transform = "";
           return;
         }
@@ -305,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const paint = () => {
         raf = 0;
-        if (document.documentElement.dataset.style === "company") {
+        if (document.documentElement.dataset.style === "enterprise") {
           card.style.transform = "";
           return;
         }
@@ -383,7 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     document.addEventListener("click", (event) => {
-      if (document.documentElement.dataset.style === "company") return;
+      if (document.documentElement.dataset.style !== "premium") return;
       const target = event.target instanceof Element ? event.target.closest(".btn, .theme-toggle, .project-link") : null;
       if (!target) return;
       burst(event.clientX, event.clientY);

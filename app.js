@@ -72,6 +72,108 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const isInteractiveStyle = () => document.documentElement.dataset.style === "showcase";
 
+  let syncStyleDropdownUi = () => {};
+
+  const initStyleDropdown = () => {
+    const select = $("#styleSelect");
+    const picker = select?.closest(".style-picker");
+    if (!select || !picker || picker.dataset.dropdownBound === "1") return;
+    picker.dataset.dropdownBound = "1";
+    picker.classList.add("style-picker--enhanced");
+
+    const dropdown = document.createElement("div");
+    dropdown.className = "style-dropdown";
+
+    const button = document.createElement("button");
+    button.className = "style-dropdown__button";
+    button.type = "button";
+    button.setAttribute("aria-haspopup", "listbox");
+    button.setAttribute("aria-expanded", "false");
+
+    const label = document.createElement("span");
+    label.className = "style-dropdown__label";
+    const chevron = document.createElement("span");
+    chevron.className = "style-dropdown__chevron";
+    button.append(label, chevron);
+
+    const menu = document.createElement("div");
+    menu.className = "style-dropdown__menu";
+    menu.setAttribute("role", "listbox");
+    menu.id = "styleDropdownMenu";
+    button.setAttribute("aria-controls", menu.id);
+
+    const open = () => {
+      dropdown.classList.add("is-open");
+      button.setAttribute("aria-expanded", "true");
+    };
+
+    const close = () => {
+      dropdown.classList.remove("is-open");
+      button.setAttribute("aria-expanded", "false");
+    };
+
+    const toggle = () => {
+      if (dropdown.classList.contains("is-open")) close();
+      else open();
+    };
+
+    const options = Array.from(select.options).map((opt) => ({ value: opt.value, text: opt.textContent || opt.value }));
+
+    options.forEach((opt) => {
+      const item = document.createElement("button");
+      item.type = "button";
+      item.className = "style-dropdown__option";
+      item.setAttribute("role", "option");
+      item.dataset.value = opt.value;
+
+      const mark = document.createElement("span");
+      mark.className = "style-dropdown__mark";
+      mark.textContent = "✓";
+      const text = document.createElement("span");
+      text.className = "style-dropdown__text";
+      text.textContent = opt.text;
+
+      item.append(mark, text);
+      item.addEventListener("click", () => {
+        if (!STYLE_VALUES.has(opt.value)) return;
+        select.value = opt.value;
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+        close();
+      });
+      menu.appendChild(item);
+    });
+
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggle();
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Node)) return;
+      if (!dropdown.contains(event.target)) close();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") close();
+    });
+
+    dropdown.append(button, menu);
+    picker.append(dropdown);
+
+    syncStyleDropdownUi = () => {
+      const active = document.documentElement.dataset.style || select.value || "corporate";
+      const selected = options.find((opt) => opt.value === active);
+      label.textContent = selected ? selected.text : "Выбрать стиль";
+      menu.querySelectorAll(".style-dropdown__option").forEach((node) => {
+        const isActive = node instanceof HTMLElement && node.dataset.value === active;
+        node.classList.toggle("is-active", Boolean(isActive));
+        node.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+    };
+
+    syncStyleDropdownUi();
+  };
+
   const themeNow = loadTheme();
   applyTheme(themeNow);
   const styleNow = loadStyle();
@@ -87,6 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const styleSelect = $("#styleSelect");
+  initStyleDropdown();
   if (styleSelect) {
     styleSelect.value = styleNow;
     styleSelect.addEventListener("change", () => {
@@ -94,8 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!STYLE_VALUES.has(next)) return;
       applyStyle(next);
       saveStyle(next);
+      syncStyleDropdownUi();
     });
   }
+  syncStyleDropdownUi();
 
   const resolveBasePath = () => {
     const { protocol, hostname, pathname } = window.location;

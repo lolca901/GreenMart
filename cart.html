@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ru" data-theme="light" data-style="corporate">
+<html lang="ru" data-theme="light" data-style="showcase">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>GFolio — Контакты</title>
   <meta name="description" content="Контакты для обсуждения проекта: сайт, редизайн, интернет-магазин или лендинг." />
-  <link rel="stylesheet" href="styles.css?v=portfolio10" />
+  <link rel="stylesheet" href="styles.css?v=portfolio13" />
 </head>
 <body>
   <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
@@ -32,57 +32,97 @@
           <label class="style-picker">
             <span class="sr-only">Выбор дизайна</span>
             <select id="styleSelect" class="style-select" aria-label="Выбор дизайна">
-              <option value="corporate">Corporate Clean (Рекомендую)</option>
-              <option value="premium">Premium Dark Board</option>
-              <option value="enterprise">Enterprise Minimal</option>
+              <option value="corporate">Corporate Clean</option>
+              <option value="premium">Premium Editorial</option>
+              <option value="enterprise">Enterprise Grid</option>
+              <option value="showcase">Showcase Motion</option>
             </select>
           </label>
         </div>
       </div>
     </header>
 
-    <main class="section">
-      <div class="container contact-grid">
-        <section class="contact-info reveal">
-          <p class="eyebrow">LET'S WORK</p>
-          <h1>Обсудим проект без лишней бюрократии.</h1>
-          <p>Если нужен новый сайт, точечный редизайн или усиление UX — отправь короткий бриф. В ответе сразу даю рамку по срокам и этапам.</p>
-          <div class="contact-cards">
-            <a class="contact-card" href="mailto:hello@gfolio.dev">
-              <span>Почта</span>
-              <strong>hello@gfolio.dev</strong>
-            </a>
-            <a class="contact-card" href="https://t.me" target="_blank" rel="noreferrer noopener">
-              <span>Telegram</span>
-              <strong>@gfolio</strong>
-            </a>
-            <a class="contact-card" href="https://github.com/lolca901" target="_blank" rel="noreferrer noopener">
-              <span>GitHub</span>
-              <strong>github.com/lolca901</strong>
-            </a>
-          </div>
-        </section>
+    <main>
+      <section class="section">
+        <div class="container contact-grid">
+          <section class="contact-info reveal">
+            <p class="eyebrow">LET'S WORK</p>
+            <h1>Обсудим проект без лишней бюрократии.</h1>
+            <p>Если нужен новый сайт, точечный редизайн или усиление UX — отправь короткий бриф. В ответе сразу даю рамку по срокам и этапам.</p>
+            <div class="contact-cards">
+              <a class="contact-card" href="mailto:hello@gfolio.dev">
+                <span>Почта</span>
+                <strong>hello@gfolio.dev</strong>
+              </a>
+              <a class="contact-card" href="https://t.me" target="_blank" rel="noreferrer noopener">
+                <span>Telegram</span>
+                <strong>@gfolio</strong>
+              </a>
+              <a class="contact-card" href="https://github.com/lolca901" target="_blank" rel="noreferrer noopener">
+                <span>GitHub</span>
+                <strong>github.com/lolca901</strong>
+              </a>
+            </div>
+          </section>
 
-        <section class="contact-form reveal">
-          <h2>Стартовый бриф</h2>
-          <form id="contactForm" novalidate>
-            <label>
-              <span>Имя</span>
-              <input type="text" name="name" required placeholder="Как к вам обращаться" />
-            </label>
-            <label>
-              <span>Контакт</span>
-              <input type="text" name="contact" required placeholder="Telegram или email" />
-            </label>
-            <label>
-              <span>Задача</span>
-              <textarea name="task" rows="5" required placeholder="Что нужно сделать, какие сроки и ожидания"></textarea>
-            </label>
-            <button class="btn btn--primary" type="submit">Отправить запрос</button>
-            <p class="muted">Демо-форма: после отправки отобразится подтверждение.</p>
-          </form>
-        </section>
-      </div>
+          <section class="contact-form reveal">
+            <h2>Стартовый бриф</h2>
+            <form id="contactForm" novalidate>
+              <label>
+                <span>Имя</span>
+                <input type="text" name="name" required placeholder="Как к вам обращаться" />
+              </label>
+              <label>
+                <span>Контакт</span>
+                <input type="text" name="contact" required placeholder="Telegram или email" />
+              </label>
+              <label>
+                <span>Задача</span>
+                <textarea name="task" rows="5" required placeholder="Что нужно сделать, какие сроки и ожидания"></textarea>
+              </label>
+              <button class="btn btn--primary" type="submit">Отправить запрос</button>
+              <p class="muted">Демо-форма: после отправки отобразится подтверждение.</p>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Как проходит сотрудничество</h2>
+            <p class="muted">Фиксированный процесс, чтобы вы всегда понимали текущий статус и ближайшие шаги.</p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item reveal">
+              <h3>01. Брифинг</h3>
+              <p>Уточняем цели, аудиторию, ограничения по срокам и формируем рабочий бэклог на запуск.</p>
+            </article>
+            <article class="timeline-item reveal">
+              <h3>02. Прототип</h3>
+              <p>Собираем каркас интерфейса и согласуем ключевые сценарии до детальной визуальной проработки.</p>
+            </article>
+            <article class="timeline-item reveal">
+              <h3>03. Production</h3>
+              <p>Реализация, тестирование и релиз с пост-поддержкой и контролем качества на первых итерациях.</p>
+            </article>
+          </div>
+          <div class="faq-grid">
+            <details class="faq-item reveal" open>
+              <summary>Работаете по договору и этапам?</summary>
+              <p>Да. Проект можно разбить на этапы с понятной приемкой и прозрачным списком deliverables.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Можно подключить мою команду к разработке?</summary>
+              <p>Да. Передаю структуру проекта, naming и рекомендации по развитию, чтобы команда быстро вошла в контекст.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Есть ли вариант "быстрый запуск"?</summary>
+              <p>Да. Если сроки критичны, можем собрать приоритетный релиз с последующим расширением функциональности.</p>
+            </details>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
@@ -93,7 +133,7 @@
     </footer>
   </div>
 
-  <script src="products.js?v=portfolio10"></script>
-  <script src="app.js?v=portfolio10"></script>
+  <script src="products.js?v=portfolio13"></script>
+  <script src="app.js?v=portfolio13"></script>
 </body>
 </html>

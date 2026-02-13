@@ -3,14 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
   const PROJECTS = Array.isArray(window.PORTFOLIO_PROJECTS) ? window.PORTFOLIO_PROJECTS : [];
-  const PREF_THEME = "gfolio_theme_v1";
-  const PREF_STYLE = "gfolio_style_v1";
+  const PREF_THEME = "gfolio_theme_v2";
+  const PREF_STYLE = "gfolio_style_v2";
   const LOADER_MIN_MS = 650;
   const LOADER_FAILSAFE_MS = 4200;
   const LOADER_HIDE_MS = 320;
   const prefersReducedMotion = Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
   const supportsFinePointer = Boolean(window.matchMedia?.("(pointer: fine)")?.matches);
-  const STYLE_VALUES = new Set(["corporate", "premium", "enterprise"]);
+  const STYLE_VALUES = new Set(["corporate", "premium", "enterprise", "showcase"]);
 
   const escapeHtml = (str) =>
     String(str ?? "")
@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const value = localStorage.getItem(PREF_STYLE);
       if (value === "company" || value === "classic" || value === "serious") return "corporate";
-      if (value === "glass") return "premium";
+      if (value === "glass") return "showcase";
       if (value && STYLE_VALUES.has(value)) return value;
-      return "corporate";
+      return "showcase";
     } catch {
-      return "corporate";
+      return "showcase";
     }
   };
 
@@ -69,6 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const select = $("#styleSelect");
     if (select && select.value !== safeStyle) select.value = safeStyle;
   };
+
+  const isInteractiveStyle = () => document.documentElement.dataset.style === "showcase";
 
   const themeNow = loadTheme();
   applyTheme(themeNow);
@@ -222,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let varsTick = false;
 
     const frame = () => {
-      if (document.documentElement.dataset.style !== "premium") {
+      if (!isInteractiveStyle()) {
         glow.classList.remove("is-visible");
       }
       x += (tx - x) * 0.14;
@@ -240,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener(
       "pointermove",
       (event) => {
-        if (document.documentElement.dataset.style !== "premium") return;
+        if (!isInteractiveStyle()) return;
         tx = event.clientX;
         ty = event.clientY;
         mx = (tx / Math.max(1, window.innerWidth)) * 100;
@@ -274,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const paint = () => {
         raf = 0;
-        if (document.documentElement.dataset.style !== "premium") {
+        if (!isInteractiveStyle()) {
           el.style.transform = "";
           return;
         }
@@ -313,7 +315,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const paint = () => {
         raf = 0;
-        if (document.documentElement.dataset.style !== "premium") {
+        if (!isInteractiveStyle()) {
           card.style.transform = "";
           return;
         }
@@ -391,7 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     document.addEventListener("click", (event) => {
-      if (document.documentElement.dataset.style !== "premium") return;
+      if (!isInteractiveStyle()) return;
       const target = event.target instanceof Element ? event.target.closest(".btn, .theme-toggle, .project-link") : null;
       if (!target) return;
       burst(event.clientX, event.clientY);

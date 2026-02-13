@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ru" data-theme="light" data-style="corporate">
+<html lang="ru" data-theme="light" data-style="showcase">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>GFolio — Проекты</title>
   <meta name="description" content="Подборка проектов: сайты, редизайны, интерфейсы и motion." />
-  <link rel="stylesheet" href="styles.css?v=portfolio10" />
+  <link rel="stylesheet" href="styles.css?v=portfolio13" />
 </head>
 <body>
   <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
@@ -32,37 +32,75 @@
           <label class="style-picker">
             <span class="sr-only">Выбор дизайна</span>
             <select id="styleSelect" class="style-select" aria-label="Выбор дизайна">
-              <option value="corporate">Corporate Clean (Рекомендую)</option>
-              <option value="premium">Premium Dark Board</option>
-              <option value="enterprise">Enterprise Minimal</option>
+              <option value="corporate">Corporate Clean</option>
+              <option value="premium">Premium Editorial</option>
+              <option value="enterprise">Enterprise Grid</option>
+              <option value="showcase">Showcase Motion</option>
             </select>
           </label>
         </div>
       </div>
     </header>
 
-    <main class="section">
-      <div class="container">
-        <div class="section-head reveal">
-          <h1>Проекты</h1>
-          <p class="muted">Собрал проекты по направлениям: можно быстро отфильтровать и открыть детальный разбор.</p>
-        </div>
-
-        <div class="toolbar reveal">
-          <div class="filters" role="group" aria-label="Фильтр проектов">
-            <button class="filter-btn is-active" type="button" data-filter="all">Все</button>
-            <button class="filter-btn" type="button" data-filter="web">Web</button>
-            <button class="filter-btn" type="button" data-filter="ecommerce">E-commerce</button>
-            <button class="filter-btn" type="button" data-filter="branding">Branding</button>
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h1>Проекты</h1>
+            <p class="muted">Собрал проекты по направлениям: можно быстро отфильтровать и открыть детальный разбор.</p>
           </div>
-          <label class="search">
-            <span class="sr-only">Поиск проекта</span>
-            <input id="projectSearch" type="search" placeholder="Поиск: лендинг, shop, dashboard..." />
-          </label>
-        </div>
 
-        <div id="projectsGrid" class="projects-grid" aria-live="polite"></div>
-      </div>
+          <div class="toolbar reveal">
+            <div class="filters" role="group" aria-label="Фильтр проектов">
+              <button class="filter-btn is-active" type="button" data-filter="all">Все</button>
+              <button class="filter-btn" type="button" data-filter="web">Web</button>
+              <button class="filter-btn" type="button" data-filter="ecommerce">E-commerce</button>
+              <button class="filter-btn" type="button" data-filter="branding">Branding</button>
+            </div>
+            <label class="search">
+              <span class="sr-only">Поиск проекта</span>
+              <input id="projectSearch" type="search" placeholder="Поиск: лендинг, shop, dashboard..." />
+            </label>
+          </div>
+
+          <div id="projectsGrid" class="projects-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Как оценивать качество проекта</h2>
+            <p class="muted">Эти критерии использую для внутреннего QA и при передаче результата клиенту.</p>
+          </div>
+          <div class="pillar-grid">
+            <article class="pillar-card reveal">
+              <h3>Скорость интерфейса</h3>
+              <p>Ключевые действия должны выполняться без задержек, а визуальные эффекты не мешать чтению контента.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Логика сценариев</h3>
+              <p>Путь от первого экрана до целевого действия должен быть коротким, понятным и предсказуемым.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Консистентность UI</h3>
+              <p>Сетка, отступы, кнопки, состояния и типографика работают как единая система, а не набор случайных блоков.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Адаптивность</h3>
+              <p>Мобильная версия учитывает контекст использования: крупные цели касания, ясная иерархия и быстрый скролл.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Чистота кода</h3>
+              <p>Разметка и стили структурированы так, чтобы правки можно было вносить быстро и безопасно.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Готовность к росту</h3>
+              <p>Проект должен масштабироваться: новые страницы и фичи добавляются без переписывания ядра интерфейса.</p>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
@@ -73,7 +111,7 @@
     </footer>
   </div>
 
-  <script src="products.js?v=portfolio10"></script>
-  <script src="app.js?v=portfolio10"></script>
+  <script src="products.js?v=portfolio13"></script>
+  <script src="app.js?v=portfolio13"></script>
 </body>
 </html>

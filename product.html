@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ru" data-theme="light" data-style="corporate">
+<html lang="ru" data-theme="light" data-style="showcase">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>GFolio — Кейс</title>
   <meta name="description" content="Детальный разбор проекта: задачи, решения, стек и результаты." />
-  <link rel="stylesheet" href="styles.css?v=portfolio10" />
+  <link rel="stylesheet" href="styles.css?v=portfolio13" />
 </head>
 <body>
   <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
@@ -32,20 +32,58 @@
           <label class="style-picker">
             <span class="sr-only">Выбор дизайна</span>
             <select id="styleSelect" class="style-select" aria-label="Выбор дизайна">
-              <option value="corporate">Corporate Clean (Рекомендую)</option>
-              <option value="premium">Premium Dark Board</option>
-              <option value="enterprise">Enterprise Minimal</option>
+              <option value="corporate">Corporate Clean</option>
+              <option value="premium">Premium Editorial</option>
+              <option value="enterprise">Enterprise Grid</option>
+              <option value="showcase">Showcase Motion</option>
             </select>
           </label>
         </div>
       </div>
     </header>
 
-    <main class="section">
-      <div class="container">
-        <a class="back-link reveal" href="shop.html">← Все проекты</a>
-        <div id="caseStudy" class="case"></div>
-      </div>
+    <main>
+      <section class="section">
+        <div class="container">
+          <a class="back-link reveal" href="shop.html">← Все проекты</a>
+          <div id="caseStudy" class="case"></div>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Инженерные решения в кейсе</h2>
+            <p class="muted">Что именно даёт проекту стабильность, скорость и предсказуемую поддержку.</p>
+          </div>
+          <div class="pillar-grid">
+            <article class="pillar-card reveal">
+              <h3>Компонентный подход</h3>
+              <p>Интерфейс собран из повторно используемых блоков, чтобы новые страницы добавлялись без дублирования стилей.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Design Tokens</h3>
+              <p>Цвета, тени, радиусы и типографика вынесены в переменные, поэтому смена визуального профиля занимает минуты.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Оптимизация рендера</h3>
+              <p>Анимации и hover-эффекты ограничены критичными зонами, чтобы не проседала производительность на мобильных.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>UX-механики</h3>
+              <p>Фильтры, поиск и маршрутизация через data-атрибуты обеспечивают быстрый доступ к нужному сценарию.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Контроль качества</h3>
+              <p>Перед выпуском проверяются адаптивность, состояния форм, читаемость контента и стабильность навигации.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Релиз и поддержка</h3>
+              <p>Код передаётся с ясной структурой, чтобы команда могла безопасно развивать проект после запуска.</p>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
@@ -56,7 +94,7 @@
     </footer>
   </div>
 
-  <script src="products.js?v=portfolio10"></script>
-  <script src="app.js?v=portfolio10"></script>
+  <script src="products.js?v=portfolio13"></script>
+  <script src="app.js?v=portfolio13"></script>
 </body>
 </html>

@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ru" data-theme="light" data-style="corporate">
+<html lang="ru" data-theme="light" data-style="showcase">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>GFolio — Портфолио</title>
   <meta name="description" content="Портфолио веб-разработки: кейсы, проекты, процесс и контакты." />
-  <link rel="stylesheet" href="styles.css?v=portfolio10" />
+  <link rel="stylesheet" href="styles.css?v=portfolio13" />
 </head>
 <body>
   <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
@@ -32,9 +32,10 @@
           <label class="style-picker">
             <span class="sr-only">Выбор дизайна</span>
             <select id="styleSelect" class="style-select" aria-label="Выбор дизайна">
-              <option value="corporate">Corporate Clean (Рекомендую)</option>
-              <option value="premium">Premium Dark Board</option>
-              <option value="enterprise">Enterprise Minimal</option>
+              <option value="corporate">Corporate Clean</option>
+              <option value="premium">Premium Editorial</option>
+              <option value="enterprise">Enterprise Grid</option>
+              <option value="showcase">Showcase Motion</option>
             </select>
           </label>
         </div>
@@ -119,6 +120,76 @@
           </div>
         </div>
       </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Операционная модель</h2>
+            <p class="muted">Полный цикл работ с управлением рисками и прозрачной отчетностью на каждом шаге.</p>
+          </div>
+          <div class="pillar-grid">
+            <article class="pillar-card reveal">
+              <h3>Discovery Sprint</h3>
+              <p>Снимаю вводные, декомпозирую задачу, фиксирую ограничения бизнеса и технические риски до начала дизайна.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>IA + UX схема</h3>
+              <p>Собираю карту сценариев, определяю ключевые действия пользователя и проектирую структуру экранов.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Visual Direction</h3>
+              <p>Формирую визуальный язык, цветовые токены, типографику и правила интеракций под конкретную нишу.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Frontend Build</h3>
+              <p>Реализую адаптивную верстку, анимации и компоненты с чистой архитектурой и контролем производительности.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>QA + Accessibility</h3>
+              <p>Проверяю поведение интерфейса, состояния ошибок, доступность и консистентность на разных разрешениях.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Launch + Support</h3>
+              <p>Готовлю релиз, документирую решение и передаю проект так, чтобы команда могла поддерживать его без хаоса.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>FAQ</h2>
+            <p class="muted">Ответы на частые вопросы перед стартом проекта.</p>
+          </div>
+          <div class="faq-grid">
+            <details class="faq-item reveal" open>
+              <summary>Какие сроки у проекта?</summary>
+              <p>Обычно 10-21 день для лендинга и 3-6 недель для многостраничного решения, в зависимости от объема контента.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Можно ли работать по этапам?</summary>
+              <p>Да. Можно разделить на Discovery, дизайн, разработку и запуск, с отдельной приемкой каждого этапа.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Что с адаптивом и мобильной версией?</summary>
+              <p>Мобильный сценарий проектируется отдельно, а не как урезанная версия десктопа, с учетом скорости и читаемости.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Даете ли поддержку после релиза?</summary>
+              <p>Да, есть формат пост-релизного сопровождения: фиксы, доработки и контроль метрик в первые недели.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Можно ли использовать ваш код как основу для команды?</summary>
+              <p>Да. Структура проекта и naming делаются так, чтобы разработка масштабировалась и не требовала переписывания с нуля.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Поддерживаете анимации, но без перегруза?</summary>
+              <p>Да, движение добавляется осмысленно: подчеркивает сценарий и приоритеты, а не мешает восприятию контента.</p>
+            </details>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
@@ -129,7 +200,7 @@
     </footer>
   </div>
 
-  <script src="products.js?v=portfolio10"></script>
-  <script src="app.js?v=portfolio10"></script>
+  <script src="products.js?v=portfolio13"></script>
+  <script src="app.js?v=portfolio13"></script>
 </body>
 </html>

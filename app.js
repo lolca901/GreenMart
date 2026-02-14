@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const LOADER_HIDE_MS = 320;
   const prefersReducedMotion = Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
   const supportsFinePointer = Boolean(window.matchMedia?.("(pointer: fine)")?.matches);
-  const deviceMemory = Number(window.navigator?.deviceMemory || 0);
-  const hardwareThreads = Number(window.navigator?.hardwareConcurrency || 0);
   const prefersCoarsePointer = Boolean(window.matchMedia?.("(pointer: coarse)")?.matches);
   const STYLE_VALUES = new Set(["corporate", "premium", "enterprise", "showcase"]);
   const STYLE_META = {
@@ -90,22 +88,91 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.body) document.body.dataset.styleActive = safeStyle;
     const select = $("#styleSelect");
     if (select && select.value !== safeStyle) select.value = safeStyle;
-    if (document.body) syncMotionMode();
+    if (document.body) {
+      syncMotionMode();
+      probeShowcasePerformance();
+    }
     window.dispatchEvent(new CustomEvent("gfolio:style-change", { detail: { style: safeStyle } }));
   };
 
   const isInteractiveStyle = () => document.documentElement.dataset.style === "showcase";
+  let runtimeLiteMotion = false;
+  let perfProbeRaf = 0;
+
   const canUseHeavyMotion = () => {
     if (!isInteractiveStyle() || prefersReducedMotion || !supportsFinePointer) return false;
-    if (window.innerWidth < 1120) return false;
+    if (window.innerWidth < 900) return false;
     if (prefersCoarsePointer) return false;
-    if (deviceMemory && deviceMemory <= 4) return false;
-    if (hardwareThreads && hardwareThreads <= 6) return false;
     return true;
   };
+
   const syncMotionMode = () => {
     if (!document.body) return;
-    document.body.classList.toggle("is-lite-motion", !canUseHeavyMotion());
+    document.body.classList.toggle("is-lite-motion", runtimeLiteMotion || !canUseHeavyMotion());
+  };
+
+  const cancelPerfProbe = () => {
+    if (!perfProbeRaf) return;
+    window.cancelAnimationFrame(perfProbeRaf);
+    perfProbeRaf = 0;
+  };
+
+  const probeShowcasePerformance = () => {
+    cancelPerfProbe();
+    if (!document.body) return;
+    if (!isInteractiveStyle()) {
+      runtimeLiteMotion = false;
+      syncMotionMode();
+      return;
+    }
+    if (!canUseHeavyMotion()) {
+      runtimeLiteMotion = true;
+      syncMotionMode();
+      return;
+    }
+
+    runtimeLiteMotion = false;
+    syncMotionMode();
+
+    let start = 0;
+    let prev = 0;
+    let frames = 0;
+    let totalDelta = 0;
+
+    const tick = (now) => {
+      if (!isInteractiveStyle()) {
+        cancelPerfProbe();
+        return;
+      }
+
+      if (start === 0) {
+        start = now;
+        prev = now;
+        perfProbeRaf = window.requestAnimationFrame(tick);
+        return;
+      }
+
+      totalDelta += now - prev;
+      prev = now;
+      frames += 1;
+
+      if (now - start < 1600) {
+        perfProbeRaf = window.requestAnimationFrame(tick);
+        return;
+      }
+
+      const avgDelta = totalDelta / Math.max(1, frames);
+      runtimeLiteMotion = avgDelta > 21.5;
+      syncMotionMode();
+      if (runtimeLiteMotion) {
+        $$(".is-magnetic, .is-tilt").forEach((node) => {
+          if (node instanceof HTMLElement) node.style.transform = "";
+        });
+      }
+      perfProbeRaf = 0;
+    };
+
+    perfProbeRaf = window.requestAnimationFrame(tick);
   };
 
   let syncStyleDropdownUi = () => {};
@@ -305,12 +372,15 @@ document.addEventListener("DOMContentLoaded", () => {
   syncStyleDropdownUi();
 
   syncMotionMode();
+  probeShowcasePerformance();
   let resizeRaf = 0;
   window.addEventListener("resize", () => {
     if (resizeRaf) return;
     resizeRaf = window.requestAnimationFrame(() => {
       resizeRaf = 0;
+      runtimeLiteMotion = false;
       syncMotionMode();
+      probeShowcasePerformance();
     });
   });
 
@@ -627,7 +697,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.addEventListener("gfolio:style-change", () => {
-    if (canUseHeavyMotion()) return;
+    if (canUseHeavyMotion() && !runtimeLiteMotion) return;
     $$(".is-magnetic, .is-tilt").forEach((node) => {
       if (node instanceof HTMLElement) node.style.transform = "";
     });

@@ -2269,14 +2269,16 @@ html[data-style="showcase"] body::after {
 }
 
 html[data-style="showcase"] .bg-orb {
-  display: none;
+  display: block;
+  filter: blur(24px);
+  opacity: 0.32;
 }
 
 html[data-style="showcase"] .header {
   border-bottom-color: color-mix(in srgb, var(--brand-b) 34%, var(--border));
-  background: color-mix(in srgb, var(--surface-strong) 84%, transparent);
-  backdrop-filter: blur(8px) saturate(112%);
-  -webkit-backdrop-filter: blur(8px) saturate(112%);
+  background: color-mix(in srgb, var(--surface-strong) 74%, transparent);
+  backdrop-filter: blur(14px) saturate(128%);
+  -webkit-backdrop-filter: blur(14px) saturate(128%);
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.34);
 }
 
@@ -2311,8 +2313,8 @@ html[data-style="showcase"] .style-dropdown__menu {
   background:
     linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03)),
     color-mix(in srgb, var(--surface-strong) 80%, transparent);
-  backdrop-filter: blur(10px) saturate(118%);
-  -webkit-backdrop-filter: blur(10px) saturate(118%);
+  backdrop-filter: blur(14px) saturate(126%);
+  -webkit-backdrop-filter: blur(14px) saturate(126%);
 }
 
 html[data-style="showcase"] .style-dropdown__option.is-active {
@@ -2338,6 +2340,7 @@ html[data-style="showcase"] .hero__title {
   color: #edf4ff;
   text-shadow: 0 0 20px rgba(71, 196, 255, 0.22), 0 0 34px rgba(255, 109, 95, 0.17);
   background: none !important;
+  animation: showcaseTitlePulse 8.6s ease-in-out infinite;
 }
 
 html[data-style="showcase"] .hero__title::before,
@@ -2423,7 +2426,7 @@ html[data-style="showcase"] .projects-grid {
 
 html[data-style="showcase"] .project-cover {
   min-height: 220px;
-  filter: saturate(0.7) contrast(1.02) brightness(0.86);
+  filter: saturate(0.92) contrast(1.03) brightness(0.9);
 }
 
 html[data-style="showcase"] .project-card,
@@ -2438,7 +2441,7 @@ html[data-style="showcase"] .testimonial-card,
 html[data-style="showcase"] .plan-card,
 html[data-style="showcase"] .site-loader__box {
   border-color: color-mix(in srgb, var(--brand-b) 32%, var(--border));
-  box-shadow: 0 12px 28px rgba(4, 8, 19, 0.38);
+  box-shadow: 0 16px 34px rgba(4, 8, 19, 0.42);
   background:
     linear-gradient(168deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
     var(--surface);
@@ -2446,9 +2449,9 @@ html[data-style="showcase"] .site-loader__box {
 }
 
 html[data-style="showcase"] .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-7px);
   border-color: color-mix(in srgb, var(--brand-a) 46%, var(--border));
-  box-shadow: 0 18px 36px rgba(4, 8, 19, 0.46);
+  box-shadow: 0 22px 40px rgba(4, 8, 19, 0.5);
 }
 
 html[data-style="showcase"] .btn--primary {
@@ -2542,6 +2545,20 @@ html[data-style="showcase"] body.is-lite-motion::before {
   opacity: 0.12;
 }
 
+html[data-style="showcase"] body.is-lite-motion .bg-orb {
+  display: none;
+}
+
+html[data-style="showcase"] body.is-lite-motion .header {
+  backdrop-filter: blur(6px) saturate(104%);
+  -webkit-backdrop-filter: blur(6px) saturate(104%);
+}
+
+html[data-style="showcase"] body.is-lite-motion .style-dropdown__menu {
+  backdrop-filter: blur(8px) saturate(108%);
+  -webkit-backdrop-filter: blur(8px) saturate(108%);
+}
+
 html[data-style="showcase"] body.is-lite-motion .eyebrow::before {
   animation: none;
 }
@@ -2554,6 +2571,20 @@ html[data-style="showcase"] body.is-lite-motion .btn--primary::after {
 
 html[data-style="showcase"] body.is-lite-motion .hero-card {
   position: static;
+}
+
+html[data-style="showcase"] body.is-lite-motion .hero__title {
+  animation: none;
+}
+
+html[data-style="showcase"] body.is-lite-motion .hero-stage:hover,
+html[data-style="showcase"] body.is-lite-motion .pillar-card:hover {
+  transform: none;
+}
+
+html[data-style="showcase"] body.is-lite-motion .project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(4, 8, 19, 0.4);
 }
 
 html[data-style="showcase"] body.is-lite-motion .reveal {

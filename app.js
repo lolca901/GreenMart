@@ -492,6 +492,49 @@ document.addEventListener("DOMContentLoaded", () => {
     update();
   };
 
+  const bindShowcaseScrollFx = () => {
+    const rootStyle = document.documentElement.style;
+    let ticking = false;
+
+    const resetVars = () => {
+      rootStyle.setProperty("--showcase-hero-shift", "0px");
+      rootStyle.setProperty("--showcase-bg-shift", "0px");
+      rootStyle.setProperty("--showcase-glow-rotate", "0deg");
+      rootStyle.setProperty("--showcase-progress", "0");
+    };
+
+    const update = () => {
+      ticking = false;
+      if (!isInteractiveStyle()) {
+        resetVars();
+        return;
+      }
+
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const progress = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+      const isLite = Boolean(document.body?.classList.contains("is-lite-motion"));
+      const heroShift = Math.min(isLite ? 14 : 38, window.scrollY * (isLite ? 0.017 : 0.036));
+      const bgShift = Math.min(isLite ? 22 : 62, window.scrollY * (isLite ? 0.026 : 0.056));
+      const rotate = (isLite ? 10 : 26) * progress;
+
+      rootStyle.setProperty("--showcase-hero-shift", `${heroShift.toFixed(2)}px`);
+      rootStyle.setProperty("--showcase-bg-shift", `${bgShift.toFixed(2)}px`);
+      rootStyle.setProperty("--showcase-glow-rotate", `${rotate.toFixed(2)}deg`);
+      rootStyle.setProperty("--showcase-progress", progress.toFixed(4));
+    };
+
+    const requestUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    window.addEventListener("gfolio:style-change", requestUpdate);
+    update();
+  };
+
   const bindPointerGlow = () => {
     if (prefersReducedMotion || !supportsFinePointer) return;
     if ($("#cursorGlow")) return;
@@ -921,6 +964,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setYear();
   bindInternalRoutes();
   bindScrollProgress();
+  bindShowcaseScrollFx();
   bindPointerGlow();
   bindHeroLetters();
   bindSparkClicks();

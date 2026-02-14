@@ -10,7 +10,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const LOADER_HIDE_MS = 320;
   const prefersReducedMotion = Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
   const supportsFinePointer = Boolean(window.matchMedia?.("(pointer: fine)")?.matches);
+  const deviceMemory = Number(window.navigator?.deviceMemory || 0);
+  const hardwareThreads = Number(window.navigator?.hardwareConcurrency || 0);
+  const prefersCoarsePointer = Boolean(window.matchMedia?.("(pointer: coarse)")?.matches);
   const STYLE_VALUES = new Set(["corporate", "premium", "enterprise", "showcase"]);
+  const STYLE_META = {
+    corporate: {
+      title: "Corporate Clean",
+      description: "Строгий интерфейс без лишних эффектов",
+    },
+    premium: {
+      title: "Premium Editorial",
+      description: "Теплая журнальная подача и акценты",
+    },
+    enterprise: {
+      title: "Enterprise Grid",
+      description: "Системная сетка и B2B-структура",
+    },
+    showcase: {
+      title: "Showcase Motion",
+      description: "Динамичный витринный режим с motion",
+    },
+  };
 
   const escapeHtml = (str) =>
     String(str ?? "")
@@ -66,11 +87,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const applyStyle = (style) => {
     const safeStyle = STYLE_VALUES.has(style) ? style : "corporate";
     document.documentElement.dataset.style = safeStyle;
+    if (document.body) document.body.dataset.styleActive = safeStyle;
     const select = $("#styleSelect");
     if (select && select.value !== safeStyle) select.value = safeStyle;
+    if (document.body) syncMotionMode();
+    window.dispatchEvent(new CustomEvent("gfolio:style-change", { detail: { style: safeStyle } }));
   };
 
   const isInteractiveStyle = () => document.documentElement.dataset.style === "showcase";
+  const canUseHeavyMotion = () => {
+    if (!isInteractiveStyle() || prefersReducedMotion || !supportsFinePointer) return false;
+    if (window.innerWidth < 1120) return false;
+    if (prefersCoarsePointer) return false;
+    if (deviceMemory && deviceMemory <= 4) return false;
+    if (hardwareThreads && hardwareThreads <= 6) return false;
+    return true;
+  };
+  const syncMotionMode = () => {
+    if (!document.body) return;
+    document.body.classList.toggle("is-lite-motion", !canUseHeavyMotion());
+  };
 
   let syncStyleDropdownUi = () => {};
 
@@ -117,7 +153,31 @@ document.addEventListener("DOMContentLoaded", () => {
       else open();
     };
 
-    const options = Array.from(select.options).map((opt) => ({ value: opt.value, text: opt.textContent || opt.value }));
+    const options = Array.from(select.options).map((opt) => {
+      const value = String(opt.value || "");
+      const meta = STYLE_META[value] || null;
+      return {
+        value,
+        text: meta?.title || opt.textContent || value,
+        description: meta?.description || "",
+      };
+    });
+
+    const focusOption = (node) => {
+      if (node instanceof HTMLElement) node.focus();
+    };
+
+    const getOptionNodes = () => Array.from(menu.querySelectorAll(".style-dropdown__option"));
+
+    const moveFocus = (offset) => {
+      const nodes = getOptionNodes();
+      if (nodes.length === 0) return;
+      const current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      const currentIndex = current ? nodes.indexOf(current) : -1;
+      const base = currentIndex >= 0 ? currentIndex : 0;
+      const next = nodes[(base + offset + nodes.length) % nodes.length];
+      focusOption(next);
+    };
 
     options.forEach((opt) => {
       const item = document.createElement("button");
@@ -129,16 +189,45 @@ document.addEventListener("DOMContentLoaded", () => {
       const mark = document.createElement("span");
       mark.className = "style-dropdown__mark";
       mark.textContent = "✓";
-      const text = document.createElement("span");
-      text.className = "style-dropdown__text";
-      text.textContent = opt.text;
 
-      item.append(mark, text);
+      const swatch = document.createElement("span");
+      swatch.className = "style-dropdown__swatch";
+      swatch.dataset.value = opt.value;
+
+      const meta = document.createElement("span");
+      meta.className = "style-dropdown__meta";
+      const title = document.createElement("span");
+      title.className = "style-dropdown__title";
+      title.textContent = opt.text;
+      meta.append(title);
+
+      if (opt.description) {
+        const desc = document.createElement("span");
+        desc.className = "style-dropdown__desc";
+        desc.textContent = opt.description;
+        meta.append(desc);
+      }
+
+      item.append(mark, swatch, meta);
       item.addEventListener("click", () => {
         if (!STYLE_VALUES.has(opt.value)) return;
         select.value = opt.value;
         select.dispatchEvent(new Event("change", { bubbles: true }));
         close();
+      });
+
+      item.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          moveFocus(1);
+        } else if (event.key === "ArrowUp") {
+          event.preventDefault();
+          moveFocus(-1);
+        } else if (event.key === "Escape") {
+          event.preventDefault();
+          close();
+          button.focus();
+        }
       });
       menu.appendChild(item);
     });
@@ -146,6 +235,18 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", (event) => {
       event.stopPropagation();
       toggle();
+    });
+
+    button.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        open();
+        const active = menu.querySelector(".style-dropdown__option.is-active") || menu.querySelector(".style-dropdown__option");
+        focusOption(active);
+      } else if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggle();
+      }
     });
 
     document.addEventListener("click", (event) => {
@@ -164,6 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const active = document.documentElement.dataset.style || select.value || "corporate";
       const selected = options.find((opt) => opt.value === active);
       label.textContent = selected ? selected.text : "Выбрать стиль";
+      button.dataset.style = active;
       menu.querySelectorAll(".style-dropdown__option").forEach((node) => {
         const isActive = node instanceof HTMLElement && node.dataset.value === active;
         node.classList.toggle("is-active", Boolean(isActive));
@@ -201,6 +303,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   syncStyleDropdownUi();
+
+  syncMotionMode();
+  let resizeRaf = 0;
+  window.addEventListener("resize", () => {
+    if (resizeRaf) return;
+    resizeRaf = window.requestAnimationFrame(() => {
+      resizeRaf = 0;
+      syncMotionMode();
+    });
+  });
 
   const resolveBasePath = () => {
     const { protocol, hostname, pathname } = window.location;
@@ -322,20 +434,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const rootStyle = document.documentElement.style;
     let tx = window.innerWidth * 0.5;
     let ty = window.innerHeight * 0.5;
-    let x = tx;
-    let y = ty;
+    let raf = 0;
     let mx = 50;
     let my = 40;
     let varsTick = false;
 
-    const frame = () => {
-      if (!isInteractiveStyle()) {
-        glow.classList.remove("is-visible");
-      }
-      x += (tx - x) * 0.14;
-      y += (ty - y) * 0.14;
-      glow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      window.requestAnimationFrame(frame);
+    const paint = () => {
+      raf = 0;
+      glow.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+    };
+
+    const requestPaint = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(paint);
     };
 
     const pushVars = () => {
@@ -347,9 +458,13 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener(
       "pointermove",
       (event) => {
-        if (!isInteractiveStyle()) return;
+        if (!canUseHeavyMotion()) {
+          glow.classList.remove("is-visible");
+          return;
+        }
         tx = event.clientX;
         ty = event.clientY;
+        requestPaint();
         mx = (tx / Math.max(1, window.innerWidth)) * 100;
         my = (ty / Math.max(1, window.innerHeight)) * 100;
         if (!varsTick) {
@@ -361,16 +476,20 @@ document.addEventListener("DOMContentLoaded", () => {
       { passive: true },
     );
 
-    window.addEventListener("pointerdown", () => glow.classList.add("is-press"));
+    window.addEventListener("pointerdown", () => {
+      if (!canUseHeavyMotion()) return;
+      glow.classList.add("is-press");
+    });
     window.addEventListener("pointerup", () => glow.classList.remove("is-press"));
     window.addEventListener("blur", () => glow.classList.remove("is-visible"));
-
-    frame();
+    window.addEventListener("gfolio:style-change", () => {
+      if (!canUseHeavyMotion()) glow.classList.remove("is-visible", "is-press");
+    });
   };
 
   const bindMagnetic = (root = document) => {
     if (prefersReducedMotion || !supportsFinePointer) return;
-    const targets = $$(".btn, .theme-toggle, .filter-btn, .nav-link", root);
+    const targets = $$(".btn, .theme-toggle, .style-dropdown__button", root);
     targets.forEach((el) => {
       if (el.dataset.magnetic === "1") return;
       el.dataset.magnetic = "1";
@@ -381,7 +500,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const paint = () => {
         raf = 0;
-        if (!isInteractiveStyle()) {
+        if (!canUseHeavyMotion()) {
           el.style.transform = "";
           return;
         }
@@ -389,6 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       el.addEventListener("pointermove", (event) => {
+        if (!canUseHeavyMotion()) return;
         const rect = el.getBoundingClientRect();
         const x = event.clientX - rect.left - rect.width * 0.5;
         const y = event.clientY - rect.top - rect.height * 0.5;
@@ -407,7 +527,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const bindTiltCards = (root = document) => {
     if (prefersReducedMotion || !supportsFinePointer) return;
-    const cards = $$(".hero-card, .stat, .timeline-item, .case-card, .contact-card", root);
+    const cards = $$(".hero-card, .case-card", root);
 
     cards.forEach((card) => {
       if (card.dataset.tiltBound === "1") return;
@@ -420,7 +540,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const paint = () => {
         raf = 0;
-        if (!isInteractiveStyle()) {
+        if (!canUseHeavyMotion()) {
           card.style.transform = "";
           return;
         }
@@ -429,6 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       card.addEventListener("pointermove", (event) => {
+        if (!canUseHeavyMotion()) return;
         const rect = card.getBoundingClientRect();
         rx = ((event.clientY - rect.top) / rect.height - 0.5) * -5;
         ry = ((event.clientX - rect.left) / rect.width - 0.5) * 6;
@@ -498,12 +619,19 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     document.addEventListener("click", (event) => {
-      if (!isInteractiveStyle()) return;
-      const target = event.target instanceof Element ? event.target.closest(".btn, .theme-toggle, .project-link") : null;
+      if (!canUseHeavyMotion()) return;
+      const target = event.target instanceof Element ? event.target.closest(".btn--primary") : null;
       if (!target) return;
       burst(event.clientX, event.clientY);
     });
   };
+
+  window.addEventListener("gfolio:style-change", () => {
+    if (canUseHeavyMotion()) return;
+    $$(".is-magnetic, .is-tilt").forEach((node) => {
+      if (node instanceof HTMLElement) node.style.transform = "";
+    });
+  });
 
   const observer =
     "IntersectionObserver" in window

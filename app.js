@@ -703,27 +703,39 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const observer =
+  const onRevealIntersect = (entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      obs.unobserve(entry.target);
+    });
+  };
+
+  const observer = "IntersectionObserver" in window ? new IntersectionObserver(onRevealIntersect, { threshold: 0.12 }) : null;
+
+  const showcaseObserver =
     "IntersectionObserver" in window
-      ? new IntersectionObserver(
-          (entries, obs) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              entry.target.classList.add("is-visible");
-              obs.unobserve(entry.target);
-            });
-          },
-          { threshold: 0.12 },
-        )
+      ? new IntersectionObserver(onRevealIntersect, {
+          threshold: 0.18,
+          rootMargin: "0px 0px -8% 0px",
+        })
       : null;
 
   const bindReveal = (root = document) => {
     const nodes = $$(".reveal", root);
+    const showcaseStyle = document.documentElement.dataset.style === "showcase";
+    const delayStep = showcaseStyle ? 78 : 60;
+    const delayCap = showcaseStyle ? 14 : 8;
+    const useShowcaseObserver = showcaseStyle && showcaseObserver && !runtimeLiteMotion;
+
     nodes.forEach((node, index) => {
       if (node.dataset.revealBound) return;
       node.dataset.revealBound = "1";
-      node.style.setProperty("--delay", `${Math.min(index, 8) * 60}ms`);
-      if (observer) observer.observe(node);
+      node.style.setProperty("--delay", `${Math.min(index, delayCap) * delayStep}ms`);
+      node.style.setProperty("--reveal-duration", showcaseStyle ? "920ms" : "620ms");
+
+      if (useShowcaseObserver) showcaseObserver.observe(node);
+      else if (observer) observer.observe(node);
       else node.classList.add("is-visible");
     });
   };

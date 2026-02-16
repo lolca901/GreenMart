@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ru" data-theme="light" data-style="showcase">
+<html lang="en" data-theme="light" data-style="showcase">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>GFolio — Кейс</title>
-  <meta name="description" content="Детальный разбор проекта: задачи, решения, стек и результаты." />
-  <link rel="stylesheet" href="styles.css?v=portfolio20" />
+  <title>GFolio — Case Study</title>
+  <meta name="description" content="Detailed case breakdown: challenge, solution, stack, and delivery notes." />
+  <link rel="stylesheet" href="styles.css?v=portfolio23" />
 </head>
 <body>
   <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
@@ -20,18 +20,22 @@
           <span>GFolio</span>
         </a>
 
-        <nav class="nav" aria-label="Основная навигация">
-          <a class="nav-link" href="index.html" data-route="home">Главная</a>
-          <a class="nav-link" href="shop.html" data-route="projects">Проекты</a>
-          <a class="nav-link is-active" href="product.html?id=neonpuff-redesign" data-route="case">Кейс</a>
-          <a class="nav-link" href="cart.html" data-route="contacts">Контакты</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a class="nav-link" href="index.html" data-route="home">Home</a>
+          <a class="nav-link" href="shop.html" data-route="projects">Projects</a>
+          <a class="nav-link is-active" href="product.html?id=neonpuff-redesign" data-route="case">Case</a>
+          <a class="nav-link" href="cart.html" data-route="contacts">Contact</a>
         </nav>
 
         <div class="header-controls">
-          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
+          <div id="langToggle" class="lang-toggle" role="group" aria-label="Language">
+            <button class="lang-toggle__btn is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+            <button class="lang-toggle__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
+          </div>
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">Dark Theme</button>
           <label class="style-picker">
-            <span class="sr-only">Выбор дизайна</span>
-            <select id="styleSelect" class="style-select" aria-label="Выбор дизайна">
+            <span class="sr-only">Choose style</span>
+            <select id="styleSelect" class="style-select" aria-label="Choose style">
               <option value="corporate">Corporate Clean</option>
               <option value="premium">Premium Editorial</option>
               <option value="enterprise">Enterprise Grid</option>
@@ -45,7 +49,7 @@
     <main>
       <section class="section">
         <div class="container">
-          <a class="back-link reveal" href="shop.html">← Все проекты</a>
+          <a class="back-link reveal" href="shop.html"><- All Projects</a>
           <div id="caseStudy" class="case"></div>
         </div>
       </section>
@@ -53,33 +57,33 @@
       <section class="section section--soft">
         <div class="container">
           <div class="section-head reveal">
-            <h2>Инженерные решения в кейсе</h2>
-            <p class="muted">Что именно даёт проекту стабильность, скорость и предсказуемую поддержку.</p>
+            <h2>Engineering Decisions</h2>
+            <p class="muted">What keeps this project stable, fast, and easy to support.</p>
           </div>
           <div class="pillar-grid">
             <article class="pillar-card reveal">
-              <h3>Компонентный подход</h3>
-              <p>Интерфейс собран из повторно используемых блоков, чтобы новые страницы добавлялись без дублирования стилей.</p>
+              <h3>Component Approach</h3>
+              <p>The interface is assembled from reusable blocks so new pages can be added without style duplication.</p>
             </article>
             <article class="pillar-card reveal">
               <h3>Design Tokens</h3>
-              <p>Цвета, тени, радиусы и типографика вынесены в переменные, поэтому смена визуального профиля занимает минуты.</p>
+              <p>Colors, shadows, radius, and typography are tokenized to make visual adjustments quick and controlled.</p>
             </article>
             <article class="pillar-card reveal">
-              <h3>Оптимизация рендера</h3>
-              <p>Анимации и hover-эффекты ограничены критичными зонами, чтобы не проседала производительность на мобильных.</p>
+              <h3>Render Optimization</h3>
+              <p>Animations and hover states are focused on key zones to keep mobile performance predictable.</p>
             </article>
             <article class="pillar-card reveal">
-              <h3>UX-механики</h3>
-              <p>Фильтры, поиск и маршрутизация через data-атрибуты обеспечивают быстрый доступ к нужному сценарию.</p>
+              <h3>UX Mechanics</h3>
+              <p>Filters, search, and route mapping via data attributes keep navigation direct and maintainable.</p>
             </article>
             <article class="pillar-card reveal">
-              <h3>Контроль качества</h3>
-              <p>Перед выпуском проверяются адаптивность, состояния форм, читаемость контента и стабильность навигации.</p>
+              <h3>Quality Control</h3>
+              <p>Before release, adaptive behavior, form states, content readability, and navigation consistency are verified.</p>
             </article>
             <article class="pillar-card reveal">
-              <h3>Релиз и поддержка</h3>
-              <p>Код передаётся с ясной структурой, чтобы команда могла безопасно развивать проект после запуска.</p>
+              <h3>Release & Handover</h3>
+              <p>The project is handed off with a clear structure so the next iteration can be developed safely.</p>
             </article>
           </div>
         </div>
@@ -88,25 +92,25 @@
       <section class="section">
         <div class="container">
           <div class="section-head reveal">
-            <h2>Ретроспектива проекта</h2>
-            <p class="muted">Что сработало лучше всего после релиза и какие решения дали наибольший эффект.</p>
+            <h2>Project Retrospective</h2>
+            <p class="muted">What worked well after release and what can be improved in the next iteration.</p>
           </div>
           <div class="faq-grid">
             <details class="faq-item reveal" open>
-              <summary>Какая часть дала максимальный рост?</summary>
-              <p>Перепроектирование первого экрана и структуры CTA: меньше когнитивной нагрузки, выше доля переходов в целевое действие.</p>
+              <summary>Which change had the strongest impact?</summary>
+              <p>The first screen and CTA structure were simplified, making the primary action easier to reach.</p>
             </details>
             <details class="faq-item reveal">
-              <summary>Что было самым сложным в реализации?</summary>
-              <p>Свести выразительный визуал с производительностью на мобильных. Решили через точечные эффекты и оптимизированные состояния.</p>
+              <summary>What was the hardest part technically?</summary>
+              <p>Balancing expressive visuals with stable mobile performance. This was solved through focused effects and optimized states.</p>
             </details>
             <details class="faq-item reveal">
-              <summary>Что бы я усилил в следующей версии?</summary>
-              <p>Добавил бы более глубокую персонализацию контента и автоматизацию контентных блоков для быстрых итераций команды.</p>
+              <summary>What would be improved next?</summary>
+              <p>Deeper content personalization and more automation in content blocks for faster team iterations.</p>
             </details>
             <details class="faq-item reveal">
-              <summary>Какие артефакты передаются команде?</summary>
-              <p>UI-токены, компонентная карта, структура файлов, рекомендации по масштабированию и чек-лист релизного QA.</p>
+              <summary>What artifacts are handed over?</summary>
+              <p>UI tokens, component map, project structure, scaling notes, and a release QA checklist.</p>
             </details>
           </div>
         </div>
@@ -116,12 +120,12 @@
     <footer class="footer">
       <div class="container footer__inner">
         <p>© <span id="yearNow">2026</span> GFolio</p>
-        <p>Frontend • Product Design • Delivery</p>
+        <p>Frontend • Interface Design • Delivery</p>
       </div>
     </footer>
   </div>
 
-  <script src="products.js?v=portfolio20"></script>
-  <script src="app.js?v=portfolio20"></script>
+  <script src="products.js?v=portfolio23"></script>
+  <script src="app.js?v=portfolio23"></script>
 </body>
 </html>

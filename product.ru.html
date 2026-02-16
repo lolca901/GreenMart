@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru" data-theme="light" data-style="showcase">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>GFolio — Кейс</title>
+  <meta name="description" content="Детальный разбор проекта: задачи, решения, стек и результаты." />
+  <link rel="stylesheet" href="styles.css?v=portfolio23" />
+</head>
+<body>
+  <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--b" aria-hidden="true"></div>
+
+  <div class="site">
+    <header class="header">
+      <div class="container header__inner">
+        <a class="logo" href="index.ru.html" data-route="home" aria-label="GFolio home">
+          <span class="logo__dot"></span>
+          <span>GFolio</span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="nav-link" href="index.ru.html" data-route="home">Главная</a>
+          <a class="nav-link" href="shop.ru.html" data-route="projects">Проекты</a>
+          <a class="nav-link is-active" href="product.ru.html?id=neonpuff-redesign" data-route="case">Кейс</a>
+          <a class="nav-link" href="cart.ru.html" data-route="contacts">Контакты</a>
+        </nav>
+
+        <div class="header-controls">
+          <div id="langToggle" class="lang-toggle" role="group" aria-label="Язык">
+            <button class="lang-toggle__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+            <button class="lang-toggle__btn is-active" type="button" data-lang="ru" aria-pressed="true">RU</button>
+          </div>
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
+          <label class="style-picker">
+            <span class="sr-only">Выбор дизайна</span>
+            <select id="styleSelect" class="style-select" aria-label="Выбор дизайна">
+              <option value="corporate">Corporate Clean</option>
+              <option value="premium">Premium Editorial</option>
+              <option value="enterprise">Enterprise Grid</option>
+              <option value="showcase">Showcase Motion</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <a class="back-link reveal" href="shop.ru.html">← Все проекты</a>
+          <div id="caseStudy" class="case"></div>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Инженерные решения в кейсе</h2>
+            <p class="muted">Что именно даёт проекту стабильность, скорость и предсказуемую поддержку.</p>
+          </div>
+          <div class="pillar-grid">
+            <article class="pillar-card reveal">
+              <h3>Компонентный подход</h3>
+              <p>Интерфейс собран из повторно используемых блоков, чтобы новые страницы добавлялись без дублирования стилей.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Design Tokens</h3>
+              <p>Цвета, тени, радиусы и типографика вынесены в переменные, поэтому смена визуального профиля занимает минуты.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Оптимизация рендера</h3>
+              <p>Анимации и hover-эффекты ограничены критичными зонами, чтобы не проседала производительность на мобильных.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>UX-механики</h3>
+              <p>Фильтры, поиск и маршрутизация через data-атрибуты обеспечивают быстрый доступ к нужному сценарию.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Контроль качества</h3>
+              <p>Перед выпуском проверяются адаптивность, состояния форм, читаемость контента и стабильность навигации.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Релиз и поддержка</h3>
+              <p>Код передаётся с ясной структурой, чтобы команда могла безопасно развивать проект после запуска.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Ретроспектива проекта</h2>
+            <p class="muted">Что сработало лучше всего после релиза и какие решения дали наибольший эффект.</p>
+          </div>
+          <div class="faq-grid">
+            <details class="faq-item reveal" open>
+              <summary>Какая часть дала максимальный рост?</summary>
+              <p>Перепроектирование первого экрана и структуры CTA: меньше когнитивной нагрузки, выше доля переходов в целевое действие.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Что было самым сложным в реализации?</summary>
+              <p>Свести выразительный визуал с производительностью на мобильных. Решили через точечные эффекты и оптимизированные состояния.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Что бы я усилил в следующей версии?</summary>
+              <p>Добавил бы более глубокую персонализацию контента и автоматизацию контентных блоков для быстрых итераций команды.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Какие артефакты передаются команде?</summary>
+              <p>UI-токены, компонентная карта, структура файлов, рекомендации по масштабированию и чек-лист релизного QA.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© <span id="yearNow">2026</span> GFolio</p>
+        <p>Frontend • Product Design • Delivery</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="products.ru.js?v=portfolio23"></script>
+  <script src="app.js?v=portfolio23"></script>
+</body>
+</html>

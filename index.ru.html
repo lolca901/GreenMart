@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ru" data-theme="light" data-style="showcase">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>GFolio — Портфолио</title>
+  <meta name="description" content="Портфолио веб-разработки: кейсы, проекты, процесс и контакты." />
+  <link rel="stylesheet" href="styles.css?v=portfolio23" />
+</head>
+<body>
+  <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--b" aria-hidden="true"></div>
+
+  <div class="site">
+    <header class="header">
+      <div class="container header__inner">
+        <a class="logo" href="index.ru.html" data-route="home" aria-label="GFolio home">
+          <span class="logo__dot"></span>
+          <span>GFolio</span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="nav-link is-active" href="index.ru.html" data-route="home">Главная</a>
+          <a class="nav-link" href="shop.ru.html" data-route="projects">Проекты</a>
+          <a class="nav-link" href="product.ru.html?id=neonpuff-redesign" data-route="case">Кейс</a>
+          <a class="nav-link" href="cart.ru.html" data-route="contacts">Контакты</a>
+        </nav>
+
+        <div class="header-controls">
+          <div id="langToggle" class="lang-toggle" role="group" aria-label="Язык">
+            <button class="lang-toggle__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+            <button class="lang-toggle__btn is-active" type="button" data-lang="ru" aria-pressed="true">RU</button>
+          </div>
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
+          <label class="style-picker">
+            <span class="sr-only">Выбор дизайна</span>
+            <select id="styleSelect" class="style-select" aria-label="Выбор дизайна">
+              <option value="corporate">Corporate Clean</option>
+              <option value="premium">Premium Editorial</option>
+              <option value="enterprise">Enterprise Grid</option>
+              <option value="showcase">Showcase Motion</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero__grid">
+          <div>
+            <p class="eyebrow reveal">PORTFOLIO / 2026</p>
+            <h1 class="hero__title reveal">Собираю сайты, в которых<br />логика, визуал и скорость работают как единая система.</h1>
+            <p class="hero__text reveal">Проектирую интерфейсы и реализую их на чистом фронтенде: без лишней сложности, с понятной структурой и фокусом на конверсию.</p>
+            <div class="hero__actions reveal">
+              <a class="btn btn--primary" href="shop.ru.html">Смотреть проекты</a>
+              <a class="btn btn--ghost" href="cart.ru.html">Связаться</a>
+            </div>
+          </div>
+
+          <aside class="hero-card reveal">
+            <h2>Формат работы</h2>
+            <ul class="list">
+              <li>Лендинги и многостраничные сайты под задачи бизнеса</li>
+              <li>Редизайн и усиление пользовательского пути</li>
+              <li>Адаптив, микроинтеракции и чистая UI-архитектура</li>
+              <li>Подготовка к деплою и передача проекта без хаоса</li>
+            </ul>
+            <a class="btn btn--small" href="product.ru.html?id=neonpuff-redesign">Разобрать последний кейс</a>
+            <div class="hero-stages" aria-label="Этапы">
+              <div class="hero-stage is-active">
+                <span class="hero-stage__num">01</span>
+                <strong>Prototype</strong>
+                <small>Концепт + структура</small>
+              </div>
+              <div class="hero-stage">
+                <span class="hero-stage__num">02</span>
+                <strong>Build</strong>
+                <small>UI + frontend</small>
+              </div>
+              <div class="hero-stage">
+                <span class="hero-stage__num">03</span>
+                <strong>Launch</strong>
+                <small>Релиз + поддержка</small>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="container stats__grid reveal-group">
+          <article class="stat reveal">
+            <div class="stat__num">UI</div>
+            <div class="stat__label">архитектура страниц</div>
+          </article>
+          <article class="stat reveal">
+            <div class="stat__num">UX</div>
+            <div class="stat__label">понятные пользовательские сценарии</div>
+          </article>
+          <article class="stat reveal">
+            <div class="stat__num">DEV</div>
+            <div class="stat__label">production-ready реализация</div>
+          </article>
+          <article class="stat reveal">
+            <div class="stat__num">QA</div>
+            <div class="stat__label">проверка перед запуском</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Избранные кейсы</h2>
+            <a class="text-link" href="shop.ru.html">Все проекты →</a>
+          </div>
+          <div id="featuredProjects" class="projects-grid"></div>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Как я работаю</h2>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item reveal">
+              <h3>01. Контекст и приоритеты</h3>
+              <p>Собираю вводные, формулирую цель и фиксирую критерии, по которым будем оценивать результат.</p>
+            </article>
+            <article class="timeline-item reveal">
+              <h3>02. Дизайн и сценарии</h3>
+              <p>Строю визуальный каркас, продумываю поведение интерфейса и собираю консистентные компоненты.</p>
+            </article>
+            <article class="timeline-item reveal">
+              <h3>03. Реализация и релиз</h3>
+              <p>Реализую адаптив, довожу детали и выпускаю проект с чистой структурой и предсказуемой поддержкой.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Операционная модель</h2>
+            <p class="muted">Полный цикл работ с управлением рисками и прозрачной отчетностью на каждом шаге.</p>
+          </div>
+          <div class="pillar-grid">
+            <article class="pillar-card reveal">
+              <h3>Discovery Sprint</h3>
+              <p>Снимаю вводные, декомпозирую задачу, фиксирую ограничения бизнеса и технические риски до начала дизайна.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>IA + UX схема</h3>
+              <p>Собираю карту сценариев, определяю ключевые действия пользователя и проектирую структуру экранов.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Visual Direction</h3>
+              <p>Формирую визуальный язык, цветовые токены, типографику и правила интеракций под конкретную нишу.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Frontend Build</h3>
+              <p>Реализую адаптивную верстку, анимации и компоненты с чистой архитектурой и контролем производительности.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>QA + Accessibility</h3>
+              <p>Проверяю поведение интерфейса, состояния ошибок, доступность и консистентность на разных разрешениях.</p>
+            </article>
+            <article class="pillar-card reveal">
+              <h3>Launch + Support</h3>
+              <p>Готовлю релиз, документирую решение и передаю проект так, чтобы команда могла поддерживать его без хаоса.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>FAQ</h2>
+            <p class="muted">Ответы на частые вопросы перед стартом проекта.</p>
+          </div>
+          <div class="faq-grid">
+            <details class="faq-item reveal" open>
+              <summary>Какие сроки у проекта?</summary>
+              <p>Обычно 10-21 день для лендинга и 3-6 недель для многостраничного решения, в зависимости от объема контента.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Можно ли работать по этапам?</summary>
+              <p>Да. Можно разделить на Discovery, дизайн, разработку и запуск, с отдельной приемкой каждого этапа.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Что с адаптивом и мобильной версией?</summary>
+              <p>Мобильный сценарий проектируется отдельно, а не как урезанная версия десктопа, с учетом скорости и читаемости.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Даете ли поддержку после релиза?</summary>
+              <p>Да, есть формат пост-релизного сопровождения: фиксы, доработки и контроль метрик в первые недели.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Можно ли использовать ваш код как основу для команды?</summary>
+              <p>Да. Структура проекта и naming делаются так, чтобы разработка масштабировалась и не требовала переписывания с нуля.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Поддерживаете анимации, но без перегруза?</summary>
+              <p>Да, движение добавляется осмысленно: подчеркивает сценарий и приоритеты, а не мешает восприятию контента.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Отзывы о запуске</h2>
+            <p class="muted">Фидбек после запуска проектов, где важны не только дизайн, но и стабильная эксплуатация.</p>
+          </div>
+          <div class="testimonials-grid">
+            <article class="testimonial-card reveal">
+              <p>После редизайна путь к заявке стал заметно яснее: первый экран и переход к форме читаются быстрее.</p>
+              <strong>Марина, founder e-commerce бренда</strong>
+            </article>
+            <article class="testimonial-card reveal">
+              <p>Сайт стал намного понятнее для команды. Новые страницы добавляются быстро, без конфликтов в верстке и стилях.</p>
+              <strong>Артем, product manager SaaS</strong>
+            </article>
+            <article class="testimonial-card reveal">
+              <p>Запуск прошел без срывов, все критичные сценарии работали с первого дня. Поддержка после релиза была очень полезной.</p>
+              <strong>Елена, руководитель маркетинга</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© <span id="yearNow">2026</span> GFolio</p>
+        <p>Frontend • Product Design • Delivery</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="products.ru.js?v=portfolio23"></script>
+  <script src="app.js?v=portfolio23"></script>
+</body>
+</html>

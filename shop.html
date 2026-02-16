@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ru" data-theme="light" data-style="showcase">
+<html lang="en" data-theme="light" data-style="showcase">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>GFolio — Проекты</title>
-  <meta name="description" content="Подборка проектов: сайты, редизайны, интерфейсы и motion." />
-  <link rel="stylesheet" href="styles.css?v=portfolio20" />
+  <title>GFolio — Projects</title>
+  <meta name="description" content="Project selection: websites, redesigns, interfaces, and motion work." />
+  <link rel="stylesheet" href="styles.css?v=portfolio23" />
 </head>
 <body>
   <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
@@ -20,18 +20,22 @@
           <span>GFolio</span>
         </a>
 
-        <nav class="nav" aria-label="Основная навигация">
-          <a class="nav-link" href="index.html" data-route="home">Главная</a>
-          <a class="nav-link is-active" href="shop.html" data-route="projects">Проекты</a>
-          <a class="nav-link" href="product.html?id=neonpuff-redesign" data-route="case">Кейс</a>
-          <a class="nav-link" href="cart.html" data-route="contacts">Контакты</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a class="nav-link" href="index.html" data-route="home">Home</a>
+          <a class="nav-link is-active" href="shop.html" data-route="projects">Projects</a>
+          <a class="nav-link" href="product.html?id=neonpuff-redesign" data-route="case">Case</a>
+          <a class="nav-link" href="cart.html" data-route="contacts">Contact</a>
         </nav>
 
         <div class="header-controls">
-          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
+          <div id="langToggle" class="lang-toggle" role="group" aria-label="Language">
+            <button class="lang-toggle__btn is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+            <button class="lang-toggle__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
+          </div>
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">Dark Theme</button>
           <label class="style-picker">
-            <span class="sr-only">Выбор дизайна</span>
-            <select id="styleSelect" class="style-select" aria-label="Выбор дизайна">
+            <span class="sr-only">Choose style</span>
+            <select id="styleSelect" class="style-select" aria-label="Choose style">
               <option value="corporate">Corporate Clean</option>
               <option value="premium">Premium Editorial</option>
               <option value="enterprise">Enterprise Grid</option>
@@ -46,20 +50,20 @@
       <section class="section">
         <div class="container">
           <div class="section-head reveal">
-            <h1>Проекты</h1>
-            <p class="muted">Собрал проекты по направлениям: можно быстро отфильтровать и открыть детальный разбор.</p>
+            <h1>Projects</h1>
+            <p class="muted">Selected work by direction: filter quickly and open a focused case breakdown.</p>
           </div>
 
           <div class="toolbar reveal">
-            <div class="filters" role="group" aria-label="Фильтр проектов">
-              <button class="filter-btn is-active" type="button" data-filter="all">Все</button>
+            <div class="filters" role="group" aria-label="Project filters">
+              <button class="filter-btn is-active" type="button" data-filter="all">All</button>
               <button class="filter-btn" type="button" data-filter="web">Web</button>
               <button class="filter-btn" type="button" data-filter="ecommerce">E-commerce</button>
               <button class="filter-btn" type="button" data-filter="branding">Branding</button>
             </div>
             <label class="search">
-              <span class="sr-only">Поиск проекта</span>
-              <input id="projectSearch" type="search" placeholder="Поиск: лендинг, shop, dashboard..." />
+              <span class="sr-only">Search projects</span>
+              <input id="projectSearch" type="search" placeholder="Search: landing, shop, dashboard..." />
             </label>
           </div>
 
@@ -70,33 +74,33 @@
       <section class="section section--soft">
         <div class="container">
           <div class="section-head reveal">
-            <h2>Как оценивать качество проекта</h2>
-            <p class="muted">Эти критерии использую для внутреннего QA и при передаче результата клиенту.</p>
+            <h2>Quality Checklist</h2>
+            <p class="muted">Criteria used to review a project before handoff.</p>
           </div>
           <div class="pillar-grid">
             <article class="pillar-card reveal">
-              <h3>Скорость интерфейса</h3>
-              <p>Ключевые действия должны выполняться без задержек, а визуальные эффекты не мешать чтению контента.</p>
+              <h3>Interface Speed</h3>
+              <p>Core actions should feel immediate, and visual effects must not interfere with readability.</p>
             </article>
             <article class="pillar-card reveal">
-              <h3>Логика сценариев</h3>
-              <p>Путь от первого экрана до целевого действия должен быть коротким, понятным и предсказуемым.</p>
+              <h3>Scenario Logic</h3>
+              <p>The path from first screen to target action should be clear, short, and predictable.</p>
             </article>
             <article class="pillar-card reveal">
-              <h3>Консистентность UI</h3>
-              <p>Сетка, отступы, кнопки, состояния и типографика работают как единая система, а не набор случайных блоков.</p>
+              <h3>UI Consistency</h3>
+              <p>Grid, spacing, states, and typography should function as one coherent system.</p>
             </article>
             <article class="pillar-card reveal">
-              <h3>Адаптивность</h3>
-              <p>Мобильная версия учитывает контекст использования: крупные цели касания, ясная иерархия и быстрый скролл.</p>
+              <h3>Mobile Adaptation</h3>
+              <p>Mobile flow must account for touch targets, hierarchy, and reading speed.</p>
             </article>
             <article class="pillar-card reveal">
-              <h3>Чистота кода</h3>
-              <p>Разметка и стили структурированы так, чтобы правки можно было вносить быстро и безопасно.</p>
+              <h3>Code Clarity</h3>
+              <p>Markup and styles should be structured so updates can be made quickly and safely.</p>
             </article>
             <article class="pillar-card reveal">
-              <h3>Готовность к росту</h3>
-              <p>Проект должен масштабироваться: новые страницы и фичи добавляются без переписывания ядра интерфейса.</p>
+              <h3>Scalability</h3>
+              <p>New pages and features should be added without rewriting the UI foundation.</p>
             </article>
           </div>
         </div>
@@ -105,21 +109,21 @@
       <section class="section">
         <div class="container">
           <div class="section-head reveal">
-            <h2>Пайплайн запуска</h2>
-            <p class="muted">От отбора гипотез до выката в прод: как обычно двигается проект по шагам.</p>
+            <h2>Launch Pipeline</h2>
+            <p class="muted">How the project moves from input to release in clear steps.</p>
           </div>
           <div class="timeline">
             <article class="timeline-item reveal">
-              <h3>Спринт 01</h3>
-              <p>Сбор контекста, аудит текущего пути и фиксация метрик, которые должны измениться после релиза.</p>
+              <h3>Sprint 01</h3>
+              <p>Collect context, review the current flow, and define priorities before implementation.</p>
             </article>
             <article class="timeline-item reveal">
-              <h3>Спринт 02</h3>
-              <p>Проработка архитектуры экранов и компонентов, прототип и согласование основных UX-сценариев.</p>
+              <h3>Sprint 02</h3>
+              <p>Build page architecture and components, then align key UX scenarios.</p>
             </article>
             <article class="timeline-item reveal">
-              <h3>Спринт 03</h3>
-              <p>Детализация визуала, адаптивная реализация, тестирование и выпуск с контролем первичных метрик.</p>
+              <h3>Sprint 03</h3>
+              <p>Finalize visuals, implement adaptive frontend, test flows, and ship the release version.</p>
             </article>
           </div>
         </div>
@@ -129,12 +133,12 @@
     <footer class="footer">
       <div class="container footer__inner">
         <p>© <span id="yearNow">2026</span> GFolio</p>
-        <p>Frontend • Product Design • Delivery</p>
+        <p>Frontend • Interface Design • Delivery</p>
       </div>
     </footer>
   </div>
 
-  <script src="products.js?v=portfolio20"></script>
-  <script src="app.js?v=portfolio20"></script>
+  <script src="products.js?v=portfolio23"></script>
+  <script src="app.js?v=portfolio23"></script>
 </body>
 </html>

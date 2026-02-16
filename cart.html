@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ru" data-theme="light" data-style="showcase">
+<html lang="en" data-theme="light" data-style="showcase">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>GFolio — Контакты</title>
-  <meta name="description" content="Контакты для обсуждения проекта: сайт, редизайн, интернет-магазин или лендинг." />
-  <link rel="stylesheet" href="styles.css?v=portfolio20" />
+  <title>GFolio — Contact</title>
+  <meta name="description" content="Contact page to discuss a website build, redesign, or focused UI update." />
+  <link rel="stylesheet" href="styles.css?v=portfolio23" />
 </head>
 <body>
   <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
@@ -20,18 +20,22 @@
           <span>GFolio</span>
         </a>
 
-        <nav class="nav" aria-label="Основная навигация">
-          <a class="nav-link" href="index.html" data-route="home">Главная</a>
-          <a class="nav-link" href="shop.html" data-route="projects">Проекты</a>
-          <a class="nav-link" href="product.html?id=neonpuff-redesign" data-route="case">Кейс</a>
-          <a class="nav-link is-active" href="cart.html" data-route="contacts">Контакты</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a class="nav-link" href="index.html" data-route="home">Home</a>
+          <a class="nav-link" href="shop.html" data-route="projects">Projects</a>
+          <a class="nav-link" href="product.html?id=neonpuff-redesign" data-route="case">Case</a>
+          <a class="nav-link is-active" href="cart.html" data-route="contacts">Contact</a>
         </nav>
 
         <div class="header-controls">
-          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
+          <div id="langToggle" class="lang-toggle" role="group" aria-label="Language">
+            <button class="lang-toggle__btn is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+            <button class="lang-toggle__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
+          </div>
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">Dark Theme</button>
           <label class="style-picker">
-            <span class="sr-only">Выбор дизайна</span>
-            <select id="styleSelect" class="style-select" aria-label="Выбор дизайна">
+            <span class="sr-only">Choose style</span>
+            <select id="styleSelect" class="style-select" aria-label="Choose style">
               <option value="corporate">Corporate Clean</option>
               <option value="premium">Premium Editorial</option>
               <option value="enterprise">Enterprise Grid</option>
@@ -47,11 +51,11 @@
         <div class="container contact-grid">
           <section class="contact-info reveal">
             <p class="eyebrow">LET'S WORK</p>
-            <h1>Обсудим проект без лишней бюрократии.</h1>
-            <p>Если нужен новый сайт, точечный редизайн или усиление UX — отправь короткий бриф. В ответе сразу даю рамку по срокам и этапам.</p>
+            <h1>Let's discuss your project without unnecessary overhead.</h1>
+            <p>If you need a new site, a focused redesign, or UX improvements, send a short brief. I will reply with a clear scope and timeline frame.</p>
             <div class="contact-cards">
               <a class="contact-card" href="mailto:hello@gfolio.dev">
-                <span>Почта</span>
+                <span>Email</span>
                 <strong>hello@gfolio.dev</strong>
               </a>
               <a class="contact-card" href="https://t.me" target="_blank" rel="noreferrer noopener">
@@ -66,22 +70,22 @@
           </section>
 
           <section class="contact-form reveal">
-            <h2>Стартовый бриф</h2>
+            <h2>Project Brief</h2>
             <form id="contactForm" novalidate>
               <label>
-                <span>Имя</span>
-                <input type="text" name="name" required placeholder="Как к вам обращаться" />
+                <span>Name</span>
+                <input type="text" name="name" required placeholder="How should I address you" />
               </label>
               <label>
-                <span>Контакт</span>
-                <input type="text" name="contact" required placeholder="Telegram или email" />
+                <span>Contact</span>
+                <input type="text" name="contact" required placeholder="Telegram or email" />
               </label>
               <label>
-                <span>Задача</span>
-                <textarea name="task" rows="5" required placeholder="Что нужно сделать, какие сроки и ожидания"></textarea>
+                <span>Goal</span>
+                <textarea name="task" rows="5" required placeholder="What needs to be done, expected timeline, and context"></textarea>
               </label>
-              <button class="btn btn--primary" type="submit">Отправить запрос</button>
-              <p class="muted">Демо-форма: после отправки отобразится подтверждение.</p>
+              <button class="btn btn--primary" type="submit">Send Request</button>
+              <p class="muted">Demo form: you will see a confirmation message after submit.</p>
             </form>
           </section>
         </div>
@@ -90,35 +94,35 @@
       <section class="section section--soft">
         <div class="container">
           <div class="section-head reveal">
-            <h2>Как проходит сотрудничество</h2>
-            <p class="muted">Фиксированный процесс, чтобы вы всегда понимали текущий статус и ближайшие шаги.</p>
+            <h2>How Collaboration Works</h2>
+            <p class="muted">A fixed process so you always know the current status and next step.</p>
           </div>
           <div class="timeline">
             <article class="timeline-item reveal">
-              <h3>01. Брифинг</h3>
-              <p>Уточняем цели, аудиторию, ограничения по срокам и формируем рабочий бэклог на запуск.</p>
+              <h3>01. Briefing</h3>
+              <p>We align goals, audience, constraints, and build the initial launch backlog.</p>
             </article>
             <article class="timeline-item reveal">
-              <h3>02. Прототип</h3>
-              <p>Собираем каркас интерфейса и согласуем ключевые сценарии до детальной визуальной проработки.</p>
+              <h3>02. Prototype</h3>
+              <p>We assemble the interface framework and confirm key user scenarios before detailed visual pass.</p>
             </article>
             <article class="timeline-item reveal">
               <h3>03. Production</h3>
-              <p>Реализация, тестирование и релиз с пост-поддержкой и контролем качества на первых итерациях.</p>
+              <p>Build, testing, and release with early post-launch support.</p>
             </article>
           </div>
           <div class="faq-grid">
             <details class="faq-item reveal" open>
-              <summary>Работаете по договору и этапам?</summary>
-              <p>Да. Проект можно разбить на этапы с понятной приемкой и прозрачным списком deliverables.</p>
+              <summary>Do you work by milestones?</summary>
+              <p>Yes. The project can be split into stages with clear acceptance and deliverables.</p>
             </details>
             <details class="faq-item reveal">
-              <summary>Можно подключить мою команду к разработке?</summary>
-              <p>Да. Передаю структуру проекта, naming и рекомендации по развитию, чтобы команда быстро вошла в контекст.</p>
+              <summary>Can my team join development?</summary>
+              <p>Yes. I hand over structure, naming conventions, and extension notes so your team can continue safely.</p>
             </details>
             <details class="faq-item reveal">
-              <summary>Есть ли вариант "быстрый запуск"?</summary>
-              <p>Да. Если сроки критичны, можем собрать приоритетный релиз с последующим расширением функциональности.</p>
+              <summary>Is there a fast-launch option?</summary>
+              <p>Yes. If timing is critical, we can ship a priority release first and expand in the next phase.</p>
             </details>
           </div>
         </div>
@@ -127,24 +131,24 @@
       <section class="section">
         <div class="container">
           <div class="section-head reveal">
-            <h2>Форматы работы</h2>
-            <p class="muted">Можно начать с короткого спринта и расширять объем по мере подтверждения гипотез.</p>
+            <h2>Work Formats</h2>
+            <p class="muted">You can start with a short sprint and expand scope after the first validated iteration.</p>
           </div>
           <div class="plan-grid">
             <article class="plan-card reveal">
               <h3>Start</h3>
-              <p class="plan-card__meta">1-2 недели</p>
-              <p>Аудит интерфейса, приоритизация проблем и быстрый план доработок с явным бизнес-эффектом.</p>
+              <p class="plan-card__meta">1-2 weeks</p>
+              <p>Interface audit, priority map, and a focused implementation plan.</p>
             </article>
             <article class="plan-card reveal">
               <h3>Build</h3>
-              <p class="plan-card__meta">3-6 недель</p>
-              <p>Полный цикл: UX-архитектура, визуальная система, адаптивная реализация, QA и запуск в прод.</p>
+              <p class="plan-card__meta">3-6 weeks</p>
+              <p>Full cycle: UX architecture, visual system, adaptive frontend build, QA, and launch.</p>
             </article>
             <article class="plan-card reveal">
               <h3>Scale</h3>
-              <p class="plan-card__meta">долгосрочно</p>
-              <p>Пост-релизное развитие: новые страницы, оптимизация сценариев, поддержка и рост продуктовых метрик.</p>
+              <p class="plan-card__meta">ongoing</p>
+              <p>Post-launch iteration: new pages, scenario refinement, and structured support.</p>
             </article>
           </div>
         </div>
@@ -154,12 +158,12 @@
     <footer class="footer">
       <div class="container footer__inner">
         <p>© <span id="yearNow">2026</span> GFolio</p>
-        <p>Frontend • Product Design • Delivery</p>
+        <p>Frontend • Interface Design • Delivery</p>
       </div>
     </footer>
   </div>
 
-  <script src="products.js?v=portfolio20"></script>
-  <script src="app.js?v=portfolio20"></script>
+  <script src="products.js?v=portfolio23"></script>
+  <script src="app.js?v=portfolio23"></script>
 </body>
 </html>

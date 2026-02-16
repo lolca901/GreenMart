@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ru" data-theme="light" data-style="showcase">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>GFolio — Контакты</title>
+  <meta name="description" content="Контакты для обсуждения проекта: сайт, редизайн, интернет-магазин или лендинг." />
+  <link rel="stylesheet" href="styles.css?v=portfolio23" />
+</head>
+<body>
+  <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--b" aria-hidden="true"></div>
+
+  <div class="site">
+    <header class="header">
+      <div class="container header__inner">
+        <a class="logo" href="index.ru.html" data-route="home" aria-label="GFolio home">
+          <span class="logo__dot"></span>
+          <span>GFolio</span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="nav-link" href="index.ru.html" data-route="home">Главная</a>
+          <a class="nav-link" href="shop.ru.html" data-route="projects">Проекты</a>
+          <a class="nav-link" href="product.ru.html?id=neonpuff-redesign" data-route="case">Кейс</a>
+          <a class="nav-link is-active" href="cart.ru.html" data-route="contacts">Контакты</a>
+        </nav>
+
+        <div class="header-controls">
+          <div id="langToggle" class="lang-toggle" role="group" aria-label="Язык">
+            <button class="lang-toggle__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+            <button class="lang-toggle__btn is-active" type="button" data-lang="ru" aria-pressed="true">RU</button>
+          </div>
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">Тёмная тема</button>
+          <label class="style-picker">
+            <span class="sr-only">Выбор дизайна</span>
+            <select id="styleSelect" class="style-select" aria-label="Выбор дизайна">
+              <option value="corporate">Corporate Clean</option>
+              <option value="premium">Premium Editorial</option>
+              <option value="enterprise">Enterprise Grid</option>
+              <option value="showcase">Showcase Motion</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container contact-grid">
+          <section class="contact-info reveal">
+            <p class="eyebrow">LET'S WORK</p>
+            <h1>Обсудим проект без лишней бюрократии.</h1>
+            <p>Если нужен новый сайт, точечный редизайн или усиление UX — отправь короткий бриф. В ответе сразу даю рамку по срокам и этапам.</p>
+            <div class="contact-cards">
+              <a class="contact-card" href="mailto:hello@gfolio.dev">
+                <span>Почта</span>
+                <strong>hello@gfolio.dev</strong>
+              </a>
+              <a class="contact-card" href="https://t.me" target="_blank" rel="noreferrer noopener">
+                <span>Telegram</span>
+                <strong>@gfolio</strong>
+              </a>
+              <a class="contact-card" href="https://github.com/lolca901" target="_blank" rel="noreferrer noopener">
+                <span>GitHub</span>
+                <strong>github.com/lolca901</strong>
+              </a>
+            </div>
+          </section>
+
+          <section class="contact-form reveal">
+            <h2>Стартовый бриф</h2>
+            <form id="contactForm" novalidate>
+              <label>
+                <span>Имя</span>
+                <input type="text" name="name" required placeholder="Как к вам обращаться" />
+              </label>
+              <label>
+                <span>Контакт</span>
+                <input type="text" name="contact" required placeholder="Telegram или email" />
+              </label>
+              <label>
+                <span>Задача</span>
+                <textarea name="task" rows="5" required placeholder="Что нужно сделать, какие сроки и ожидания"></textarea>
+              </label>
+              <button class="btn btn--primary" type="submit">Отправить запрос</button>
+              <p class="muted">Демо-форма: после отправки отобразится подтверждение.</p>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Как проходит сотрудничество</h2>
+            <p class="muted">Фиксированный процесс, чтобы вы всегда понимали текущий статус и ближайшие шаги.</p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item reveal">
+              <h3>01. Брифинг</h3>
+              <p>Уточняем цели, аудиторию, ограничения по срокам и формируем рабочий бэклог на запуск.</p>
+            </article>
+            <article class="timeline-item reveal">
+              <h3>02. Прототип</h3>
+              <p>Собираем каркас интерфейса и согласуем ключевые сценарии до детальной визуальной проработки.</p>
+            </article>
+            <article class="timeline-item reveal">
+              <h3>03. Production</h3>
+              <p>Реализация, тестирование и релиз с пост-поддержкой и контролем качества на первых итерациях.</p>
+            </article>
+          </div>
+          <div class="faq-grid">
+            <details class="faq-item reveal" open>
+              <summary>Работаете по договору и этапам?</summary>
+              <p>Да. Проект можно разбить на этапы с понятной приемкой и прозрачным списком deliverables.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Можно подключить мою команду к разработке?</summary>
+              <p>Да. Передаю структуру проекта, naming и рекомендации по развитию, чтобы команда быстро вошла в контекст.</p>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Есть ли вариант "быстрый запуск"?</summary>
+              <p>Да. Если сроки критичны, можем собрать приоритетный релиз с последующим расширением функциональности.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Форматы работы</h2>
+            <p class="muted">Можно начать с короткого спринта и расширять объем по мере подтверждения гипотез.</p>
+          </div>
+          <div class="plan-grid">
+            <article class="plan-card reveal">
+              <h3>Start</h3>
+              <p class="plan-card__meta">1-2 недели</p>
+              <p>Аудит интерфейса, приоритизация проблем и быстрый план доработок с явным бизнес-эффектом.</p>
+            </article>
+            <article class="plan-card reveal">
+              <h3>Build</h3>
+              <p class="plan-card__meta">3-6 недель</p>
+              <p>Полный цикл: UX-архитектура, визуальная система, адаптивная реализация, QA и запуск в прод.</p>
+            </article>
+            <article class="plan-card reveal">
+              <h3>Scale</h3>
+              <p class="plan-card__meta">долгосрочно</p>
+              <p>Пост-релизное развитие: новые страницы, оптимизация сценариев, поддержка и рост продуктовых метрик.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© <span id="yearNow">2026</span> GFolio</p>
+        <p>Frontend • Product Design • Delivery</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="products.ru.js?v=portfolio23"></script>
+  <script src="app.js?v=portfolio23"></script>
+</body>
+</html>

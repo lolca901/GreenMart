@@ -1,22 +1,22 @@
 window.PORTFOLIO_PROJECTS = [
   {
     id: "neonpuff-redesign",
-    title: "NeonPuff: e-commerce редизайн",
+    title: "NeonPuff: E-commerce Redesign",
     category: "ecommerce",
     year: "2026",
     role: "UI/UX + Frontend",
     summary:
-      "Пересобран интернет-магазин с нуля: новая иерархия экранов, чистая сетка карточек и более прямой путь пользователя к ключевому действию.",
-    result: "CTR на основные CTA вырос на 34% в контрольном сценарии после релиза.",
+      "An online store rebuilt from the ground up: cleaner screen hierarchy, consistent card layout, and a more direct path to the main action.",
+    result: "The primary action flow became shorter and easier to understand.",
     stack: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
     tags: ["multi-page", "adaptive", "animation"],
     cover: "cover-neon",
     challenge:
-      "Интерфейс был визуально шумным: перегруженный первый экран, разрозненные стили и низкая читаемость важного контента.",
+      "The previous interface felt visually noisy: overloaded first screen, fragmented styles, and weak content hierarchy.",
     solution:
-      "Введена единая дизайн-система, переработаны ключевые блоки каталога и первого экрана, усилены состояния элементов и навигационная логика.",
+      "A unified design system was introduced, key catalog sections were restructured, and interactive states were made more consistent.",
     impact:
-      "Продукт стал заметно понятнее: быстрее вносить изменения, проще масштабировать страницы и легче удерживать внимание пользователя.",
+      "The product became easier to navigate, simpler to update, and more maintainable for future expansion.",
   },
   {
     id: "finance-dashboard",
@@ -25,17 +25,17 @@ window.PORTFOLIO_PROJECTS = [
     year: "2025",
     role: "Frontend Developer",
     summary:
-      "Дашборд для операционной команды: показатели выручки, повторных покупок и отклонений собраны в одном рабочем контуре.",
-    result: "Время ежедневного анализа сократилось с 40 до 12 минут.",
+      "An operations dashboard where revenue, repeat purchase signals, and anomalies are visible in one workspace.",
+    result: "Daily analysis became faster and more convenient for the team.",
     stack: ["HTML", "SCSS", "Vanilla JS"],
     tags: ["dashboard", "charts", "tables"],
     cover: "cover-cobalt",
     challenge:
-      "Данные жили в разных таблицах, а сравнение метрик занимало слишком много ручной работы.",
+      "Critical data lived across separate sheets, making comparison and interpretation too manual.",
     solution:
-      "Сделан единый экран KPI, добавлены быстрые фильтры периодов и визуальные сигналы для критичных изменений.",
+      "A unified KPI screen was built with period filters and visual indicators for notable changes.",
     impact:
-      "Руководители начали принимать решения по цифрам быстрее, без переключения между несколькими инструментами.",
+      "Operational decisions became easier to make without switching between multiple tools.",
   },
   {
     id: "studio-landing",
@@ -44,17 +44,17 @@ window.PORTFOLIO_PROJECTS = [
     year: "2025",
     role: "Designer + Frontend",
     summary:
-      "Премиальный лендинг для студии: акцент на позиционирование, доверие к кейсам и понятный переход к первому контакту.",
-    result: "Конверсия формы заявки выросла на 27% после запуска новой версии.",
+      "A premium landing page focused on positioning, trust, and a clear path to first contact.",
+    result: "The new version presents offers more clearly and guides users to the contact step.",
     stack: ["Figma", "HTML", "CSS", "JS"],
     tags: ["branding", "landing", "motion"],
     cover: "cover-amber",
     challenge:
-      "Старый лендинг выглядел шаблонно и не отражал уровень команды, из-за чего терялись релевантные лиды.",
+      "The previous page looked generic and did not reflect the team’s level, reducing relevance of incoming leads.",
     solution:
-      "Собран новый визуальный язык: сильная типографика, точная подача кейсов и последовательный сценарий до отправки заявки.",
+      "A stronger visual language was built: clear typography, focused case presentation, and a consistent request flow.",
     impact:
-      "Сайт стал работать как инструмент продаж: лучше удерживает внимание и стабильнее приводит целевые обращения.",
+      "The page became a stronger sales asset with clearer messaging and a smoother contact scenario.",
   },
   {
     id: "saas-onboarding",
@@ -63,17 +63,17 @@ window.PORTFOLIO_PROJECTS = [
     year: "2024",
     role: "Product Designer",
     summary:
-      "Рефакторинг онбординга B2B SaaS-продукта с упором на быстрое достижение первой ценности для нового пользователя.",
-    result: "Завершение onboarding выросло с 46% до 71%.",
+      "Onboarding refactor for a B2B SaaS product with focus on getting users to first value faster.",
+    result: "The onboarding sequence became clearer and easier to complete.",
     stack: ["UX research", "Wireframes", "UI Kit"],
     tags: ["onboarding", "ux", "product"],
     cover: "cover-violet",
     challenge:
-      "Пользователи не понимали, что делать в первые минуты после регистрации и где находится полезный результат.",
+      "New users struggled to understand first steps and where meaningful value was located.",
     solution:
-      "Сокращены шаги старта, добавлены контекстные подсказки и персонализированный прогресс с понятными следующими действиями.",
+      "Start flow was shortened, contextual hints were added, and progress cues became more explicit.",
     impact:
-      "Падение на старте снизилось, активация выросла, а путь к ключевой функции стал короче и предсказуемее.",
+      "The path to key functionality became shorter and more predictable for new accounts.",
   },
   {
     id: "marketplace-ui",
@@ -82,17 +82,17 @@ window.PORTFOLIO_PROJECTS = [
     year: "2024",
     role: "UI Systems",
     summary:
-      "Масштабируемый UI Kit для e-commerce: карточки, фильтры, checkout и системные компоненты в едином стандарте.",
-    result: "Скорость выпуска новых интерфейсов выросла в 2.1 раза.",
+      "A scalable UI Kit for e-commerce: cards, filters, checkout patterns, and system-level components.",
+    result: "Building and maintaining new interfaces became more consistent.",
     stack: ["Design Tokens", "CSS Variables", "Component Docs"],
     tags: ["system", "components", "ui-kit"],
     cover: "cover-emerald",
     challenge:
-      "Каждая новая фича собиралась практически заново, что создавало разнобой по стилю и срокам.",
+      "Each new feature was assembled almost from scratch, causing style drift and delivery friction.",
     solution:
-      "Внедрены дизайн-токены и переиспользуемые компоненты с четкими правилами для всех интерактивных состояний.",
+      "Design tokens and reusable components were implemented with explicit state rules.",
     impact:
-      "Команда получила стабильный ритм релизов и единый визуальный уровень продукта на всех страницах.",
+      "The team gained a steadier release rhythm and a more unified product appearance.",
   },
   {
     id: "event-campaign",
@@ -101,16 +101,16 @@ window.PORTFOLIO_PROJECTS = [
     year: "2023",
     role: "Creative Frontend",
     summary:
-      "Промо-сайт музыкального ивента: эмоциональный first screen, динамичная программа и прямой переход к покупке билетов.",
-    result: "Средняя глубина просмотра выросла в 1.8 раза.",
+      "A promo site for a music event: emotional first screen, dynamic program section, and direct ticket CTA.",
+    result: "The page structure retained attention better and clarified the purchase path.",
     stack: ["HTML", "CSS", "GSAP"],
     tags: ["promo", "campaign", "visual"],
     cover: "cover-rose",
     challenge:
-      "Трафик из соцсетей приходил, но пользователи быстро уходили, не доходя до блока покупки.",
+      "Social traffic arrived, but users dropped before reaching the ticket block.",
     solution:
-      "Перестроен пользовательский путь: фокус на эмоции, ясная структура программы и заметные точки входа в покупку.",
+      "The user path was restructured with clearer hierarchy and stronger purchase entry points.",
     impact:
-      "Сайт начал дольше удерживать внимание и лучше конвертировать холодный трафик в целевые действия.",
+      "The site now guides cold traffic through the scenario with fewer friction points.",
   },
 ];
